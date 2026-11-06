@@ -1,0 +1,5 @@
+# Counter-example: value_type must come from ValueTypeEnum; an enumeration's name is not a value type.
+tbd_type_designator: bridge_central_schema:Attribute
+key: size_of_bear
+raw_value: big
+value_type: BearSizeEnum

@@ -1,0 +1,6 @@
+# Counter-example: an Attribute has no unit slot. A value with a unit is a Measurement.
+tbd_type_designator: bridge_central_schema:Attribute
+key: total phosphorous
+raw_value: 2.2 ppm
+numeric_value: 2.2
+unit: "[ppm]"

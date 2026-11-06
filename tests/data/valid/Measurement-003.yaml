@@ -1,7 +1,8 @@
 # NMDC sample storage temperature: a condition someone set, not a measured
 # property of the sample. The source misspells Celsius; raw_value keeps it.
 # Source: nmdc_quantity_values_2026-09-30.tsv, line 145.
-observed_property: bridge_property:sample_storage_temperature  # mapped to MIXS:0000110
+tbd_type_designator: bridge_central_schema:Measurement
+attribute_cv_id: bridge_property:sample_storage_temperature  # mapped to MIXS:0000110
 feature_of_interest: nmdc:bsm-11-03dy0348
 raw_value: -80 Celcius
 numeric_value: -80

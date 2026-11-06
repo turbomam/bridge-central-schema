@@ -12,12 +12,15 @@ features:
   coordinate_system: contig
   strand: '-'
   attributes:
-  - key: ID
-    value: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091
-  - key: translation_table
-    value: '11'
-  - key: start_type
-    value: ATG
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: ID
+    raw_value: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: start_type
+    raw_value: ATG
   source: Prodigal v2.6.3_patched
   score: 76.5
   phase: 0
@@ -33,20 +36,27 @@ features:
   coordinate_system: protein
   strand: .
   attributes:
-  - key: ID
-    value: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091_168_312
-  - key: Name
-    value: DDE_3
-  - key: fake_percent_id
-    value: '25.23'
-  - key: alignment_length
-    value: '145'
-  - key: e-value
-    value: '3.4e-28'
-  - key: model_start
-    value: '2'
-  - key: model_end
-    value: '135'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: ID
+    raw_value: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091_168_312
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: Name
+    raw_value: DDE_3
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: fake_percent_id
+    raw_value: '25.23'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: alignment_length
+    raw_value: '145'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: e-value
+    raw_value: '3.4e-28'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: model_start
+    raw_value: '2'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: model_end
+    raw_value: '135'
   source: HMMER 3.1b2 (February 2015)
   score: 94.0
   name: DDE_3
@@ -65,20 +75,27 @@ features:
   coordinate_system: protein
   strand: .
   attributes:
-  - key: ID
-    value: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091_95_154
-  - key: Name
-    value: HTH_33
-  - key: fake_percent_id
-    value: '25.23'
-  - key: alignment_length
-    value: '60'
-  - key: e-value
-    value: '3.4e-19'
-  - key: model_start
-    value: '1'
-  - key: model_end
-    value: '59'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: ID
+    raw_value: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091_95_154
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: Name
+    raw_value: HTH_33
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: fake_percent_id
+    raw_value: '25.23'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: alignment_length
+    raw_value: '60'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: e-value
+    raw_value: '3.4e-19'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: model_start
+    raw_value: '1'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: model_end
+    raw_value: '59'
   source: HMMER 3.1b2 (February 2015)
   score: 64.0
   name: HTH_33
@@ -97,20 +114,27 @@ features:
   coordinate_system: protein
   strand: .
   attributes:
-  - key: ID
-    value: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091_17_70
-  - key: Name
-    value: HTH_28
-  - key: fake_percent_id
-    value: '25.23'
-  - key: alignment_length
-    value: '54'
-  - key: e-value
-    value: '2.4e-12'
-  - key: model_start
-    value: '2'
-  - key: model_end
-    value: '51'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: ID
+    raw_value: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091_17_70
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: Name
+    raw_value: HTH_28
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: fake_percent_id
+    raw_value: '25.23'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: alignment_length
+    raw_value: '54'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: e-value
+    raw_value: '2.4e-12'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: model_start
+    raw_value: '2'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: model_end
+    raw_value: '51'
   source: HMMER 3.1b2 (February 2015)
   score: 42.5
   name: HTH_28

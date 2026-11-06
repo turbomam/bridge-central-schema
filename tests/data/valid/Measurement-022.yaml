@@ -1,7 +1,8 @@
 # Illustrative, not from a source record: a categorical value with a term.
-# coded_value is parsed from raw_value the way numeric_value is for a number;
+# value_cv_id is parsed from raw_value the way numeric_value is for a number;
 # value_role says a person assigned it.
-observed_property: bridge_property:growth_temperature  # mapped to METPO:2000701
+tbd_type_designator: bridge_central_schema:Measurement
+attribute_cv_id: bridge_property:growth_temperature  # mapped to METPO:2000701
 raw_value: mesophile
-coded_value: METPO:1000615  # mesophilic
+value_cv_id: METPO:1000615  # mesophilic
 value_role: interpreted

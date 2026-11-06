@@ -1,0 +1,7 @@
+# Example 6 of https://github.com/ber-data/bertron-schema/issues/62 (a value from an enumeration), adapted.
+# Illustrative, not from a source record. The issue writes the enumeration's name, BearSizeEnum,
+# as the type; here the type is cv_term and no slot names the enumeration.
+tbd_type_designator: bridge_central_schema:Attribute
+key: size_of_bear
+raw_value: big
+value_type: cv_term

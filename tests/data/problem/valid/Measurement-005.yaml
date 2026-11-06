@@ -2,7 +2,8 @@
 # would carry the same source_system, source_record_id and source_field, and
 # the schema has no snapshot or version slot to tell them apart (raised item
 # R44). Tracked in https://github.com/doe-bridge/bridge-central-schema/issues/23
-observed_property: bridge_property:ph  # pH
+tbd_type_designator: bridge_central_schema:Measurement
+attribute_cv_id: bridge_property:ph  # pH
 raw_value: "6.8"
 numeric_value: 6.8
 source_system: ber_registry:schema-nmdc-schema

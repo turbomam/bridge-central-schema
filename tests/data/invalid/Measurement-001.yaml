@@ -1,4 +1,5 @@
-# Counter-example: a measurement must name its property (here neither observed_property nor property_label is given).
+# Counter-example: a measurement must name its property (here neither attribute_cv_id nor key is given).
+tbd_type_designator: bridge_central_schema:Measurement
 raw_value: 0.5 um
 numeric_value: 0.5
 unit: um

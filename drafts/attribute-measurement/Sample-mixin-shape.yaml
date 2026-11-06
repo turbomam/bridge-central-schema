@@ -1,0 +1,12 @@
+id: nmdc:bsm-11-042nd237
+attributes:
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: env_broad_scale
+    attribute_cv_id: MIXS:0000012
+    raw_value: forest biome [ENVO:01000174]
+    value_cv_id: ENVO:01000174
+  - tbd_type_designator: bridge_central_schema:Measurement
+    attribute_cv_id: bridge_property:depth
+    raw_value: .02 -.10
+    unit: m
+    feature_of_interest: nmdc:bsm-11-042nd237

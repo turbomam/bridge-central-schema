@@ -1,0 +1,7 @@
+# Example 4 of https://github.com/ber-data/bertron-schema/issues/62 (env_broad_scale), adapted.
+tbd_type_designator: bridge_central_schema:Attribute
+key: env_broad_scale
+attribute_cv_id: MIXS:0000012  # broad-scale environmental context
+raw_value: terrestrial biome
+value_cv_id: ENVO:00000446  # terrestrial biome
+value_type: cv_term

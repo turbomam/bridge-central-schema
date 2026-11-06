@@ -1,5 +1,6 @@
 # Counter-example: a measurement must name its property, with either
-# observed_property or property_label.
+# attribute_cv_id or key.
+tbd_type_designator: bridge_central_schema:Measurement
 raw_value: 2075 micromole per kilogram
 numeric_value: 2075
 unit: umol/kg

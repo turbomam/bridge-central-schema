@@ -1,0 +1,7 @@
+# Counter-example: an entry designated Attribute cannot carry a unit, a Measurement slot.
+id: nmdc:bsm-11-042nd237
+attributes:
+  - tbd_type_designator: bridge_central_schema:Attribute
+    attribute_cv_id: bridge_property:depth
+    raw_value: .02 -.10
+    unit: m

@@ -32,6 +32,7 @@ imports:
 classes:
 
   Study:
+    class_uri: bridge_central_schema:Study
     is_a: NamedThing
     description: >-
       A research initiative, proposal or project under which samples are
@@ -43,6 +44,7 @@ classes:
       - basalt_schema:Study
 
   Site:
+    class_uri: bridge_central_schema:Site
     is_a: NamedThing
     description: A place where samples are collected.
     close_mappings:
@@ -50,6 +52,7 @@ classes:
       - basalt_schema:Site
 
   Organism:
+    class_uri: bridge_central_schema:Organism
     is_a: NamedThing
     description: >-
       The biological identity of what is in a sample (a strain, isolate or
@@ -63,6 +66,7 @@ classes:
       - basalt_schema:organism
 
   Sample:
+    class_uri: bridge_central_schema:Sample
     is_a: NamedThing
     description: >-
       A material entity taken from a larger body, or derived from another
@@ -73,6 +77,7 @@ classes:
       - collected_at
       - organism
       - sample_category
+      - attributes
     exact_mappings:
       - nmdc:Sample
       - basalt_schema:Sample
@@ -115,6 +120,7 @@ classes:
         was processed, so a soil DNA extract is still environmental.
 
   PlannedProcess:
+    class_uri: bridge_central_schema:PlannedProcess
     is_a: NamedThing
     abstract: true
     description: >-
@@ -139,6 +145,7 @@ classes:
         the umbrella has no data object class for them to range on yet.
 
   MaterialProcessing:
+    class_uri: bridge_central_schema:MaterialProcessing
     is_a: PlannedProcess
     abstract: true
     description: >-
@@ -161,6 +168,7 @@ classes:
         same links only in ProcessingSampleLink rows; see that class.
 
   ProcessingSampleLink:
+    class_uri: bridge_central_schema:ProcessingSampleLink
     description: >-
       One row of the flat table form of has_input and has_output: one sample,
       one processing step, and whether the sample went in or came out. This is
@@ -184,6 +192,7 @@ classes:
 
 slots:
   taxon:
+    slot_uri: bridge_central_schema:taxon
     description: Taxonomic classification, as an NCBITaxon CURIE.
     range: uriorcurie
     # Same pattern as the id of nmdc:NcbiTaxon in nmdc-schema.
@@ -192,6 +201,7 @@ slots:
       - nmdc:classified_as
       - basalt_schema:taxonomy_id
   associated_studies:
+    slot_uri: bridge_central_schema:associated_studies
     description: The studies the sample was collected or processed under.
     range: Study
     multivalued: true
@@ -200,6 +210,7 @@ slots:
       # BASALT's `project` is an integer, not a reference.
       - basalt_schema:project
   collected_at:
+    slot_uri: bridge_central_schema:collected_at
     description: The site the sample was collected from.
     range: Site
     close_mappings:
@@ -207,12 +218,14 @@ slots:
       # On BASALT SamplingActivity, not on Sample.
       - basalt_schema:sampled_at_site
   organism:
+    slot_uri: bridge_central_schema:organism
     description: The organism the sample is expected to contain, when it is one organism.
     range: Organism
     close_mappings:
       - nmdc:expected_organism
       - basalt_schema:organism_ref
   sample_category:
+    slot_uri: bridge_central_schema:sample_category
     description: >-
       Where the sample's material came from, such as a pure culture, an
       engineered strain or the environment. Programs and protocols (MONet,
@@ -223,36 +236,42 @@ slots:
       # slot for it (env_package, sample_type and samp_type are all candidates).
       - nmdc:sample_type
   has_input:
+    slot_uri: bridge_central_schema:has_input
     description: The things a process takes in, such as samples or data.
     range: NamedThing
     multivalued: true
     exact_mappings:
       - nmdc:has_input
   has_output:
+    slot_uri: bridge_central_schema:has_output
     description: The things a process produces, such as samples or data.
     range: NamedThing
     multivalued: true
     exact_mappings:
       - nmdc:has_output
   protocol:
+    slot_uri: bridge_central_schema:protocol
     description: A link to the protocol the step followed.
     range: uriorcurie
     close_mappings:
       - nmdc:protocol_link
       - basalt_schema:in_protocol
   processing:
+    slot_uri: bridge_central_schema:processing
     description: The processing step this link row belongs to.
     range: MaterialProcessing
     required: true
     close_mappings:
       - basalt_schema:processing_id
   sample:
+    slot_uri: bridge_central_schema:sample
     description: The sample this link row connects to the processing step.
     range: Sample
     required: true
     close_mappings:
       - basalt_schema:sample_id
   role:
+    slot_uri: bridge_central_schema:role
     description: Whether the sample went into or came out of the processing step.
     range: ProcessingRoleEnum
     required: true
@@ -261,6 +280,7 @@ slots:
 
 enums:
   SampleCategoryEnum:
+    enum_uri: bridge_central_schema:SampleCategoryEnum
     description: >-
       Where a sample's material came from. Each value lists the BASALT Sample
       subclasses it corresponds to. Ontology meanings are not assigned yet.
@@ -290,6 +310,7 @@ enums:
       other:
         exact_mappings: [basalt_schema:OtherUndescribedSample]
   ProcessingRoleEnum:
+    enum_uri: bridge_central_schema:ProcessingRoleEnum
     description: Whether a sample is an input to or an output of a processing step.
     permissible_values:
       input:

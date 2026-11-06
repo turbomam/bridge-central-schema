@@ -1,6 +1,7 @@
 # ORNL APPL air temperature with a placeholder instead of a value.
 # Source: ORNL environment_parameters.csv, line 5.
-observed_property: bridge_property:air_temperature  # Air temperature
+tbd_type_designator: bridge_central_schema:Measurement
+attribute_cv_id: bridge_property:air_temperature  # Air temperature
 raw_value: TO BE SUPPLIED
 missing_value_reason: not_reported
 value_role: measured

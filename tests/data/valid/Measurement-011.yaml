@@ -1,6 +1,7 @@
 # Second record from the same GOLD cell: the width.
 # Source: gold_dsi_organism_measurements.csv, line 9033, Go0670564.
-observed_property: bridge_property:cell_width
+tbd_type_designator: bridge_central_schema:Measurement
+attribute_cv_id: bridge_property:cell_width
 feature_of_interest: gold:Go0670564
 raw_value: 1.5–2.0 µm long and 0.3–0.4 µm wide
 minimum_numeric_value: 0.3

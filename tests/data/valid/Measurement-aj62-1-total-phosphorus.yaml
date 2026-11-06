@@ -1,0 +1,11 @@
+# Example 1 of https://github.com/ber-data/bertron-schema/issues/62 (total phosphorous), adapted.
+# A value with a unit is a Measurement. The issue's attribute id, MIXS:0000117, is not used:
+# a Measurement's attribute_cv_id must be a bridge_property: identifier, and none exists for
+# total phosphorus yet, so the property is named in key. ppm is [ppm] in UCUM.
+tbd_type_designator: bridge_central_schema:Measurement
+key: total phosphorous
+raw_value: 2.2 ppm
+numeric_value: 2.2
+unit: "[ppm]"
+unit_cv_id: UO:0000169  # parts per million
+value_type: float

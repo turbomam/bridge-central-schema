@@ -42,18 +42,24 @@ features:
   source_files:
   - https://data.microbiomedata.org/data/nmdc:omprc-11-2t8ft192/nmdc:wfmgan-11-5xxrm214.2/nmdc_wfmgan-11-5xxrm214.2_pfam.gff
   attributes:
-  - key: Name
-    value: DDE_3
-  - key: fake_percent_id
-    value: '25.23'
-  - key: alignment_length
-    value: '145'
-  - key: e-value
-    value: '3.4e-28'
-  - key: model_start
-    value: '2'
-  - key: model_end
-    value: '135'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: Name
+    raw_value: DDE_3
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: fake_percent_id
+    raw_value: '25.23'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: alignment_length
+    raw_value: '145'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: e-value
+    raw_value: '3.4e-28'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: model_start
+    raw_value: '2'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: model_end
+    raw_value: '135'
 - feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091_95_154
   seqid: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091
   source: HMMER 3.1b2 (February 2015)
@@ -69,18 +75,24 @@ features:
   source_files:
   - https://data.microbiomedata.org/data/nmdc:omprc-11-2t8ft192/nmdc:wfmgan-11-5xxrm214.2/nmdc_wfmgan-11-5xxrm214.2_pfam.gff
   attributes:
-  - key: Name
-    value: HTH_33
-  - key: fake_percent_id
-    value: '25.23'
-  - key: alignment_length
-    value: '60'
-  - key: e-value
-    value: '3.4e-19'
-  - key: model_start
-    value: '1'
-  - key: model_end
-    value: '59'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: Name
+    raw_value: HTH_33
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: fake_percent_id
+    raw_value: '25.23'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: alignment_length
+    raw_value: '60'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: e-value
+    raw_value: '3.4e-19'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: model_start
+    raw_value: '1'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: model_end
+    raw_value: '59'
 - feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091_17_70
   seqid: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091
   source: HMMER 3.1b2 (February 2015)
@@ -96,15 +108,21 @@ features:
   source_files:
   - https://data.microbiomedata.org/data/nmdc:omprc-11-2t8ft192/nmdc:wfmgan-11-5xxrm214.2/nmdc_wfmgan-11-5xxrm214.2_pfam.gff
   attributes:
-  - key: Name
-    value: HTH_28
-  - key: fake_percent_id
-    value: '25.23'
-  - key: alignment_length
-    value: '54'
-  - key: e-value
-    value: '2.4e-12'
-  - key: model_start
-    value: '2'
-  - key: model_end
-    value: '51'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: Name
+    raw_value: HTH_28
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: fake_percent_id
+    raw_value: '25.23'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: alignment_length
+    raw_value: '54'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: e-value
+    raw_value: '2.4e-12'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: model_start
+    raw_value: '2'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: model_end
+    raw_value: '51'

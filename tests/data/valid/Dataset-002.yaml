@@ -68,20 +68,26 @@ features:
   product_source: KO:K00059
   translated_sequence: MKRLDNKVAIVTGASKGIGAGIAKAFGAEGAAVVVNYARDHEGAERVVREITGKGGRAIAVQGDVAQRSDAQRLVAEAKKAFGRLDVLVNNAGVFSFAPFEQFSEQEFHRQFNTNVLGMFLMIEAALPAFGAEGGSIINIGSTTSATAYPALSIYVASKSAVNGLTRVLSKEFGPRKIRVNALNPGGTETEGAHAAGVMGAEAKKQIIASTPLGRVGQPEDIARVAVFLASDDAGWLTGEIIFANGGNK
   attributes:
-  - key: translation_table
-    value: '11'
-  - key: start_type
-    value: ATG
-  - key: genemark_agreement
-    value: GeneMark called the identical 104-853 boundary independently (score 66.84 vs Prodigal's 85.0);
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: start_type
+    raw_value: ATG
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: genemark_agreement
+    raw_value: GeneMark called the identical 104-853 boundary independently (score 66.84 vs Prodigal's 85.0);
       not instantiated as a separate SequenceFeature here since the coordinates are identical, not a competing
       claim
-  - key: phylogeny_subject_gene_ids
-    value: 2698062542;2695420919
-  - key: phylogeny_percent_identity
-    value: '93.98'
-  - key: phylogeny_lineage
-    value: Bacteria;Pseudomonadota;Alphaproteobacteria;Hyphomicrobiales;Nitrobacteraceae;Bradyrhizobium;Bradyrhizobium
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: phylogeny_subject_gene_ids
+    raw_value: 2698062542;2695420919
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: phylogeny_percent_identity
+    raw_value: '93.98'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: phylogeny_lineage
+    raw_value: Bacteria;Pseudomonadota;Alphaproteobacteria;Hyphomicrobiales;Nitrobacteraceae;Bradyrhizobium;Bradyrhizobium
       erythrophlei;Bradyrhizobium erythrophlei GAS401
 - feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_1_c1_104_853_ko_ec
   generated_by: nmdc:wfmgan-11-5xxrm214.2
@@ -98,14 +104,18 @@ features:
   parent:
   - nmdc:wfmgas-11-19jh9v28.1_scf_1_c1_104_853
   attributes:
-  - key: subject_gene_ids
-    value: '2698062542'
-  - key: evalue
-    value: '9.2e-163'
-  - key: percent_identity
-    value: '93.98'
-  - key: alignment_length
-    value: '249'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: subject_gene_ids
+    raw_value: '2698062542'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: evalue
+    raw_value: '9.2e-163'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: percent_identity
+    raw_value: '93.98'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: alignment_length
+    raw_value: '249'
 - feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_1_c1_104_853_cog
   generated_by: nmdc:wfmgan-11-5xxrm214.2
   source_files:
@@ -122,16 +132,21 @@ features:
   parent:
   - nmdc:wfmgas-11-19jh9v28.1_scf_1_c1_104_853
   attributes:
-  - key: fake_percent_id
-    value: '98.88'
-  - key: alignment_length
-    value: '247'
-  - key: independent_domain_e-value
-    value: '2.9e-72'
-  - key: full_sequence_e-value
-    value: '2.3e-72'
-  - key: full_sequence_bitscore
-    value: '239.4'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: fake_percent_id
+    raw_value: '98.88'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: alignment_length
+    raw_value: '247'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: independent_domain_e-value
+    raw_value: '2.9e-72'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: full_sequence_e-value
+    raw_value: '2.3e-72'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: full_sequence_bitscore
+    raw_value: '239.4'
 - feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_1_c1_104_853_cath
   generated_by: nmdc:wfmgan-11-5xxrm214.2
   source_files:
@@ -148,16 +163,21 @@ features:
   parent:
   - nmdc:wfmgas-11-19jh9v28.1_scf_1_c1_104_853
   attributes:
-  - key: fake_percent_id
-    value: '98.39'
-  - key: alignment_length
-    value: '247'
-  - key: independent_domain_e-value
-    value: '4.6e-88'
-  - key: full_sequence_e-value
-    value: '4.1e-88'
-  - key: full_sequence_bitscore
-    value: '290.5'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: fake_percent_id
+    raw_value: '98.39'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: alignment_length
+    raw_value: '247'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: independent_domain_e-value
+    raw_value: '4.6e-88'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: full_sequence_e-value
+    raw_value: '4.1e-88'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: full_sequence_bitscore
+    raw_value: '290.5'
 - feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_1_c1_104_853_pfam
   generated_by: nmdc:wfmgan-11-5xxrm214.2
   source_files:
@@ -174,14 +194,18 @@ features:
   parent:
   - nmdc:wfmgas-11-19jh9v28.1_scf_1_c1_104_853
   attributes:
-  - key: Name
-    value: adh_short_C2
-  - key: fake_percent_id
-    value: '99.22'
-  - key: alignment_length
-    value: '237'
-  - key: e-value
-    value: '8.3e-67'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: Name
+    raw_value: adh_short_C2
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: fake_percent_id
+    raw_value: '99.22'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: alignment_length
+    raw_value: '237'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: e-value
+    raw_value: '8.3e-67'
 - feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_1_c1_104_853_supfam
   generated_by: nmdc:wfmgan-11-5xxrm214.2
   source_files:
@@ -198,16 +222,21 @@ features:
   parent:
   - nmdc:wfmgas-11-19jh9v28.1_scf_1_c1_104_853
   attributes:
-  - key: fake_percent_id
-    value: '97.57'
-  - key: alignment_length
-    value: '244'
-  - key: independent_domain_e-value
-    value: '6.4e-85'
-  - key: full_sequence_e-value
-    value: '5.2e-85'
-  - key: full_sequence_bitscore
-    value: '280.6'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: fake_percent_id
+    raw_value: '97.57'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: alignment_length
+    raw_value: '244'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: independent_domain_e-value
+    raw_value: '6.4e-85'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: full_sequence_e-value
+    raw_value: '5.2e-85'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: full_sequence_bitscore
+    raw_value: '280.6'
 - feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_2_c1_3_866
   generated_by: nmdc:wfmgan-11-5xxrm214.2
   source_files:
@@ -230,16 +259,21 @@ features:
   product_source: KO:K00986
   translated_sequence: MHENRETSEAPAAKHCGRTAGEGSSRTARMYIFEESDSGIIPMNHSNKDGKPYAESEEGRPLIKENTHQPSTYPTQSEKRVSQGLAGVRKAAKDNKEMKFTALLHHLTIDLLRDSFYALKRKAAPGVDGVTWQEYETGLQDRLVDLHSRVHRGAYRAKPSRRVYIEKEDGRQRPLGVAALEDKVVQQAVVTILNQIYEEDFLGFSYGFRPGRSQHQALDALSYALLRKKVNYVLDADIRGFFDNLDKSWLIKFVEHRVADPRILRLIQKWLNAGVMEEGKWSEMKTGT
   attributes:
-  - key: translation_table
-    value: '11'
-  - key: partial
-    value: 3'
-  - key: phylogeny_subject_gene_ids
-    value: '2841323647'
-  - key: phylogeny_percent_identity
-    value: '79.86'
-  - key: phylogeny_lineage
-    value: Bacteria;Acidobacteriota;Terriglobia;Terriglobales;Acidobacteriaceae;Acidisarcina;Acidisarcina
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: partial
+    raw_value: 3'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: phylogeny_subject_gene_ids
+    raw_value: '2841323647'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: phylogeny_percent_identity
+    raw_value: '79.86'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: phylogeny_lineage
+    raw_value: Bacteria;Acidobacteriota;Terriglobia;Terriglobales;Acidobacteriaceae;Acidisarcina;Acidisarcina
       polymorpha;Acidisarcina polymorpha SBC82
 - feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_2_c1_3_740
   generated_by: nmdc:wfmgan-11-5xxrm214.2
@@ -257,10 +291,12 @@ features:
   phase: 0
   is_selected: false
   attributes:
-  - key: translation_table
-    value: '11'
-  - key: partial
-    value: 3'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: partial
+    raw_value: 3'
 - feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_2_c1_3_866_ko_ec
   generated_by: nmdc:wfmgan-11-5xxrm214.2
   source_files:
@@ -276,14 +312,18 @@ features:
   parent:
   - nmdc:wfmgas-11-19jh9v28.1_scf_2_c1_3_866
   attributes:
-  - key: subject_gene_ids
-    value: 2841323647;2841327450;2841327638
-  - key: evalue
-    value: '2.7e-166'
-  - key: percent_identity
-    value: '79.86'
-  - key: alignment_length
-    value: '288'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: subject_gene_ids
+    raw_value: 2841323647;2841327450;2841327638
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: evalue
+    raw_value: '2.7e-166'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: percent_identity
+    raw_value: '79.86'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: alignment_length
+    raw_value: '288'
 - feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_1_c1_3_65
   generated_by: nmdc:wfmgan-11-5xxrm214.2
   source_files:
@@ -302,10 +342,12 @@ features:
   phase: 0
   is_selected: false
   attributes:
-  - key: translation_table
-    value: '11'
-  - key: partial
-    value: 3'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: partial
+    raw_value: 3'
 - feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_2_c1_887_1104
   generated_by: nmdc:wfmgan-11-5xxrm214.2
   source_files:
@@ -319,14 +361,18 @@ features:
   score: 170.0
   strand: '-'
   attributes:
-  - key: e-value
-    value: '2.1e-53'
-  - key: model
-    value: RF02005
-  - key: accession
-    value: group-II-D1D4-6
-  - key: note
-    value: Group II catalytic intron D1-D4-6
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: e-value
+    raw_value: '2.1e-53'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: model
+    raw_value: RF02005
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: accession
+    raw_value: group-II-D1D4-6
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: note
+    raw_value: Group II catalytic intron D1-D4-6
 - feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_344_c1_76_183
   generated_by: nmdc:wfmgan-11-5xxrm214.2
   source_files:
@@ -339,16 +385,21 @@ features:
   coordinate_system: contig
   strand: .
   attributes:
-  - key: number_of_repeats
-    value: '3'
-  - key: average_repeat_length
-    value: '20'
-  - key: median_repeat_length
-    value: '20'
-  - key: average_spacer_length
-    value: '24'
-  - key: median_spacer_length
-    value: '22'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: number_of_repeats
+    raw_value: '3'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: average_repeat_length
+    raw_value: '20'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: median_repeat_length
+    raw_value: '20'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: average_spacer_length
+    raw_value: '24'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: median_spacer_length
+    raw_value: '22'
 - feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_344_c1_76_183_DR1
   generated_by: nmdc:wfmgan-11-5xxrm214.2
   source_files:

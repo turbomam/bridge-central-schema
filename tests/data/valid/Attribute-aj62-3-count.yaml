@@ -1,0 +1,7 @@
+# Example 3 of https://github.com/ber-data/bertron-schema/issues/62 (a count), adapted.
+# Illustrative, not from a source record. A count has no unit, so it stays an Attribute.
+tbd_type_designator: bridge_central_schema:Attribute
+key: n people on railway track
+raw_value: "5"
+numeric_value: 5
+value_type: integer

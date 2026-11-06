@@ -1,6 +1,7 @@
 # A numeric attribute from the same Pfam hit, with the optional CURIE (edam:data_1667, E-value), as in the attribute_cv_id description,
-# and value read as a number. value keeps the source text.
+# and raw_value read as a number. raw_value keeps the source text.
+tbd_type_designator: bridge_central_schema:Attribute
 key: e-value
-value: '3.4e-28'
+raw_value: '3.4e-28'
 attribute_cv_id: edam:data_1667
 numeric_value: 3.4e-28

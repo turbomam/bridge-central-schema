@@ -1,0 +1,6 @@
+id: nmdc:bsm-11-042nd237
+attributes:
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: depth
+    raw_value: .02 -.10
+    unit: m

@@ -1,0 +1,69 @@
+# The shape not chosen, kept so both can be compared and run: Measurement does not
+# inherit from Attribute. Both take the property and value slots from one mixin.
+# Only the slots needed to compare the shapes are here. See
+# docs/attribute-measurement-design.md.
+id: https://w3id.org/ber-data/bridge-central-schema/drafts/mixin-shape
+name: mixin-shape
+license: Apache-2.0
+prefixes:
+  bridge_central_schema: https://w3id.org/ber-data/bridge-central-schema/
+  linkml: https://w3id.org/linkml/
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  nmdc: https://w3id.org/nmdc/
+  MIXS: https://w3id.org/mixs/
+  ENVO: http://purl.obolibrary.org/obo/ENVO_
+  bridge_property: https://w3id.org/ber-data/bridge-property/
+default_prefix: bridge_central_schema
+default_range: string
+imports:
+  - linkml:types
+
+classes:
+  PropertyValueSlots:
+    class_uri: bridge_central_schema:PropertyValueSlots
+    mixin: true
+    description: Slots that name a property and hold one value of it.
+    slots: [key, attribute_cv_id, raw_value, numeric_value, value_cv_id]
+
+  Attribute:
+    class_uri: bridge_central_schema:Attribute
+    mixins: [PropertyValueSlots]
+    description: One value attributed to a record.
+    slots: [tbd_type_designator]
+
+  Measurement:
+    class_uri: bridge_central_schema:Measurement
+    mixins: [PropertyValueSlots]
+    description: One value of one property of some thing, with its unit and what it is about.
+    slots: [tbd_type_designator, unit, feature_of_interest]
+
+  Any:
+    class_uri: linkml:Any
+
+  Sample:
+    class_uri: bridge_central_schema:Sample
+    slots: [id, attributes]
+
+slots:
+  id: {identifier: true, range: uriorcurie, slot_uri: bridge_central_schema:id}
+  tbd_type_designator:
+    slot_uri: rdf:type
+    designates_type: true
+    range: uriorcurie
+    required: true
+  key: {slot_uri: bridge_central_schema:key}
+  attribute_cv_id: {slot_uri: bridge_central_schema:attribute_cv_id, range: uriorcurie}
+  raw_value: {slot_uri: bridge_central_schema:raw_value}
+  numeric_value: {slot_uri: bridge_central_schema:numeric_value, range: double}
+  value_cv_id: {slot_uri: bridge_central_schema:value_cv_id, range: uriorcurie}
+  unit: {slot_uri: bridge_central_schema:unit}
+  feature_of_interest: {slot_uri: bridge_central_schema:feature_of_interest, range: uriorcurie}
+  attributes:
+    slot_uri: bridge_central_schema:attributes
+    multivalued: true
+    inlined_as_list: true
+    # With no common parent, a list that holds both needs a union of ranges.
+    range: Any
+    any_of:
+      - range: Attribute
+      - range: Measurement

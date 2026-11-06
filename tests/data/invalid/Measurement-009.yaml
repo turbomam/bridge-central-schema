@@ -1,6 +1,7 @@
-# Counter-example: use observed_property or property_label, not both, so the
+# Counter-example: use attribute_cv_id or key, not both, so the
 # free-text label never competes with an identifier.
-observed_property: bridge_property:ph
-property_label: pH
+tbd_type_designator: bridge_central_schema:Measurement
+attribute_cv_id: bridge_property:ph
+key: pH
 raw_value: "7"
 numeric_value: 7

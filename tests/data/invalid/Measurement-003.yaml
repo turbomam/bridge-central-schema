@@ -1,3 +1,4 @@
 # Counter-example: a measurement must carry some value or a reason it has none.
-observed_property: bridge_property:ph
+tbd_type_designator: bridge_central_schema:Measurement
+attribute_cv_id: bridge_property:ph
 unit: Cel

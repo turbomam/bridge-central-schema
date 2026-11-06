@@ -1,0 +1,14 @@
+# One GFF3 column 9 pair on a SequenceFeature: the e-value of the first Pfam hit in
+# Dataset-001 (NMDC annotation nmdc:wfmgan-11-5xxrm214.2), kept as source text first.
+feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091_168_312
+seqid: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091
+source: HMMER 3.1b2 (February 2015)
+type: PF13358
+start: 168
+end: 312
+coordinate_system: protein
+method: pfam
+attributes:
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: e-value
+    raw_value: '3.4e-28'

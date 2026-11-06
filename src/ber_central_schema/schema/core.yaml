@@ -22,6 +22,13 @@ prefixes:
   # AmeriFlux site IDs (for example US-Ha1). Bioregistry has no prefix for
   # them (checked 2026-11-04), so this one is declared only in this schema.
   ameriflux: https://ameriflux.lbl.gov/sites/siteinfo/
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  sosa: http://www.w3.org/ns/sosa/
+  kb_cdm: http://kbase.github.io/cdm-schema/linkml/
+  # Term prefixes used in Attribute examples, with Bioregistry's expansions.
+  edam: http://edamontology.org/
+  ENVO: http://purl.obolibrary.org/obo/ENVO_
+  MIXS: https://w3id.org/mixs/
 default_prefix: bridge_central_schema
 default_range: string
 
@@ -39,6 +46,59 @@ classes:
       - description
       - external_identifiers
 
+  Attribute:
+    class_uri: bridge_central_schema:Attribute
+    description: >-
+      One value attributed to a record, with what the value is of (key,
+      attribute_cv_id) and the value itself (raw_value, numeric_value,
+      value_cv_id, value_type).
+    comments:
+      - >-
+        Inherits from nothing. Measurement is the one subclass; it adds a unit
+        and what the value is about.
+      - >-
+        Use for name and value pairs that a record carries, such as GFF3
+        column 9 tags on a SequenceFeature or extra metadata on a Sample. Each
+        value of a multivalued source attribute is its own Attribute, with the
+        same key, in source order.
+      - >-
+        Not for values with a unit (use Measurement), and not a record of how
+        or when a value was obtained or where it came from: Attribute has no
+        unit, method, time or source slots. It does not say what record it
+        belongs to; the record that lists it does.
+    slots:
+      - tbd_type_designator
+      - key
+      - attribute_cv_id
+      - raw_value
+      - numeric_value
+      - value_cv_id
+      - value_type
+    slot_usage:
+      raw_value:
+        recommended: true
+    all_of:
+      - any_of:
+          - slot_conditions:
+              key:
+                required: true
+          - slot_conditions:
+              attribute_cv_id:
+                required: true
+      - any_of:
+          - slot_conditions:
+              raw_value:
+                required: true
+          - slot_conditions:
+              numeric_value:
+                required: true
+          - slot_conditions:
+              value_cv_id:
+                required: true
+    close_mappings:
+      - nmdc:AttributeValue
+      - nmdc:PropertyAssertion
+
 slots:
   id:
     identifier: true
@@ -52,6 +112,7 @@ slots:
     slot_uri: schema:description
     description: A human-readable description for a thing
   external_identifiers:
+    slot_uri: bridge_central_schema:external_identifiers
     description: >-
       Identifiers for the same entity in the system that holds the original
       record, such as GOLD, EMSL or INSDC. Lets a record that one BER system
@@ -70,3 +131,163 @@ slots:
       - nmdc:insdc_biosample_identifiers
       - nmdc:emsl_project_identifiers
       - nmdc:gold_study_identifiers
+  tbd_type_designator:
+    # PLACEHOLDER NAME. The name of this slot is undecided:
+    # https://github.com/doe-bridge/bridge-central-schema/issues/35
+    # It is not called type because SequenceFeature already uses type for GFF3 column 3.
+    slot_uri: rdf:type
+    designates_type: true
+    range: uriorcurie
+    required: true
+    description: >-
+      The class this record is an instance of, as a CURIE, such as
+      bridge_central_schema:Measurement.
+    comments:
+      - >-
+        Lets a list or table that holds several classes, such as a sample's
+        attributes, say which class each row is. Validation checks that the
+        value names the class the row is validated as, or one of its
+        subclasses.
+    exact_mappings:
+      - nmdc:type
+
+  key:
+    slot_uri: bridge_central_schema:key
+    description: >-
+      The name of what an attribute describes, as the source wrote it, such as
+      a GFF3 tag (e-value) or a metadata column name (total phosphorous).
+    comments:
+      - >-
+        Free text and not a controlled vocabulary. Use attribute_cv_id for an
+        identifier of the same thing.
+    aliases:
+      - attribute
+      - property_label
+    close_mappings:
+      - nmdc:has_attribute_label
+
+  attribute_cv_id:
+    slot_uri: bridge_central_schema:attribute_cv_id
+    range: uriorcurie
+    description: >-
+      An identifier for what an attribute describes, from an ontology, a
+      schema or a controlled vocabulary, such as edam:data_1667 (E-value).
+    comments:
+      - >-
+        Says which property the value is for. It does not say the value was
+        checked against that property's definition.
+    exact_mappings:
+      - nmdc:has_attribute_id
+      - kb_cdm:attribute_cv_id
+    close_mappings:
+      - sosa:observedProperty
+
+  raw_value:
+    slot_uri: bridge_central_schema:raw_value
+    description: >-
+      The value as the source gave it, as text, including any unit, range or
+      qualifier written with it.
+    comments:
+      - >-
+        Escaping that the source format defines is decoded (a GFF3 %2C is
+        stored as a comma); nothing else is changed. The other value slots are
+        parsed from it.
+      - >-
+        Recommended, not required: it is the record of the source's own digits,
+        which numeric_value, a double, does not keep (3.40E-28 and 3.4e-28 are
+        the same double).
+    close_mappings:
+      - nmdc:has_raw_value
+
+  numeric_value:
+    slot_uri: bridge_central_schema:numeric_value
+    range: double
+    description: A single number parsed from raw_value.
+    exact_mappings:
+      - kb_cdm:numeric_value
+    comments:
+      - >-
+        double, not float or decimal: float loses digits (239.1 is read back as
+        239.10000610351562) and cannot hold e-values below about 1.4e-45.
+        https://github.com/doe-bridge/bridge-central-schema/issues/36
+      - >-
+        NaN and infinity are not allowed. Record why a number is missing with
+        missing_value_reason.
+      - Integers are stored here too; value_type integer says the source value was a count.
+    close_mappings:
+      - nmdc:has_numeric_value
+
+  minimum_numeric_value:
+    slot_uri: bridge_central_schema:minimum_numeric_value
+    range: double
+    description: The lower end of a range, or the lower bound of a one-sided value.
+    close_mappings:
+      - nmdc:has_minimum_numeric_value
+
+  maximum_numeric_value:
+    slot_uri: bridge_central_schema:maximum_numeric_value
+    range: double
+    description: The upper end of a range, or the upper bound of a one-sided value.
+    close_mappings:
+      - nmdc:has_maximum_numeric_value
+
+  value_cv_id:
+    slot_uri: bridge_central_schema:value_cv_id
+    range: uriorcurie
+    description: >-
+      A categorical value as a term identifier from an ontology or controlled
+      vocabulary, such as ENVO:00000446 (terrestrial biome), parsed from
+      raw_value the way numeric_value is parsed for a number.
+    aliases:
+      - coded_value
+    close_mappings:
+      - nmdc:has_value_term_id
+
+  value_type:
+    slot_uri: bridge_central_schema:value_type
+    range: ValueTypeEnum
+    description: What kind of value raw_value holds, so a reader knows which other value slot to look in.
+    comments:
+      - >-
+        A label from the source or the loader. Nothing checks that raw_value
+        or the other value slots match it.
+      - >-
+        Not named type: GFF3 column 3 and the type designator slot both
+        compete for that name.
+
+  attributes:
+    slot_uri: bridge_central_schema:attributes
+    range: Attribute
+    multivalued: true
+    inlined_as_list: true
+    list_elements_ordered: true
+    description: >-
+      Attributes and measurements of a record, in source order. Each entry
+      says with tbd_type_designator whether it is an Attribute or a
+      Measurement.
+
+enums:
+
+  ValueTypeEnum:
+    enum_uri: bridge_central_schema:ValueTypeEnum
+    description: Kinds of value an attribute can hold, from the examples in https://github.com/ber-data/bertron-schema/issues/62
+    permissible_values:
+      text:
+        description: Free text with no controlled vocabulary. The value is in raw_value.
+      integer:
+        description: A whole number, such as a count, in numeric_value.
+      float:
+        description: >-
+          A number that can have a fractional part, in numeric_value. Stored as
+          a double; the name is the one used in the examples this enum comes
+          from.
+      iso_datetime:
+        description: >-
+          A date or date-time. No slot holds the parsed ISO 8601 form yet, so
+          the value is only in raw_value.
+      cv_term:
+        description: >-
+          A term from an ontology, controlled vocabulary or enumeration. The
+          term identifier is in value_cv_id when there is one.
+      json:
+        description: A JSON document, as text in raw_value.

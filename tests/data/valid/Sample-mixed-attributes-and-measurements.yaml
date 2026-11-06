@@ -1,0 +1,45 @@
+# NMDC Biosample BW-C-7-M with three of its slots as Attributes and two as Measurements,
+# read from https://api.microbiomedata.org/biosamples/nmdc:bsm-11-042nd237 on 2026-11-06.
+# tbd_type_designator says which class each entry is.
+id: nmdc:bsm-11-042nd237
+name: BW-C-7-M
+associated_studies:
+  - nmdc:sty-11-8ws97026
+sample_category: environmental
+attributes:
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: env_broad_scale
+    attribute_cv_id: MIXS:0000012  # broad-scale environmental context
+    raw_value: forest biome [ENVO:01000174]
+    value_cv_id: ENVO:01000174  # forest biome
+    value_type: cv_term
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: collection_date
+    attribute_cv_id: MIXS:0000011  # collection date
+    raw_value: "2017-05-24"
+    value_type: iso_datetime
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: geo_loc_name
+    attribute_cv_id: MIXS:0000010  # geo_loc_name
+    raw_value: "USA: Massachusetts, Petersham"
+    value_type: text
+  - tbd_type_designator: bridge_central_schema:Measurement
+    attribute_cv_id: bridge_property:depth
+    raw_value: .02 -.10
+    minimum_numeric_value: 0.02
+    maximum_numeric_value: 0.1
+    unit: m
+    feature_of_interest: nmdc:bsm-11-042nd237
+    source_system: ber_registry:schema-nmdc-schema
+    source_record_id: nmdc:bsm-11-042nd237
+    source_field: depth
+  - tbd_type_designator: bridge_central_schema:Measurement
+    attribute_cv_id: bridge_property:sample_storage_temperature
+    raw_value: -80 Celsius
+    numeric_value: -80
+    unit: Cel
+    value_role: setting
+    feature_of_interest: nmdc:bsm-11-042nd237
+    source_system: ber_registry:schema-nmdc-schema
+    source_record_id: nmdc:bsm-11-042nd237
+    source_field: samp_store_temp

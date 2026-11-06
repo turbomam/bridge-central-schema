@@ -1,4 +1,5 @@
 # The Name attribute of the first Pfam hit in Dataset-001 of the feature model PR, from
 # nmdc_wfmgan-11-5xxrm214.2_pfam.gff, with the optional CURIE and number left out.
+tbd_type_designator: bridge_central_schema:Attribute
 key: Name
-value: DDE_3
+raw_value: DDE_3

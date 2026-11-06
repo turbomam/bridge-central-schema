@@ -1,0 +1,6 @@
+# Example 7 of https://github.com/ber-data/bertron-schema/issues/62 (JSON data), adapted.
+# Illustrative, not from a source record.
+tbd_type_designator: bridge_central_schema:Attribute
+key: random json data
+raw_value: '{"this": "that", "the other": [1,3,5]}'
+value_type: json

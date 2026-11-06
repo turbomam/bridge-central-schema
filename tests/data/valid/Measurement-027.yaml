@@ -3,7 +3,8 @@
 # under "other" (R55). The interval is the range on fire_return_interval,
 # and treatment says the fire is prescribed, as @dschristianson suggested
 # (https://github.com/doe-bridge/bridge-central-schema/pull/9#discussion_r4341338501).
-observed_property: bridge_property:fire_return_interval  # Fire return interval
+tbd_type_designator: bridge_central_schema:Measurement
+attribute_cv_id: bridge_property:fire_return_interval  # Fire return interval
 raw_value: prescribed burn every 3-4 years
 minimum_numeric_value: 3
 maximum_numeric_value: 4

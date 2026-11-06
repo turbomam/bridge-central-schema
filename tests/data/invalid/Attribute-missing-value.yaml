@@ -1,2 +1,3 @@
 # The Name attribute of the first Pfam hit in Dataset-001 without its required value.
+tbd_type_designator: bridge_central_schema:Attribute
 key: Name

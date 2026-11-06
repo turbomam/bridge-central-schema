@@ -2,11 +2,12 @@ id: https://w3id.org/ber-data/bridge-central-schema/measurements
 name: measurements
 title: BRIDGE Measurements Module
 description: >-
-  First-pass union model for BRIDGE measurement metadata, built from the
-  2026-09-30 BRIDGE Measurements hackathon. One Measurement class holds one
-  value of one property, keeps the source text, and adds structured parts
-  (number, range, unit, statistic, qualifier, missing-value reason) only when
-  the source supports them. See docs/measurements-hackathon-2026-09-30.md for
+  Measurement, a subclass of the core Attribute that adds a unit and what the
+  value is about, and five mixins that hold how, when and from where a value
+  was obtained. Built from the 2026-09-30 BRIDGE Measurements hackathon. One
+  Measurement holds one value of one property, keeps the source text, and
+  adds structured parts (number, range, unit, statistic, qualifier,
+  missing-value reason) only when the source supports them. See docs/measurements-hackathon-2026-09-30.md for
   what was raised at the hackathon and where each item went.
 license: Apache-2.0
 version: 0.5.0
@@ -23,12 +24,14 @@ prefixes:
   bridge_property: https://w3id.org/ber-data/bridge-property/
   example: https://example.org/
   ber_registry: https://w3id.org/ber-data/ber-data-registry/
+  UO: http://purl.obolibrary.org/obo/UO_
 
 default_prefix: bridge_central_schema
 default_range: string
 
 imports:
   - linkml:types
+  - core
 
 types:
 
@@ -48,56 +51,88 @@ types:
 classes:
 
   Measurement:
+    class_uri: bridge_central_schema:Measurement
+    is_a: Attribute
+    mixins:
+      - MethodDetails
+      - TimeDetails
+      - StatisticDetails
+      - ValueQualifiers
+      - SourceDetails
     description: >-
-      One value of one property of one thing, as reported by a source. A
-      measurement may carry a number with a unit, a range, a summary
-      statistic, a categorical term, or only the source text, and it may say
-      why no value is present. The 2026-09-30 hackathon chose to start with
-      this single class and add an Observation class only when data shows a
-      need for one.
+      An Attribute whose value is of a property of some thing, with the value's
+      unit and what the value is about.
+    comments:
+      - >-
+        Inherits from Attribute the property (key or attribute_cv_id) and the
+        value (raw_value, numeric_value, value_cv_id, value_type). Adds unit,
+        unit_cv_id, unit_basis, a range (minimum_numeric_value,
+        maximum_numeric_value) and feature_of_interest. Takes how, when and
+        from where the value was obtained from five mixins: MethodDetails,
+        TimeDetails, StatisticDetails, ValueQualifiers and SourceDetails.
+      - >-
+        Use for one value of one property, as a source reports it: a number
+        with a unit, a range, a summary statistic, a categorical term, or only
+        the source text, or a reason no value is present. The value can be
+        measured, set as a condition, interpreted or derived (value_role), so
+        the class name does not mean a reading from an instrument.
+      - >-
+        Not an observation event: several values from one sampling or one
+        reading are separate Measurements that share source_record_id and
+        source_field. Not a time series: one Measurement holds one value.
+      - >-
+        A measurement names its property with exactly one of attribute_cv_id
+        (a bridge_property: identifier) or key (free text), and carries at
+        least one of raw_value, numeric_value, minimum_numeric_value,
+        maximum_numeric_value, value_cv_id or missing_value_reason. Attribute's
+        own rules are not inherited: linkml-validate 1.11.1 does not apply a
+        parent's any_of to a subclass, so these are stated here.
     close_mappings:
       - sosa:Observation
       - nmdc:QuantityValue
+      - nmdc:PropertyAssertion
     slots:
       - measurement_id
-      - observed_property
-      - property_label
-      - feature_of_interest
-      - raw_value
-      - numeric_value
+      - unit
+      - unit_cv_id
+      - unit_basis
       - minimum_numeric_value
       - maximum_numeric_value
-      - unit
-      - unit_basis
-      - coded_value
-      - comparator
-      - statistic
-      - standard_deviation
-      - sample_size
-      - value_role
-      - value_qualifier
-      - missing_value_reason
-      - measurement_method
-      - treatment
-      - instrument
-      - observed_time
-      - observed_start_time
-      - observed_end_time
-      - source_system
-      - source_record_id
-      - source_field
-      - quality_flag
+      - feature_of_interest
     slot_usage:
-      observed_property:
+      attribute_cv_id:
         recommended: true
-      raw_value:
-        recommended: true
+        pattern: "^bridge_property:[a-z0-9_]+$"
+        description: >-
+          The property that was measured, as a BRIDGE property identifier
+          (bridge_property:).
+        comments:
+          - >-
+            Each bridge_property: term has an ID, a label and a definition in
+            terms/bridge_property.tsv, and mappings to BERVO, MIxS and other
+            vocabularies in mappings/observed_property.sssom.tsv. New terms are
+            added by pull request. A term's ID does not change once merged; its
+            label and definition can be edited.
+        aliases:
+          - observed_property
+          - measurement_type
+          - variable
+      key:
+        description: >-
+          The name of the measured property as free text, for values whose
+          property has no BRIDGE identifier yet. Use attribute_cv_id instead
+          whenever an identifier exists.
+      value_cv_id:
+        description: >-
+          A categorical value as a code from an ontology or controlled
+          vocabulary, parsed from raw_value the way numeric_value is parsed for
+          a number, such as METPO:1000615 (mesophilic).
     exactly_one_of:
       - slot_conditions:
-          observed_property:
+          attribute_cv_id:
             required: true
       - slot_conditions:
-          property_label:
+          key:
             required: true
     any_of:
       - slot_conditions:
@@ -113,36 +148,95 @@ classes:
           maximum_numeric_value:
             required: true
       - slot_conditions:
-          coded_value:
+          value_cv_id:
             required: true
       - slot_conditions:
           missing_value_reason:
             required: true
+
+  MethodDetails:
+    class_uri: bridge_central_schema:MethodDetails
+    mixin: true
+    description: Slots that say how a value was obtained.
     comments:
       - >-
-        A measurement must carry at least one of raw_value, numeric_value,
-        minimum_numeric_value, maximum_numeric_value, coded_value or
-        missing_value_reason, so an empty measurement fails validation.
+        A mixin: it is never a record on its own and has no type designator.
+        Measurement uses it; any other class that needs these slots can too.
+      - Inherits from nothing and adds measurement_method, instrument and treatment.
+    slots:
+      - measurement_method
+      - instrument
+      - treatment
+
+  TimeDetails:
+    class_uri: bridge_central_schema:TimeDetails
+    mixin: true
+    description: Slots that say when a value was observed, or the period it covers.
+    comments:
       - >-
-        A measurement names its property with exactly one of observed_property (an
-        identifier) or property_label (free text). property_label is the
-        catch-all for values whose property has no identifier yet, as MIxS
-        misc_param, NMDC PropertyAssertion and BERtron Attribute allow.
+        A mixin: it is never a record on its own and has no type designator.
+        Inherits from nothing and adds observed_time, observed_start_time and
+        observed_end_time.
+      - Not for a date that is itself the value, such as a collection date; that goes in raw_value.
+    slots:
+      - observed_time
+      - observed_start_time
+      - observed_end_time
+
+  StatisticDetails:
+    class_uri: bridge_central_schema:StatisticDetails
+    mixin: true
+    description: Slots for a value that summarizes several readings or individuals.
+    comments:
       - >-
-        The value slots come in two groups. raw_value, numeric_value,
-        minimum_numeric_value, maximum_numeric_value, unit and coded_value hold
-        the value itself: raw_value as the source wrote it, the others as parsed
-        from it (numeric_value for a number, coded_value for a category).
-        comparator, statistic, standard_deviation, sample_size, value_role,
-        value_qualifier and missing_value_reason say something about that value.
+        A mixin: it is never a record on its own and has no type designator.
+        Inherits from nothing and adds statistic, standard_deviation and
+        sample_size.
+    slots:
+      - statistic
+      - standard_deviation
+      - sample_size
+
+  ValueQualifiers:
+    class_uri: bridge_central_schema:ValueQualifiers
+    mixin: true
+    description: >-
+      Slots that say something about a value: how it relates to the true
+      value, how it came to be recorded, why it is missing, and any flag on
+      it.
+    comments:
       - >-
-        A source cell that holds several values (for example a width and a
-        length) becomes several measurements that share source_record_id
-        and source_field.
+        A mixin: it is never a record on its own and has no type designator.
+        Inherits from nothing and adds comparator, value_role,
+        value_qualifier, missing_value_reason and quality_flag.
+    slots:
+      - comparator
+      - value_role
+      - value_qualifier
+      - missing_value_reason
+      - quality_flag
+
+  SourceDetails:
+    class_uri: bridge_central_schema:SourceDetails
+    mixin: true
+    description: Slots that point back to the source record a value was read from.
+    comments:
+      - >-
+        A mixin: it is never a record on its own and has no type designator.
+        Inherits from nothing and adds source_system, source_record_id and
+        source_field.
+      - >-
+        Not a full provenance record: it names the source and the record, not
+        the ingest run or the source's version.
+    slots:
+      - source_system
+      - source_record_id
+      - source_field
 
 slots:
 
   measurement_id:
+    slot_uri: bridge_central_schema:measurement_id
     range: uriorcurie
     description: >-
       An identifier for this measurement, when the source has one or BRIDGE
@@ -153,35 +247,8 @@ slots:
         Not named id: the central schema's id slot is an identifier, which
         LinkML makes required, and most measurements have no identifier.
 
-  observed_property:
-    range: uriorcurie
-    description: >-
-      The property that was measured, as a BRIDGE property identifier
-      (bridge_property:).
-    comments:
-      - >-
-        Each bridge_property: term has an ID, a label and a definition in
-        terms/bridge_property.tsv, and mappings to BERVO, MIxS and other
-        vocabularies in mappings/observed_property.sssom.tsv. New terms are
-        added by pull request. A term's ID does not change once merged; its
-        label and definition can be edited.
-    pattern: "^bridge_property:[a-z0-9_]+$"
-    exact_mappings:
-      - sosa:observedProperty
-    aliases:
-      - measurement_type
-      - variable
-
-  property_label:
-    description: >-
-      The name of the measured property as free text, for values whose
-      property has no BRIDGE identifier yet. Use observed_property
-      instead whenever an identifier exists.
-    close_mappings:
-      - nmdc:has_attribute_label
-      - MIXS:0000752
-
   feature_of_interest:
+    slot_uri: bridge_central_schema:feature_of_interest
     range: uriorcurie
     description: >-
       A reference to the thing whose property was measured: a sample, an
@@ -193,33 +260,8 @@ slots:
     exact_mappings:
       - sosa:hasFeatureOfInterest
 
-  raw_value:
-    description: >-
-      The value exactly as it appeared at the source, including its unit text,
-      ranges, qualifiers and any non-ASCII characters. Never edited. The
-      other value slots are parsed from it.
-    close_mappings:
-      - nmdc:has_raw_value
-
-  numeric_value:
-    range: double
-    description: A single number parsed from raw_value.
-    close_mappings:
-      - nmdc:has_numeric_value
-
-  minimum_numeric_value:
-    range: double
-    description: The lower end of a range, or the lower bound of a one-sided value.
-    close_mappings:
-      - nmdc:has_minimum_numeric_value
-
-  maximum_numeric_value:
-    range: double
-    description: The upper end of a range, or the upper bound of a one-sided value.
-    close_mappings:
-      - nmdc:has_maximum_numeric_value
-
   unit:
+    slot_uri: bridge_central_schema:unit
     description: >-
       The unit as a UCUM code, written in printable ASCII (for example um, not
       µm). Leave empty for values without a unit, such as pH. The source's own
@@ -233,22 +275,28 @@ slots:
     close_mappings:
       - nmdc:has_unit
 
+  unit_cv_id:
+    slot_uri: bridge_central_schema:unit_cv_id
+    range: uriorcurie
+    description: >-
+      The unit as a term identifier, such as UO:0000169 (parts per million),
+      for sources that give one. unit keeps the UCUM code.
+    comments:
+      - >-
+        Added for https://github.com/ber-data/bertron-schema/issues/62, which
+        records a unit as text plus a unit ontology identifier.
+      - Nothing checks that unit and unit_cv_id name the same unit.
+
   unit_basis:
+    slot_uri: bridge_central_schema:unit_basis
     description: >-
       What the unit is expressed relative to, when the unit alone does not
       say, such as dry weight. Some bases fit UCUM
       annotations (mg{C}/L); this slot is for those that do not. Free text
       until examples settle a vocabulary.
 
-  coded_value:
-    range: uriorcurie
-    description: >-
-      A categorical value as a code from an ontology or controlled
-      vocabulary, parsed from raw_value the way numeric_value is parsed for a
-      number, such as METPO:1000615 (mesophilic). The source wording stays in
-      raw_value.
-
   comparator:
+    slot_uri: bridge_central_schema:comparator
     range: ComparatorEnum
     description: >-
       How the true value relates to numeric_value, for values reported as
@@ -258,34 +306,40 @@ slots:
       below_detection_limit instead.
 
   statistic:
+    slot_uri: bridge_central_schema:statistic
     range: StatisticEnum
     description: >-
       The summary statistic that numeric_value reports, when the source value
       summarizes several readings or individuals.
 
   standard_deviation:
+    slot_uri: bridge_central_schema:standard_deviation
     range: double
     minimum_value: 0
     description: The standard deviation reported with a mean, in the same unit.
 
   sample_size:
+    slot_uri: bridge_central_schema:sample_size
     range: integer
     minimum_value: 1
     description: How many readings, replicates or individuals a statistic summarizes.
 
   value_role:
+    slot_uri: bridge_central_schema:value_role
     range: ValueRoleEnum
     description: >-
       Whether the value was measured, set as an experimental condition, or
       assigned by a person interpreting other measurements.
 
   value_qualifier:
+    slot_uri: bridge_central_schema:value_qualifier
     range: ValueQualifierEnum
     description: >-
       A qualifier the source attaches to the value, such as an optimum
       (optimal growth at 10 MPa).
 
   missing_value_reason:
+    slot_uri: bridge_central_schema:missing_value_reason
     range: MissingValueReasonEnum
     description: >-
       Why no usable value is present. Sources often write these as text (not
@@ -293,6 +347,7 @@ slots:
       raw_value.
 
   measurement_method:
+    slot_uri: bridge_central_schema:measurement_method
     description: >-
       How the value was obtained: a protocol name, a method reference, or the
       source's companion method field (for example an NMDC ph_meth value).
@@ -300,17 +355,20 @@ slots:
       - sosa:usedProcedure
 
   treatment:
+    slot_uri: bridge_central_schema:treatment
     description: >-
       The experimental treatment applied to the thing measured, such as a
       warming or nitrogen addition plot, kept apart from measurement_method
       because downstream users filter and compare on it.
 
   instrument:
+    slot_uri: bridge_central_schema:instrument
     description: The instrument or sensor that produced the value.
     close_mappings:
       - sosa:madeBySensor
 
   observed_time:
+    slot_uri: bridge_central_schema:observed_time
     description: >-
       When the property was observed, in ISO 8601 at whatever resolution the
       source gives: a year (2021), a year and month (2021-06), a date
@@ -321,17 +379,20 @@ slots:
       - sosa:phenomenonTime
 
   observed_start_time:
+    slot_uri: bridge_central_schema:observed_start_time
     description: >-
       The start of the period a value covers, for sources that report a start
       and an end instead of one time. Same format as observed_time.
     range: PartialDateTime
 
   observed_end_time:
+    slot_uri: bridge_central_schema:observed_end_time
     description: >-
       The end of the period a value covers. Same format as observed_time.
     range: PartialDateTime
 
   source_system:
+    slot_uri: bridge_central_schema:source_system
     description: >-
       The system the value came from. Use the BER lakehouse registry entry
       (https://github.com/doe-bridge/lakehouse-registry) for the source's schema
@@ -339,16 +400,19 @@ slots:
       system's name, such as BASIN-3D (USGS).
 
   source_record_id:
+    slot_uri: bridge_central_schema:source_record_id
     description: >-
       The identifier of the source record the value came from, in the
       source's own format. The schema does not impose a format.
 
   source_field:
+    slot_uri: bridge_central_schema:source_field
     description: >-
       The source field, column or slot the value came from, named as the
       source names it.
 
   quality_flag:
+    slot_uri: bridge_central_schema:quality_flag
     description: >-
       A flag from the source or from BRIDGE curation, such as needs_review for
       a value that could not be parsed.
@@ -356,6 +420,7 @@ slots:
 enums:
 
   ComparatorEnum:
+    enum_uri: bridge_central_schema:ComparatorEnum
     description: How a reported number relates to the true value.
     permissible_values:
       less_than:
@@ -370,6 +435,7 @@ enums:
         description: The source gave numeric_value as an approximation.
 
   StatisticEnum:
+    enum_uri: bridge_central_schema:StatisticEnum
     description: Summary statistics a measurement value can report.
     permissible_values:
       mean:
@@ -388,6 +454,7 @@ enums:
         description: The total of the readings, such as a daily precipitation total.
 
   ValueRoleEnum:
+    enum_uri: bridge_central_schema:ValueRoleEnum
     description: How a value came to be recorded.
     permissible_values:
       measured:
@@ -410,6 +477,7 @@ enums:
           measured, not derived.
 
   ValueQualifierEnum:
+    enum_uri: bridge_central_schema:ValueQualifierEnum
     description: Qualifiers a source attaches to a value.
     permissible_values:
       optimum:
@@ -418,6 +486,7 @@ enums:
         description: A value or range within which a process can occur.
 
   MissingValueReasonEnum:
+    enum_uri: bridge_central_schema:MissingValueReasonEnum
     description: Reasons a measurement has no usable value.
     permissible_values:
       not_determined:

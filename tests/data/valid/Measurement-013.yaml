@@ -1,6 +1,7 @@
 # GOLD pressure value that cannot be parsed. Kept, with no number, and flagged.
 # Source: gold_dsi_organism_measurements.csv, line 97972, Go0358223.
-observed_property: bridge_property:pressure  # Pressure
+tbd_type_designator: bridge_central_schema:Measurement
+attribute_cv_id: bridge_property:pressure  # Pressure
 feature_of_interest: gold:Go0358223
 raw_value: 107.55.82
 quality_flag: needs_review

@@ -1,6 +1,7 @@
 # ORNL APPL projected shoot area, computed from a pixel count and a scale.
 # Source: ORNL observations.csv line 5 and observed_variables.csv line 3.
-observed_property: bridge_property:projected_shoot_area
+tbd_type_designator: bridge_central_schema:Measurement
+attribute_cv_id: bridge_property:projected_shoot_area
 numeric_value: 98.89321422132993
 unit: mm2
 value_role: derived

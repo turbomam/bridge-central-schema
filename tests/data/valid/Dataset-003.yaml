@@ -24,12 +24,15 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: organism
-    value: Escherichia phage phiX174
-  - key: mol_type
-    value: genomic DNA
-  - key: db_xref
-    value: taxon:2886930
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: organism
+    raw_value: Escherichia phage phiX174
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: mol_type
+    raw_value: genomic DNA
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: taxon:2886930
 - feature_id: insdc:NC_001422.1:feature-2
   seqid: refseq:NC_001422.1
   type: gene
@@ -54,10 +57,12 @@ features:
       strand: +
     crosses_origin: true
   attributes:
-  - key: locus_tag
-    value: phiX174p01
-  - key: db_xref
-    value: GeneID:2546398
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p01
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546398
 - feature_id: insdc:NC_001422.1:feature-3
   seqid: refseq:NC_001422.1
   type: CDS
@@ -82,24 +87,33 @@ features:
       strand: +
     crosses_origin: true
   attributes:
-  - key: locus_tag
-    value: phiX174p01
-  - key: function
-    value: viral strand synthesis
-  - key: note
-    value: rf replication
-  - key: codon_start
-    value: '1'
-  - key: transl_table
-    value: '11'
-  - key: product
-    value: DNA replication initiation
-  - key: protein_id
-    value: NP_040703.1
-  - key: db_xref
-    value: GeneID:2546398
-  - key: translation
-    value: MVRSYYPSECHADYFDFERIEALKPAIEACGISTLSQSPMLGFHKQMDNRIKLLEEILSFRMQGVEFDNGDMYVDGHKAASDVRDEFVSVTEKLMDELAQCYNVLPQLDINNTIDHRPEGDEKWFLENEKTVTQFCRKLAAERPLKDIRDEYNYPKKKGIKDECSRLLEASTMKSRRGFAIQRLMNAMRQAHADGWFIVFDTLTLADDRLEAFYDNPNALRDYFRDIGRMVLAAEGRKANDSHADCYQYFCVPEYGTANGRLHFHAVHFMRTLPTGSVDPNFGRRVRNRRQLNSLQNTWPYGYSMPIAVRYTQDAFSRSGWLWPVDAKGEPLKATSYMAVGFYVAKYVNKKSDMDLAAKGLGAKEWNNSLKTKLSLLPKKLFRIRMSRNFGMKMLTMTNLSTECLIQLTKLGYDATPFNQILKQNAKREMRLRLGKVTVADVLAAQPVTTNLLKFMRASIKMIGVSNLQSFIASMTQKLTLSDISDESKNYLDKAGITTACLRIKSKWTAGGK
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p01
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: function
+    raw_value: viral strand synthesis
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: note
+    raw_value: rf replication
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: codon_start
+    raw_value: '1'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: transl_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: product
+    raw_value: DNA replication initiation
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: protein_id
+    raw_value: NP_040703.1
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546398
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation
+    raw_value: MVRSYYPSECHADYFDFERIEALKPAIEACGISTLSQSPMLGFHKQMDNRIKLLEEILSFRMQGVEFDNGDMYVDGHKAASDVRDEFVSVTEKLMDELAQCYNVLPQLDINNTIDHRPEGDEKWFLENEKTVTQFCRKLAAERPLKDIRDEYNYPKKKGIKDECSRLLEASTMKSRRGFAIQRLMNAMRQAHADGWFIVFDTLTLADDRLEAFYDNPNALRDYFRDIGRMVLAAEGRKANDSHADCYQYFCVPEYGTANGRLHFHAVHFMRTLPTGSVDPNFGRRVRNRRQLNSLQNTWPYGYSMPIAVRYTQDAFSRSGWLWPVDAKGEPLKATSYMAVGFYVAKYVNKKSDMDLAAKGLGAKEWNNSLKTKLSLLPKKLFRIRMSRNFGMKMLTMTNLSTECLIQLTKLGYDATPFNQILKQNAKREMRLRLGKVTVADVLAAQPVTTNLLKFMRASIKMIGVSNLQSFIASMTQKLTLSDISDESKNYLDKAGITTACLRIKSKWTAGGK
   product: DNA replication initiation
   translated_sequence: MVRSYYPSECHADYFDFERIEALKPAIEACGISTLSQSPMLGFHKQMDNRIKLLEEILSFRMQGVEFDNGDMYVDGHKAASDVRDEFVSVTEKLMDELAQCYNVLPQLDINNTIDHRPEGDEKWFLENEKTVTQFCRKLAAERPLKDIRDEYNYPKKKGIKDECSRLLEASTMKSRRGFAIQRLMNAMRQAHADGWFIVFDTLTLADDRLEAFYDNPNALRDYFRDIGRMVLAAEGRKANDSHADCYQYFCVPEYGTANGRLHFHAVHFMRTLPTGSVDPNFGRRVRNRRQLNSLQNTWPYGYSMPIAVRYTQDAFSRSGWLWPVDAKGEPLKATSYMAVGFYVAKYVNKKSDMDLAAKGLGAKEWNNSLKTKLSLLPKKLFRIRMSRNFGMKMLTMTNLSTECLIQLTKLGYDATPFNQILKQNAKREMRLRLGKVTVADVLAAQPVTTNLLKFMRASIKMIGVSNLQSFIASMTQKLTLSDISDESKNYLDKAGITTACLRIKSKWTAGGK
 - feature_id: insdc:NC_001422.1:feature-4
@@ -126,10 +140,12 @@ features:
       strand: +
     crosses_origin: true
   attributes:
-  - key: locus_tag
-    value: phiX174p02
-  - key: db_xref
-    value: GeneID:2546406
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p02
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546406
 - feature_id: insdc:NC_001422.1:feature-5
   seqid: refseq:NC_001422.1
   type: CDS
@@ -154,22 +170,30 @@ features:
       strand: +
     crosses_origin: true
   attributes:
-  - key: locus_tag
-    value: phiX174p02
-  - key: function
-    value: shut off host DNA synthesis
-  - key: codon_start
-    value: '1'
-  - key: transl_table
-    value: '11'
-  - key: product
-    value: DNA replication initiation
-  - key: protein_id
-    value: NP_040704.1
-  - key: db_xref
-    value: GeneID:2546406
-  - key: translation
-    value: MKSRRGFAIQRLMNAMRQAHADGWFIVFDTLTLADDRLEAFYDNPNALRDYFRDIGRMVLAAEGRKANDSHADCYQYFCVPEYGTANGRLHFHAVHFMRTLPTGSVDPNFGRRVRNRRQLNSLQNTWPYGYSMPIAVRYTQDAFSRSGWLWPVDAKGEPLKATSYMAVGFYVAKYVNKKSDMDLAAKGLGAKEWNNSLKTKLSLLPKKLFRIRMSRNFGMKMLTMTNLSTECLIQLTKLGYDATPFNQILKQNAKREMRLRLGKVTVADVLAAQPVTTNLLKFMRASIKMIGVSNLQSFIASMTQKLTLSDISDESKNYLDKAGITTACLRIKSKWTAGGK
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p02
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: function
+    raw_value: shut off host DNA synthesis
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: codon_start
+    raw_value: '1'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: transl_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: product
+    raw_value: DNA replication initiation
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: protein_id
+    raw_value: NP_040704.1
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546406
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation
+    raw_value: MKSRRGFAIQRLMNAMRQAHADGWFIVFDTLTLADDRLEAFYDNPNALRDYFRDIGRMVLAAEGRKANDSHADCYQYFCVPEYGTANGRLHFHAVHFMRTLPTGSVDPNFGRRVRNRRQLNSLQNTWPYGYSMPIAVRYTQDAFSRSGWLWPVDAKGEPLKATSYMAVGFYVAKYVNKKSDMDLAAKGLGAKEWNNSLKTKLSLLPKKLFRIRMSRNFGMKMLTMTNLSTECLIQLTKLGYDATPFNQILKQNAKREMRLRLGKVTVADVLAAQPVTTNLLKFMRASIKMIGVSNLQSFIASMTQKLTLSDISDESKNYLDKAGITTACLRIKSKWTAGGK
   product: DNA replication initiation
   translated_sequence: MKSRRGFAIQRLMNAMRQAHADGWFIVFDTLTLADDRLEAFYDNPNALRDYFRDIGRMVLAAEGRKANDSHADCYQYFCVPEYGTANGRLHFHAVHFMRTLPTGSVDPNFGRRVRNRRQLNSLQNTWPYGYSMPIAVRYTQDAFSRSGWLWPVDAKGEPLKATSYMAVGFYVAKYVNKKSDMDLAAKGLGAKEWNNSLKTKLSLLPKKLFRIRMSRNFGMKMLTMTNLSTECLIQLTKLGYDATPFNQILKQNAKREMRLRLGKVTVADVLAAQPVTTNLLKFMRASIKMIGVSNLQSFIASMTQKLTLSDISDESKNYLDKAGITTACLRIKSKWTAGGK
 - feature_id: insdc:NC_001422.1:feature-6
@@ -196,10 +220,12 @@ features:
       strand: +
     crosses_origin: true
   attributes:
-  - key: locus_tag
-    value: phiX174p03
-  - key: db_xref
-    value: GeneID:2546405
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p03
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546405
 - feature_id: insdc:NC_001422.1:feature-7
   seqid: refseq:NC_001422.1
   type: CDS
@@ -224,22 +250,30 @@ features:
       strand: +
     crosses_origin: true
   attributes:
-  - key: locus_tag
-    value: phiX174p03
-  - key: function
-    value: capsid morphogenesis
-  - key: codon_start
-    value: '1'
-  - key: transl_table
-    value: '11'
-  - key: product
-    value: head morphogenesis
-  - key: protein_id
-    value: NP_040705.1
-  - key: db_xref
-    value: GeneID:2546405
-  - key: translation
-    value: MEQLTKNQAVATSQEAVQNQNEPQLRDENAHNDKSVHGVLNPTYQAGLRRDAVQPDIEAERKKRDEIEAGKSYCSRRFGGATCDDKSAQIYARFDKNDWRIQPAEFYRFHDAEVNTFGYF
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p03
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: function
+    raw_value: capsid morphogenesis
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: codon_start
+    raw_value: '1'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: transl_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: product
+    raw_value: head morphogenesis
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: protein_id
+    raw_value: NP_040705.1
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546405
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation
+    raw_value: MEQLTKNQAVATSQEAVQNQNEPQLRDENAHNDKSVHGVLNPTYQAGLRRDAVQPDIEAERKKRDEIEAGKSYCSRRFGGATCDDKSAQIYARFDKNDWRIQPAEFYRFHDAEVNTFGYF
   product: head morphogenesis
   translated_sequence: MEQLTKNQAVATSQEAVQNQNEPQLRDENAHNDKSVHGVLNPTYQAGLRRDAVQPDIEAERKKRDEIEAGKSYCSRRFGGATCDDKSAQIYARFDKNDWRIQPAEFYRFHDAEVNTFGYF
 - feature_id: insdc:NC_001422.1:feature-8
@@ -260,12 +294,15 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p03
-  - key: note
-    value: in am18 and am35 [14]
-  - key: replace
-    value: t
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p03
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: note
+    raw_value: in am18 and am35 [14]
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: replace
+    raw_value: t
 - feature_id: insdc:NC_001422.1:feature-9
   seqid: refseq:NC_001422.1
   type: variation
@@ -284,12 +321,15 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p03
-  - key: note
-    value: ts116 [14]
-  - key: replace
-    value: c
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p03
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: note
+    raw_value: ts116 [14]
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: replace
+    raw_value: c
 - feature_id: insdc:NC_001422.1:feature-10
   seqid: refseq:NC_001422.1
   type: gene
@@ -308,10 +348,12 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p04
-  - key: db_xref
-    value: GeneID:2546403
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p04
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546403
 - feature_id: insdc:NC_001422.1:feature-11
   seqid: refseq:NC_001422.1
   type: CDS
@@ -330,20 +372,27 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p04
-  - key: codon_start
-    value: '1'
-  - key: transl_table
-    value: '11'
-  - key: product
-    value: K
-  - key: protein_id
-    value: NP_040706.1
-  - key: db_xref
-    value: GeneID:2546403
-  - key: translation
-    value: MSRKIILIKQELLLLVYELNRSGLLAENEKIRPILAQLEKLLLCDLSPSTNDSVKN
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p04
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: codon_start
+    raw_value: '1'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: transl_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: product
+    raw_value: K
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: protein_id
+    raw_value: NP_040706.1
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546403
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation
+    raw_value: MSRKIILIKQELLLLVYELNRSGLLAENEKIRPILAQLEKLLLCDLSPSTNDSVKN
   product: K
   translated_sequence: MSRKIILIKQELLLLVYELNRSGLLAENEKIRPILAQLEKLLLCDLSPSTNDSVKN
 - feature_id: insdc:NC_001422.1:feature-12
@@ -364,12 +413,15 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p04
-  - key: note
-    value: am6 [14]
-  - key: replace
-    value: c
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p04
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: note
+    raw_value: am6 [14]
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: replace
+    raw_value: c
 - feature_id: insdc:NC_001422.1:feature-13
   seqid: refseq:NC_001422.1
   type: variation
@@ -388,12 +440,15 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p04
-  - key: note
-    value: am6 [14]
-  - key: replace
-    value: a
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p04
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: note
+    raw_value: am6 [14]
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: replace
+    raw_value: a
 - feature_id: insdc:NC_001422.1:feature-14
   seqid: refseq:NC_001422.1
   type: gene
@@ -412,10 +467,12 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p05
-  - key: db_xref
-    value: GeneID:2546402
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p05
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546402
 - feature_id: insdc:NC_001422.1:feature-15
   seqid: refseq:NC_001422.1
   type: CDS
@@ -434,22 +491,30 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p05
-  - key: note
-    value: DNA maturation
-  - key: codon_start
-    value: '1'
-  - key: transl_table
-    value: '11'
-  - key: product
-    value: terminase
-  - key: protein_id
-    value: NP_040707.1
-  - key: db_xref
-    value: GeneID:2546402
-  - key: translation
-    value: MRKFDLSLRSSRSSYFATFRHQLTILSKTDALDEEKWLNMLGTFVKDWFRYESHFVHGRDSLVDILKERGLLSESDAVQPLIGKKS
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p05
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: note
+    raw_value: DNA maturation
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: codon_start
+    raw_value: '1'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: transl_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: product
+    raw_value: terminase
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: protein_id
+    raw_value: NP_040707.1
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546402
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation
+    raw_value: MRKFDLSLRSSRSSYFATFRHQLTILSKTDALDEEKWLNMLGTFVKDWFRYESHFVHGRDSLVDILKERGLLSESDAVQPLIGKKS
   product: terminase
   translated_sequence: MRKFDLSLRSSRSSYFATFRHQLTILSKTDALDEEKWLNMLGTFVKDWFRYESHFVHGRDSLVDILKERGLLSESDAVQPLIGKKS
 - feature_id: insdc:NC_001422.1:feature-16
@@ -470,10 +535,12 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p06
-  - key: db_xref
-    value: GeneID:2546408
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p06
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546408
 - feature_id: insdc:NC_001422.1:feature-17
   seqid: refseq:NC_001422.1
   type: mRNA
@@ -492,12 +559,15 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p06
-  - key: product
-    value: major transcript
-  - key: db_xref
-    value: GeneID:2546408
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p06
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: product
+    raw_value: major transcript
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546408
   product: major transcript
 - feature_id: insdc:NC_001422.1:feature-18
   seqid: refseq:NC_001422.1
@@ -517,10 +587,12 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p07
-  - key: db_xref
-    value: GeneID:2546399
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p07
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546399
 - feature_id: insdc:NC_001422.1:feature-19
   seqid: refseq:NC_001422.1
   type: mRNA
@@ -539,12 +611,15 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p07
-  - key: product
-    value: minor transcript
-  - key: db_xref
-    value: GeneID:2546399
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p07
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: product
+    raw_value: minor transcript
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546399
   product: minor transcript
 - feature_id: insdc:NC_001422.1:feature-20
   seqid: refseq:NC_001422.1
@@ -564,22 +639,30 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p07
-  - key: function
-    value: capsid morphogenesis
-  - key: codon_start
-    value: '1'
-  - key: transl_table
-    value: '11'
-  - key: product
-    value: head morphogenesis
-  - key: protein_id
-    value: NP_040708.1
-  - key: db_xref
-    value: GeneID:2546399
-  - key: translation
-    value: MSQVTEQSVRFQTALASIKLIQASAVLDLTEDDFDFLTSNKVWIATDRSRARRCVEACVYGTLDFVGYPRFPAPVEFIAAVIAYYVHPVNIQTACLIMEGAEFTENIINGVERPVKAAELFAFTLRVRAGNTDVLTDAEENVRQKLRAEGVM
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p07
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: function
+    raw_value: capsid morphogenesis
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: codon_start
+    raw_value: '1'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: transl_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: product
+    raw_value: head morphogenesis
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: protein_id
+    raw_value: NP_040708.1
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546399
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation
+    raw_value: MSQVTEQSVRFQTALASIKLIQASAVLDLTEDDFDFLTSNKVWIATDRSRARRCVEACVYGTLDFVGYPRFPAPVEFIAAVIAYYVHPVNIQTACLIMEGAEFTENIINGVERPVKAAELFAFTLRVRAGNTDVLTDAEENVRQKLRAEGVM
   product: head morphogenesis
   translated_sequence: MSQVTEQSVRFQTALASIKLIQASAVLDLTEDDFDFLTSNKVWIATDRSRARRCVEACVYGTLDFVGYPRFPAPVEFIAAVIAYYVHPVNIQTACLIMEGAEFTENIINGVERPVKAAELFAFTLRVRAGNTDVLTDAEENVRQKLRAEGVM
 - feature_id: insdc:NC_001422.1:feature-21
@@ -600,10 +683,12 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p08
-  - key: db_xref
-    value: GeneID:2546400
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p08
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546400
 - feature_id: insdc:NC_001422.1:feature-22
   seqid: refseq:NC_001422.1
   type: CDS
@@ -622,22 +707,30 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p08
-  - key: function
-    value: cell lysis
-  - key: codon_start
-    value: '1'
-  - key: transl_table
-    value: '11'
-  - key: product
-    value: endolysin
-  - key: protein_id
-    value: NP_040709.1
-  - key: db_xref
-    value: GeneID:2546400
-  - key: translation
-    value: MVRWTLWDTLAFLLLLSLLLPSLLIMFIPSTFKRPVSSWKALNLRKTLLMASSVRLKPLNCSRLPCVYAQETLTFLLTQKKTCVKNYVRKE
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p08
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: function
+    raw_value: cell lysis
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: codon_start
+    raw_value: '1'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: transl_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: product
+    raw_value: endolysin
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: protein_id
+    raw_value: NP_040709.1
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546400
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation
+    raw_value: MVRWTLWDTLAFLLLLSLLLPSLLIMFIPSTFKRPVSSWKALNLRKTLLMASSVRLKPLNCSRLPCVYAQETLTFLLTQKKTCVKNYVRKE
   product: endolysin
   translated_sequence: MVRWTLWDTLAFLLLLSLLLPSLLIMFIPSTFKRPVSSWKALNLRKTLLMASSVRLKPLNCSRLPCVYAQETLTFLLTQKKTCVKNYVRKE
 - feature_id: insdc:NC_001422.1:feature-23
@@ -658,10 +751,12 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p09
-  - key: db_xref
-    value: GeneID:2546404
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p09
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546404
 - feature_id: insdc:NC_001422.1:feature-24
   seqid: refseq:NC_001422.1
   type: CDS
@@ -680,22 +775,30 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p09
-  - key: note
-    value: core protein
-  - key: codon_start
-    value: '1'
-  - key: transl_table
-    value: '11'
-  - key: product
-    value: DNA condensation
-  - key: protein_id
-    value: NP_040710.1
-  - key: db_xref
-    value: GeneID:2546404
-  - key: translation
-    value: MSKGKKRSGARPGRPQPLRGTKGKRKGARLWYVGGQQF
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p09
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: note
+    raw_value: core protein
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: codon_start
+    raw_value: '1'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: transl_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: product
+    raw_value: DNA condensation
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: protein_id
+    raw_value: NP_040710.1
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546404
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation
+    raw_value: MSKGKKRSGARPGRPQPLRGTKGKRKGARLWYVGGQQF
   product: DNA condensation
   translated_sequence: MSKGKKRSGARPGRPQPLRGTKGKRKGARLWYVGGQQF
 - feature_id: insdc:NC_001422.1:feature-25
@@ -716,22 +819,30 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p06
-  - key: note
-    value: major coat protein
-  - key: codon_start
-    value: '1'
-  - key: transl_table
-    value: '11'
-  - key: product
-    value: major head protein
-  - key: protein_id
-    value: NP_040711.1
-  - key: db_xref
-    value: GeneID:2546408
-  - key: translation
-    value: MSNIQTGAERMPHDLSHLGFLAGQIGRLITISTTPVIAGDSFEMDAVGALRLSPLRRGLAIDSTVDIFTFYVPHRHVYGEQWIKFMKDGVNATPLPTVNTTGYIDHAAFLGTINPDTNKIPKHLFQGYLNIYNNYFKAPWMPDRTEANPNELNQDDARYGFRCCHLKNIWTAPLPPETELSRQMTTSTTSIDIMGLQAAYANLHTDQERDYFMQRYHDVISSFGGKTSYDADNRPLLVMRSNLWASGYDVDGTDQTSLGQFSGRVQQTYKHSVPRFFVPEHGTMFTLALVRFPPTATKEIQYLNAKGALTYTDIAGDPVLYGNLPPREISMKDVFRSGDSSKKFKIAEGQWYRYAPSYVSPAYHLLEGFPFIQEPPSGDLQERVLIRHHDYDQCFQSVQLLQWNSQVKFNVTVYRNLPTTRDSIMTS
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p06
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: note
+    raw_value: major coat protein
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: codon_start
+    raw_value: '1'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: transl_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: product
+    raw_value: major head protein
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: protein_id
+    raw_value: NP_040711.1
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546408
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation
+    raw_value: MSNIQTGAERMPHDLSHLGFLAGQIGRLITISTTPVIAGDSFEMDAVGALRLSPLRRGLAIDSTVDIFTFYVPHRHVYGEQWIKFMKDGVNATPLPTVNTTGYIDHAAFLGTINPDTNKIPKHLFQGYLNIYNNYFKAPWMPDRTEANPNELNQDDARYGFRCCHLKNIWTAPLPPETELSRQMTTSTTSIDIMGLQAAYANLHTDQERDYFMQRYHDVISSFGGKTSYDADNRPLLVMRSNLWASGYDVDGTDQTSLGQFSGRVQQTYKHSVPRFFVPEHGTMFTLALVRFPPTATKEIQYLNAKGALTYTDIAGDPVLYGNLPPREISMKDVFRSGDSSKKFKIAEGQWYRYAPSYVSPAYHLLEGFPFIQEPPSGDLQERVLIRHHDYDQCFQSVQLLQWNSQVKFNVTVYRNLPTTRDSIMTS
   product: major head protein
   translated_sequence: MSNIQTGAERMPHDLSHLGFLAGQIGRLITISTTPVIAGDSFEMDAVGALRLSPLRRGLAIDSTVDIFTFYVPHRHVYGEQWIKFMKDGVNATPLPTVNTTGYIDHAAFLGTINPDTNKIPKHLFQGYLNIYNNYFKAPWMPDRTEANPNELNQDDARYGFRCCHLKNIWTAPLPPETELSRQMTTSTTSIDIMGLQAAYANLHTDQERDYFMQRYHDVISSFGGKTSYDADNRPLLVMRSNLWASGYDVDGTDQTSLGQFSGRVQQTYKHSVPRFFVPEHGTMFTLALVRFPPTATKEIQYLNAKGALTYTDIAGDPVLYGNLPPREISMKDVFRSGDSSKKFKIAEGQWYRYAPSYVSPAYHLLEGFPFIQEPPSGDLQERVLIRHHDYDQCFQSVQLLQWNSQVKFNVTVYRNLPTTRDSIMTS
 - feature_id: insdc:NC_001422.1:feature-26
@@ -752,10 +863,12 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p10
-  - key: db_xref
-    value: GeneID:2546401
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p10
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546401
 - feature_id: insdc:NC_001422.1:feature-27
   seqid: refseq:NC_001422.1
   type: CDS
@@ -774,20 +887,27 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p10
-  - key: codon_start
-    value: '1'
-  - key: transl_table
-    value: '11'
-  - key: product
-    value: major spike protein
-  - key: protein_id
-    value: NP_040712.1
-  - key: db_xref
-    value: GeneID:2546401
-  - key: translation
-    value: MFQTFISRHNSNFFSDKLVLTSVTPASSAPVLQTPKATSSTLYFDSLTVNAGNGGFLHCIQMDTSVNAANQVVSVGADIAFDADPKFFACLVRFESSSVPTTLPTAYDVYPLNGRHDGGYYTVKDCVTIDVLPRTPGNNVYVGFMVWSNFTATKCRGLVSLNQVIKEIICLQPLK
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p10
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: codon_start
+    raw_value: '1'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: transl_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: product
+    raw_value: major spike protein
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: protein_id
+    raw_value: NP_040712.1
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546401
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation
+    raw_value: MFQTFISRHNSNFFSDKLVLTSVTPASSAPVLQTPKATSSTLYFDSLTVNAGNGGFLHCIQMDTSVNAANQVVSVGADIAFDADPKFFACLVRFESSSVPTTLPTAYDVYPLNGRHDGGYYTVKDCVTIDVLPRTPGNNVYVGFMVWSNFTATKCRGLVSLNQVIKEIICLQPLK
   product: major spike protein
   translated_sequence: MFQTFISRHNSNFFSDKLVLTSVTPASSAPVLQTPKATSSTLYFDSLTVNAGNGGFLHCIQMDTSVNAANQVVSVGADIAFDADPKFFACLVRFESSSVPTTLPTAYDVYPLNGRHDGGYYTVKDCVTIDVLPRTPGNNVYVGFMVWSNFTATKCRGLVSLNQVIKEIICLQPLK
 - feature_id: insdc:NC_001422.1:feature-28
@@ -808,10 +928,12 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p11
-  - key: db_xref
-    value: GeneID:2546407
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p11
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546407
 - feature_id: insdc:NC_001422.1:feature-29
   seqid: refseq:NC_001422.1
   type: CDS
@@ -830,24 +952,33 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p11
-  - key: function
-    value: adsorption
-  - key: note
-    value: minor spike protein
-  - key: codon_start
-    value: '1'
-  - key: transl_table
-    value: '11'
-  - key: product
-    value: pilot protein for DNA ejection
-  - key: protein_id
-    value: NP_040713.1
-  - key: db_xref
-    value: GeneID:2546407
-  - key: translation
-    value: MFGAIAGGIASALAGGAMSKLFGGGQKAASGGIQGDVLATDNNTVGMGDAGIKSAIQGSNVPNPDEAAPSFVSGAMAKAGKGLLEGTLQAGTSAVSDKLLDLVGLGGKSAADKGKDTRDYLAAAFPELNAWERAGADASSAGMVDAGFENQKELTKMQLDNQKEIAEMQNETQKEIAGIQSATSRQNTKDQVYAQNEMLAYQQKESTARVASIMENTNLSKQQQVSEIMRQMLTQAQTAGQYFTNDQIKEMTRKVSAEVDLVHQQTQNQRYGSSHIGATAKDISNVVTDAASGVVDIFHGIDKAVADTWNNFWKDGKADGIGSNLSRK
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p11
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: function
+    raw_value: adsorption
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: note
+    raw_value: minor spike protein
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: codon_start
+    raw_value: '1'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: transl_table
+    raw_value: '11'
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: product
+    raw_value: pilot protein for DNA ejection
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: protein_id
+    raw_value: NP_040713.1
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: db_xref
+    raw_value: GeneID:2546407
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: translation
+    raw_value: MFGAIAGGIASALAGGAMSKLFGGGQKAASGGIQGDVLATDNNTVGMGDAGIKSAIQGSNVPNPDEAAPSFVSGAMAKAGKGLLEGTLQAGTSAVSDKLLDLVGLGGKSAADKGKDTRDYLAAAFPELNAWERAGADASSAGMVDAGFENQKELTKMQLDNQKEIAEMQNETQKEIAGIQSATSRQNTKDQVYAQNEMLAYQQKESTARVASIMENTNLSKQQQVSEIMRQMLTQAQTAGQYFTNDQIKEMTRKVSAEVDLVHQQTQNQRYGSSHIGATAKDISNVVTDAASGVVDIFHGIDKAVADTWNNFWKDGKADGIGSNLSRK
   product: pilot protein for DNA ejection
   translated_sequence: MFGAIAGGIASALAGGAMSKLFGGGQKAASGGIQGDVLATDNNTVGMGDAGIKSAIQGSNVPNPDEAAPSFVSGAMAKAGKGLLEGTLQAGTSAVSDKLLDLVGLGGKSAADKGKDTRDYLAAAFPELNAWERAGADASSAGMVDAGFENQKELTKMQLDNQKEIAEMQNETQKEIAGIQSATSRQNTKDQVYAQNEMLAYQQKESTARVASIMENTNLSKQQQVSEIMRQMLTQAQTAGQYFTNDQIKEMTRKVSAEVDLVHQQTQNQRYGSSHIGATAKDISNVVTDAASGVVDIFHGIDKAVADTWNNFWKDGKADGIGSNLSRK
 - feature_id: insdc:NC_001422.1:feature-30
@@ -868,10 +999,12 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p06
-  - key: note
-    value: transcription start site
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p06
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: note
+    raw_value: transcription start site
 - feature_id: insdc:NC_001422.1:feature-31
   seqid: refseq:NC_001422.1
   type: rep_origin
@@ -890,10 +1023,12 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p01
-  - key: note
-    value: origin of viral strand synthesis
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p01
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: note
+    raw_value: origin of viral strand synthesis
 - feature_id: insdc:NC_001422.1:feature-32
   seqid: refseq:NC_001422.1
   type: misc_feature
@@ -912,7 +1047,9 @@ features:
       strand: +
     crosses_origin: false
   attributes:
-  - key: locus_tag
-    value: phiX174p02
-  - key: note
-    value: transcription start site
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: locus_tag
+    raw_value: phiX174p02
+  - tbd_type_designator: bridge_central_schema:Attribute
+    key: note
+    raw_value: transcription start site

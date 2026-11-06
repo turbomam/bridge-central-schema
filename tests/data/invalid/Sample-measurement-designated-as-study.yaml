@@ -1,0 +1,6 @@
+# Counter-example: an entry in a sample's attributes must designate Attribute or Measurement.
+id: nmdc:bsm-11-042nd237
+attributes:
+  - tbd_type_designator: bridge_central_schema:Study
+    key: geo_loc_name
+    raw_value: "USA: Massachusetts, Petersham"

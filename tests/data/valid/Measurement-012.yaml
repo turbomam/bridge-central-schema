@@ -1,7 +1,8 @@
 # GOLD growth temperature range. The cell has no unit; Celsius comes from
 # the column name (..._in_centigrade).
 # Source: issue 4 table, Go0011324.
-observed_property: bridge_property:growth_temperature  # mapped to METPO:2000701
+tbd_type_designator: bridge_central_schema:Measurement
+attribute_cv_id: bridge_property:growth_temperature  # mapped to METPO:2000701
 feature_of_interest: gold:Go0011324
 raw_value: 30-37
 minimum_numeric_value: 30
