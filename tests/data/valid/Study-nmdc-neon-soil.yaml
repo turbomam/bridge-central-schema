@@ -1,0 +1,7 @@
+# From the NMDC public API (https://api.microbiomedata.org), retrieved 2026-11-03.
+# A real study with GOLD identifiers, so external_identifiers links the two systems.
+id: nmdc:sty-11-34xj1150
+name: "National Ecological Observatory Network: soil metagenomes (DP1.10107.001)"
+external_identifiers:
+  - gold:Gs0144570
+  - gold:Gs0161344

@@ -1,0 +1,3 @@
+# A Pfam hit's alignment target from Dataset-004 without its required target_id.
+target_start: 2
+target_end: 135

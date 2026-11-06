@@ -1,0 +1,11 @@
+# GOLD diameter cell holding two dimensions: first of two records (length).
+# Source: gold_dsi_organism_measurements.csv, line 9033, Go0670564.
+observed_property: bridge_property:cell_length  # mapped to METPO:1000881
+feature_of_interest: gold:Go0670564
+raw_value: 1.5–2.0 µm long and 0.3–0.4 µm wide
+minimum_numeric_value: 1.5
+maximum_numeric_value: 2.0
+unit: um
+source_system: ber_registry:schema-jgi-gold
+source_record_id: Go0670564
+source_field: organism_cell_diameter

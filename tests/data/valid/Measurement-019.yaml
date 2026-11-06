@@ -1,0 +1,12 @@
+# BASIN-3D daily mean water temperature at USGS monitoring site 09110000.
+# Carried over from the 0.2.0 example, now with the statistic stated. The
+# averaging period is not recorded: statistic says mean, and nothing says it
+# is a daily mean or which day's bounds it uses (a known gap).
+observed_property: bridge_property:water_temperature  # Water temperature
+raw_value: "4.2 Cel"
+numeric_value: 4.2
+unit: Cel
+statistic: mean
+observed_time: "2021-01-01T00:00:00+00:00"
+source_system: BASIN-3D (USGS)
+source_record_id: USGS-09110000

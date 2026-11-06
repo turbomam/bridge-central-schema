@@ -1,94 +1,440 @@
-id: https://w3id.org/ber-data/bridge-measurements
+id: https://w3id.org/ber-data/bridge-central-schema/measurements
 name: measurements
 title: BRIDGE Measurements Module
-description: Stub classes for the unified BRIDGE measurement model.
-license: BSD-3
-version: 0.2.0
+description: >-
+  First-pass union model for BRIDGE measurement metadata, built from the
+  2026-09-30 BRIDGE Measurements hackathon. One Measurement class holds one
+  value of one property, keeps the source text, and adds structured parts
+  (number, range, unit, statistic, qualifier, missing-value reason) only when
+  the source supports them. See docs/measurements-hackathon-2026-09-30.md for
+  what was raised at the hackathon and where each item went.
+license: Apache-2.0
+version: 0.5.0
 
 prefixes:
-  bridge: https://w3id.org/ber-data/bridge-measurements/
+  bridge_central_schema: https://w3id.org/ber-data/bridge-central-schema/
   linkml: https://w3id.org/linkml/
   bervo: https://w3id.org/bervo/
   nmdc: https://w3id.org/nmdc/
   sosa: http://www.w3.org/ns/sosa/
+  METPO: https://w3id.org/metpo/
+  MIXS: https://w3id.org/mixs/
+  gold: "https://bioregistry.io/gold:"
+  bridge_property: https://w3id.org/ber-data/bridge-property/
+  example: https://example.org/
+  ber_registry: https://w3id.org/ber-data/ber-data-registry/
 
-default_prefix: bridge
+default_prefix: bridge_central_schema
 default_range: string
 
 imports:
   - linkml:types
 
+types:
+
+  PartialDateTime:
+    typeof: string
+    uri: xsd:string
+    base: str
+    description: >-
+      An ISO 8601 year, year-month, date, or date-time. A date-time must
+      carry a UTC offset or Z; a date or coarser carries none.
+    comments:
+      - >-
+        The pattern checks each part's range but not whether a day exists in
+        its month, so 2021-02-31 passes.
+    pattern: "^[0-9]{4}(-(0[1-9]|1[0-2])(-(0[1-9]|[12][0-9]|3[01])(T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9](\\.[0-9]+)?)?(Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9]))?)?)?$"
+
 classes:
 
-  MeasurementValue:
-    abstract: true
+  Measurement:
     description: >-
-      The polymorphic result of an observation or measurement; root of the
-      result-value family.
-    exact_mappings:
-      - nmdc:AttributeValue
-    slots:
-      - raw_value
-
-  QuantityValue:
-    is_a: MeasurementValue
-    description: A numeric value with a unit.
-    exact_mappings:
+      One value of one property of one thing, as reported by a source. A
+      measurement may carry a number with a unit, a range, a summary
+      statistic, a categorical term, or only the source text, and it may say
+      why no value is present. The 2026-09-30 hackathon chose to start with
+      this single class and add an Observation class only when data shows a
+      need for one.
+    close_mappings:
+      - sosa:Observation
       - nmdc:QuantityValue
     slots:
-      - numeric_value
-      - unit
-
-  Observation:
-    description: >-
-      An act of observing a property of a feature of interest, yielding a
-      result (OGC O&M / SOSA shape).
-    exact_mappings:
-      - sosa:Observation
-    slots:
+      - measurement_id
       - observed_property
-      # - feature_of_interest   # TODO: deferred - gets into (Bio)sample
-      #   territory; restore once the shared BRIDGE Sample/FeatureOfInterest
-      #   role class is designed (harmonization row 3).
-      - result
-
-  Measurement:
-    is_a: Observation
-    description: An observation whose result is a quantity.
+      - property_label
+      - feature_of_interest
+      - raw_value
+      - numeric_value
+      - minimum_numeric_value
+      - maximum_numeric_value
+      - unit
+      - unit_basis
+      - coded_value
+      - comparator
+      - statistic
+      - standard_deviation
+      - sample_size
+      - value_role
+      - value_qualifier
+      - missing_value_reason
+      - measurement_method
+      - treatment
+      - instrument
+      - observed_time
+      - observed_start_time
+      - observed_end_time
+      - source_system
+      - source_record_id
+      - source_field
+      - quality_flag
     slot_usage:
-      result:
-        range: QuantityValue
       observed_property:
-        pattern: "^bervo:BERVO_\\d{7}$"
-        comments:
-          - >-
-            Example constraint: narrows observed_property to BERVO Variable
-            CURIEs (e.g. bervo:BERVO_0000001). Sources whose properties are
-            not yet in BERVO would use Observation, or this pattern widens
-            to alternate vocabularies as they are admitted.
+        recommended: true
+      raw_value:
+        recommended: true
+    exactly_one_of:
+      - slot_conditions:
+          observed_property:
+            required: true
+      - slot_conditions:
+          property_label:
+            required: true
+    any_of:
+      - slot_conditions:
+          raw_value:
+            required: true
+      - slot_conditions:
+          numeric_value:
+            required: true
+      - slot_conditions:
+          minimum_numeric_value:
+            required: true
+      - slot_conditions:
+          maximum_numeric_value:
+            required: true
+      - slot_conditions:
+          coded_value:
+            required: true
+      - slot_conditions:
+          missing_value_reason:
+            required: true
+    comments:
+      - >-
+        A measurement must carry at least one of raw_value, numeric_value,
+        minimum_numeric_value, maximum_numeric_value, coded_value or
+        missing_value_reason, so an empty measurement fails validation.
+      - >-
+        A measurement names its property with exactly one of observed_property (an
+        identifier) or property_label (free text). property_label is the
+        catch-all for values whose property has no identifier yet, as MIxS
+        misc_param, NMDC PropertyAssertion and BERtron Attribute allow.
+      - >-
+        The value slots come in two groups. raw_value, numeric_value,
+        minimum_numeric_value, maximum_numeric_value, unit and coded_value hold
+        the value itself: raw_value as the source wrote it, the others as parsed
+        from it (numeric_value for a number, coded_value for a category).
+        comparator, statistic, standard_deviation, sample_size, value_role,
+        value_qualifier and missing_value_reason say something about that value.
+      - >-
+        A source cell that holds several values (for example a width and a
+        length) becomes several measurements that share source_record_id
+        and source_field.
 
 slots:
 
+  measurement_id:
+    range: uriorcurie
+    description: >-
+      An identifier for this measurement, when the source has one or BRIDGE
+      mints one on ingest. Optional, because many sources (ESS-DIVE among
+      them) do not identify individual measurements.
+    comments:
+      - >-
+        Not named id: the central schema's id slot is an identifier, which
+        LinkML makes required, and most measurements have no identifier.
+
   observed_property:
     range: uriorcurie
-    description: The property observed; a BERVO Variable CURIE when one exists.
+    description: >-
+      The property that was measured, as a BRIDGE property identifier
+      (bridge_property:).
+    comments:
+      - >-
+        Each bridge_property: term has an ID, a label and a definition in
+        terms/bridge_property.tsv, and mappings to BERVO, MIxS and other
+        vocabularies in mappings/observed_property.sssom.tsv. New terms are
+        added by pull request. A term's ID does not change once merged; its
+        label and definition can be edited.
+    pattern: "^bridge_property:[a-z0-9_]+$"
+    exact_mappings:
+      - sosa:observedProperty
+    aliases:
+      - measurement_type
+      - variable
 
-  # TODO (sample): feature_of_interest deferred for now - overlaps with
-  # Biosample/Sample modeling. Reinstate when the sample module exists.
-  # feature_of_interest:
-  #   range: uriorcurie
-  #   description: The entity the property was observed on.
+  property_label:
+    description: >-
+      The name of the measured property as free text, for values whose
+      property has no BRIDGE identifier yet. Use observed_property
+      instead whenever an identifier exists.
+    close_mappings:
+      - nmdc:has_attribute_label
+      - MIXS:0000752
 
-  result:
-    range: MeasurementValue
-    inlined: true
-    description: The result of the observation.
+  feature_of_interest:
+    range: uriorcurie
+    description: >-
+      A reference to the thing whose property was measured: a sample, an
+      organism, a site or plot, a stream. Only a reference: classes for
+      samples belong to the Samples, Projects, and Processes Modelling
+      Squad, and classes for sites, plots and other landscape
+      features to the Landscape/Physical Features module proposed in the
+      2026-10-07 BRIDGE DM notes.
+    exact_mappings:
+      - sosa:hasFeatureOfInterest
 
   raw_value:
-    description: The value exactly as it appeared at the source.
+    description: >-
+      The value exactly as it appeared at the source, including its unit text,
+      ranges, qualifiers and any non-ASCII characters. Never edited. The
+      other value slots are parsed from it.
+    close_mappings:
+      - nmdc:has_raw_value
 
   numeric_value:
     range: double
+    description: A single number parsed from raw_value.
+    close_mappings:
+      - nmdc:has_numeric_value
+
+  minimum_numeric_value:
+    range: double
+    description: The lower end of a range, or the lower bound of a one-sided value.
+    close_mappings:
+      - nmdc:has_minimum_numeric_value
+
+  maximum_numeric_value:
+    range: double
+    description: The upper end of a range, or the upper bound of a one-sided value.
+    close_mappings:
+      - nmdc:has_maximum_numeric_value
 
   unit:
-    description: UCUM code preferred.
+    description: >-
+      The unit as a UCUM code, written in printable ASCII (for example um, not
+      µm). Leave empty for values without a unit, such as pH. The source's own
+      spelling stays in raw_value. UCUM is a grammar rather than a fixed list,
+      so most units can be written even when no common code exists, and
+      annotations in braces cover counted things ({cells}/g). When a unit
+      cannot be written in UCUM, leave unit empty and keep the source's unit in
+      raw_value. Many units from QUDT (used by ESS-DIVE) carry a UCUM code
+      (qudt:ucumCode) that can go here.
+    pattern: "^[!-~]+$"
+    close_mappings:
+      - nmdc:has_unit
+
+  unit_basis:
+    description: >-
+      What the unit is expressed relative to, when the unit alone does not
+      say, such as dry weight. Some bases fit UCUM
+      annotations (mg{C}/L); this slot is for those that do not. Free text
+      until examples settle a vocabulary.
+
+  coded_value:
+    range: uriorcurie
+    description: >-
+      A categorical value as a code from an ontology or controlled
+      vocabulary, parsed from raw_value the way numeric_value is parsed for a
+      number, such as METPO:1000615 (mesophilic). The source wording stays in
+      raw_value.
+
+  comparator:
+    range: ComparatorEnum
+    description: >-
+      How the true value relates to numeric_value, for values reported as
+      above or below a number, such as below a detection limit. When the
+      source gives the limit as a number, record it in numeric_value with a
+      comparator; when it gives no number, use missing_value_reason
+      below_detection_limit instead.
+
+  statistic:
+    range: StatisticEnum
+    description: >-
+      The summary statistic that numeric_value reports, when the source value
+      summarizes several readings or individuals.
+
+  standard_deviation:
+    range: double
+    minimum_value: 0
+    description: The standard deviation reported with a mean, in the same unit.
+
+  sample_size:
+    range: integer
+    minimum_value: 1
+    description: How many readings, replicates or individuals a statistic summarizes.
+
+  value_role:
+    range: ValueRoleEnum
+    description: >-
+      Whether the value was measured, set as an experimental condition, or
+      assigned by a person interpreting other measurements.
+
+  value_qualifier:
+    range: ValueQualifierEnum
+    description: >-
+      A qualifier the source attaches to the value, such as an optimum
+      (optimal growth at 10 MPa).
+
+  missing_value_reason:
+    range: MissingValueReasonEnum
+    description: >-
+      Why no usable value is present. Sources often write these as text (not
+      determined) or as sentinel numbers (-9999); record the source text in
+      raw_value.
+
+  measurement_method:
+    description: >-
+      How the value was obtained: a protocol name, a method reference, or the
+      source's companion method field (for example an NMDC ph_meth value).
+    close_mappings:
+      - sosa:usedProcedure
+
+  treatment:
+    description: >-
+      The experimental treatment applied to the thing measured, such as a
+      warming or nitrogen addition plot, kept apart from measurement_method
+      because downstream users filter and compare on it.
+
+  instrument:
+    description: The instrument or sensor that produced the value.
+    close_mappings:
+      - sosa:madeBySensor
+
+  observed_time:
+    description: >-
+      When the property was observed, in ISO 8601 at whatever resolution the
+      source gives: a year (2021), a year and month (2021-06), a date
+      (2021-06-15), or a date-time with a UTC offset (2021-06-15T14:30:00-07:00).
+      A time of day must carry an offset; a date or coarser does not.
+    range: PartialDateTime
+    close_mappings:
+      - sosa:phenomenonTime
+
+  observed_start_time:
+    description: >-
+      The start of the period a value covers, for sources that report a start
+      and an end instead of one time. Same format as observed_time.
+    range: PartialDateTime
+
+  observed_end_time:
+    description: >-
+      The end of the period a value covers. Same format as observed_time.
+    range: PartialDateTime
+
+  source_system:
+    description: >-
+      The system the value came from. Use the BER lakehouse registry entry
+      (https://github.com/doe-bridge/lakehouse-registry) for the source's schema
+      when it has one, such as ber_registry:schema-jgi-gold; otherwise the
+      system's name, such as BASIN-3D (USGS).
+
+  source_record_id:
+    description: >-
+      The identifier of the source record the value came from, in the
+      source's own format. The schema does not impose a format.
+
+  source_field:
+    description: >-
+      The source field, column or slot the value came from, named as the
+      source names it.
+
+  quality_flag:
+    description: >-
+      A flag from the source or from BRIDGE curation, such as needs_review for
+      a value that could not be parsed.
+
+enums:
+
+  ComparatorEnum:
+    description: How a reported number relates to the true value.
+    permissible_values:
+      less_than:
+        description: The true value is below numeric_value.
+      less_than_or_equal:
+        description: The true value is at or below numeric_value.
+      greater_than:
+        description: The true value is above numeric_value.
+      greater_than_or_equal:
+        description: The true value is at or above numeric_value.
+      approximately:
+        description: The source gave numeric_value as an approximation.
+
+  StatisticEnum:
+    description: Summary statistics a measurement value can report.
+    permissible_values:
+      mean:
+        description: The arithmetic mean of the readings or individuals.
+      median:
+        description: The median of the readings or individuals.
+      minimum:
+        description: The smallest of the readings or individuals.
+      maximum:
+        description: The largest of the readings or individuals.
+      standard_deviation:
+        description: >-
+          numeric_value is itself a standard deviation, for sources that report
+          it as its own value.
+      sum:
+        description: The total of the readings, such as a daily precipitation total.
+
+  ValueRoleEnum:
+    description: How a value came to be recorded.
+    permissible_values:
+      measured:
+        description: >-
+          The value was measured, including a summary of several measurements,
+          such as a spatial or daily mean (give the summary in statistic).
+      setting:
+        description: >-
+          The value was set as an experimental condition, for example growth at
+          5 degrees Celsius for 2 hours.
+      interpreted:
+        description: >-
+          A person assigned the value after interpreting other measurements,
+          for example a strain labelled mesophilic.
+      derived:
+        description: >-
+          The value of one property was computed from values of other
+          properties, for example a projected shoot area calculated from a pixel
+          count and an image scale. A mean of readings of the same property is
+          measured, not derived.
+
+  ValueQualifierEnum:
+    description: Qualifiers a source attaches to a value.
+    permissible_values:
+      optimum:
+        description: The value at which a process (usually growth) is best.
+      tolerated:
+        description: A value or range within which a process can occur.
+
+  MissingValueReasonEnum:
+    description: Reasons a measurement has no usable value.
+    permissible_values:
+      not_determined:
+        description: The source says the value was not determined.
+      not_applicable:
+        description: The property does not apply to this thing.
+      not_reported:
+        description: The source leaves the value empty and gives no reason.
+      below_detection_limit:
+        description: The value was below the method's detection limit.
+      above_detection_limit:
+        description: The value was above the method's upper detection limit.
+      unknown:
+        description: >-
+          The source says the value is unknown, for example by writing
+          unknown where the value would be.
+      out_of_range:
+        description: >-
+          The source used a sentinel value meaning the reading was outside the
+          instrument's range.

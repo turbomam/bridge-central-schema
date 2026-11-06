@@ -1,0 +1,6 @@
+# Counter-example: use observed_property or property_label, not both, so the
+# free-text label never competes with an identifier.
+observed_property: bridge_property:ph
+property_label: pH
+raw_value: "7"
+numeric_value: 7

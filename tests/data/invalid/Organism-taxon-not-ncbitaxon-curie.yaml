@@ -1,0 +1,4 @@
+# taxon is an NCBI Taxonomy web address, not an NCBITaxon CURIE.
+id: nmdc:orgn-11-example2
+name: Example isolate
+taxon: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=562

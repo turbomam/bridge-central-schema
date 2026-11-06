@@ -1,0 +1,8 @@
+# Catch-all key/value: a property with no BERVO or BRIDGE identifier yet
+# (BERVO has Bicarbonate, the ion, but no term for its concentration),
+# named in free text. Same content as the MIxS misc_param example
+# (MIXS:0000752) and NMDC's PropertyAssertion example.
+property_label: Bicarbonate ion concentration
+raw_value: Bicarbonate ion concentration;2075 micromole per kilogram
+numeric_value: 2075
+unit: umol/kg

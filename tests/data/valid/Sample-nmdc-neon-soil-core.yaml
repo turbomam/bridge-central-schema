@@ -1,0 +1,11 @@
+# From the NMDC public API (https://api.microbiomedata.org), retrieved 2026-11-03.
+# A soil core from NEON plot CPER_002, collected 2020-06-24. It is the first
+# link in a chain: three cores were pooled into a composite, DNA was extracted
+# from the composite, and the extract was sequenced and binned into MAGs.
+id: nmdc:bsm-11-4gcjpr38
+name: CPER_002-M-6-13-20200624
+associated_studies:
+  - nmdc:sty-11-34xj1150
+sample_category: environmental
+external_identifiers:
+  - gold:Gb0387370

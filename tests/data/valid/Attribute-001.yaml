@@ -1,0 +1,4 @@
+# The Name attribute of the first Pfam hit in Dataset-001 of the feature model PR, from
+# nmdc_wfmgan-11-5xxrm214.2_pfam.gff, with the optional CURIE and number left out.
+key: Name
+value: DDE_3

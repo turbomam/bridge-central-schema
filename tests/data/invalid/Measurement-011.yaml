@@ -1,0 +1,4 @@
+# Counter-example: observed_time must be ISO 8601 (2021-06-15), not 2021/06/15.
+observed_property: bridge_property:ph
+numeric_value: 6.8
+observed_time: "2021/06/15"

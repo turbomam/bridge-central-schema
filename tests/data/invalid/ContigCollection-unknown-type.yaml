@@ -1,0 +1,6 @@
+# The collection from Dataset-002 with collection_type 'assembly', not a ContigCollectionTypeEnum value.
+collection_id: nmdc:wfmgas-11-19jh9v28.1
+collection_type: assembly
+generated_by: nmdc:wfmgas-11-19jh9v28.1
+source_files:
+- https://data.microbiomedata.org/data/nmdc:omprc-11-2t8ft192/nmdc:wfmgas-11-19jh9v28.1/nmdc_wfmgas-11-19jh9v28.1_contigs.fna

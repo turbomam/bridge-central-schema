@@ -1,0 +1,5 @@
+# A BASALT ProcessingSampleLink row. BASALT ids are bare UUIDs; written here as
+# urn:uuid: URIs so they fit the umbrella's uriorcurie id range.
+processing: urn:uuid:5b0c6c1e-0000-4000-8000-000000000001
+sample: urn:uuid:5b0c6c1e-0000-4000-8000-000000000002
+role: input

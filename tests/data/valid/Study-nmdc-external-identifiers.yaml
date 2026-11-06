@@ -1,0 +1,7 @@
+# Identifier values are the examples from nmdc-schema's gold_study_identifiers
+# and emsl_project_identifiers slots, not one real study.
+id: nmdc:sty-11-example
+name: Example NMDC study
+external_identifiers:
+  - gold:Gs0110115
+  - emsl.project:60141

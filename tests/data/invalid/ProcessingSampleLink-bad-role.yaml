@@ -1,0 +1,4 @@
+# Invalid: role must be input or output.
+processing: nmdc:extrp-11-example
+sample: nmdc:bsm-11-example
+role: consumed

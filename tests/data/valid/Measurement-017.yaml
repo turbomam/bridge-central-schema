@@ -1,0 +1,9 @@
+# ORNL APPL air temperature with a placeholder instead of a value.
+# Source: ORNL environment_parameters.csv, line 5.
+observed_property: bridge_property:air_temperature  # Air temperature
+raw_value: TO BE SUPPLIED
+missing_value_reason: not_reported
+value_role: measured
+source_system: ber_registry:schema-plant-phenotyping
+source_record_id: "67"
+source_field: envParamValue

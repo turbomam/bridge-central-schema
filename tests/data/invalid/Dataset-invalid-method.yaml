@@ -1,0 +1,18 @@
+# A Pfam-style hit whose method is not a MethodEnum value: "superfamily" rather than "supfam".
+features:
+  - feature_id: example:cds_1
+    seqid: example:contig_1
+    type: CDS
+    start: 1
+    end: 300
+    coordinate_system: contig
+    strand: "+"
+  - feature_id: example:cds_1|superfamily|47473
+    seqid: example:cds_1
+    type: "47473"
+    method: superfamily
+    start: 5
+    end: 90
+    coordinate_system: protein
+    parent:
+      - example:cds_1

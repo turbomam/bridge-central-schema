@@ -1,0 +1,6 @@
+# From the NMDC public API (https://api.microbiomedata.org), retrieved 2026-11-03.
+# The composite made by pooling three soil cores (nmdc:poolp-11-cvpxzf40).
+# It is a sample derived from other samples, not collected from the field.
+id: nmdc:procsm-11-9gjxns61
+name: CPER_002-M-20200624-COMP
+sample_category: environmental

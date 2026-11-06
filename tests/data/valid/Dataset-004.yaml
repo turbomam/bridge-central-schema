@@ -1,0 +1,123 @@
+# Real NMDC data: one CDS and its three Pfam hits from annotation nmdc:wfmgan-11-5xxrm214.2
+# (CC BY 4.0), converted with the nmdc-pfam-protein/5.0.0 profile, which records each hit's
+# alignment target. Source: https://github.com/turbomam/feature-table-corpus/blob/v0.1.0/corpus/sources/nmdc/nmdc_wfmgan-11-5xxrm214.2_pfam.gff
+contigs:
+- contig_id: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1
+features:
+- feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091
+  seqid: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1
+  type: CDS
+  start: 63
+  end: 1091
+  coordinate_system: contig
+  strand: '-'
+  attributes:
+  - key: ID
+    value: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091
+  - key: translation_table
+    value: '11'
+  - key: start_type
+    value: ATG
+  source: Prodigal v2.6.3_patched
+  score: 76.5
+  phase: 0
+  translated_sequence: MRQNDARQLSHDMLEDMRRRAVTAVQEGQSPEAVGKAFGLNRTTIYDWLAQYRRGGWGALKAKPLAGRPPKLNGKQMKWIYNTVTQKNPLQMKFEFALWTRAMVAKLIKDKFGIRLATNSVGRLLAQLGITPQRPLYQALERDPSLVKKWLKTEFPKIKKAAETLGADIYFGDAAHIRSDHHAGRTWGKKGETPIVVTTGARHGMSLLSAITSKGHMRFMIKEKGGVNSDVFIEFLKRLLVGAKRPVFLIVDRGPAHISKKTKAFVATLGSRLKLFYLPAYSPDRNPDELVWKHLKADTVGRMVTTSKADFKSKVVSSMRSLQKTPEKIRSFFQKPSLQYAA
+  source_files:
+  - https://data.microbiomedata.org/data/nmdc:omprc-11-2t8ft192/nmdc:wfmgan-11-5xxrm214.2/nmdc_wfmgan-11-5xxrm214.2_structural_annotation.gff
+  - https://data.microbiomedata.org/data/nmdc:omprc-11-2t8ft192/nmdc:wfmgan-11-5xxrm214.2/nmdc_wfmgan-11-5xxrm214.2_proteins.faa
+- feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091_168_312
+  seqid: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091
+  type: PF13358
+  start: 168
+  end: 312
+  coordinate_system: protein
+  strand: .
+  attributes:
+  - key: ID
+    value: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091_168_312
+  - key: Name
+    value: DDE_3
+  - key: fake_percent_id
+    value: '25.23'
+  - key: alignment_length
+    value: '145'
+  - key: e-value
+    value: '3.4e-28'
+  - key: model_start
+    value: '2'
+  - key: model_end
+    value: '135'
+  source: HMMER 3.1b2 (February 2015)
+  score: 94.0
+  name: DDE_3
+  parent:
+  - nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091
+  score_type: bit_score
+  target:
+    target_id: PF13358
+    target_start: 2
+    target_end: 135
+- feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091_95_154
+  seqid: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091
+  type: PF13592
+  start: 95
+  end: 154
+  coordinate_system: protein
+  strand: .
+  attributes:
+  - key: ID
+    value: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091_95_154
+  - key: Name
+    value: HTH_33
+  - key: fake_percent_id
+    value: '25.23'
+  - key: alignment_length
+    value: '60'
+  - key: e-value
+    value: '3.4e-19'
+  - key: model_start
+    value: '1'
+  - key: model_end
+    value: '59'
+  source: HMMER 3.1b2 (February 2015)
+  score: 64.0
+  name: HTH_33
+  parent:
+  - nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091
+  score_type: bit_score
+  target:
+    target_id: PF13592
+    target_start: 1
+    target_end: 59
+- feature_id: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091_17_70
+  seqid: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091
+  type: PF13518
+  start: 17
+  end: 70
+  coordinate_system: protein
+  strand: .
+  attributes:
+  - key: ID
+    value: nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091_17_70
+  - key: Name
+    value: HTH_28
+  - key: fake_percent_id
+    value: '25.23'
+  - key: alignment_length
+    value: '54'
+  - key: e-value
+    value: '2.4e-12'
+  - key: model_start
+    value: '2'
+  - key: model_end
+    value: '51'
+  source: HMMER 3.1b2 (February 2015)
+  score: 42.5
+  name: HTH_28
+  parent:
+  - nmdc:wfmgas-11-19jh9v28.1_scf_10_c1_63_1091
+  score_type: bit_score
+  target:
+    target_id: PF13518
+    target_start: 2
+    target_end: 51

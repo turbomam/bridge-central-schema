@@ -1,0 +1,7 @@
+# From the NMDC public API (https://api.microbiomedata.org), retrieved 2026-11-03.
+# The DNA extract made from the composite (nmdc:extrp-11-00r2pk65).
+# sample_category says where the material came from, so it is still
+# environmental; nothing in the umbrella says that this sample is an extract.
+id: nmdc:procsm-11-0wxpzf07
+name: CPER_002-M-20200624-COMP-DNA1
+sample_category: environmental

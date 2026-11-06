@@ -1,0 +1,10 @@
+# Illustrative, not from a source record: a nitrate value reported below a
+# detection limit, with the source's own measurement identifier and the
+# instrument named.
+measurement_id: example:nitrate-0001
+observed_property: bridge_property:nitrate_concentration  # Nitrate
+raw_value: "<0.01 mg/L"
+numeric_value: 0.01
+comparator: less_than
+unit: mg/L
+instrument: ion chromatograph

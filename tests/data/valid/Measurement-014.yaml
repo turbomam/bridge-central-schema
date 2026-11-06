@@ -1,0 +1,13 @@
+# EMSL MONet phosphate below detection. The source stores 0.0 plus a flag;
+# the 0.0 is a placeholder, so no numeric_value is recorded.
+# Source: EMSL monet_processed_data.parquet, Sample_Name 60846_2_BTM_1,
+# columns PO4_P_mg_per_kg, P_Extraction_method, flag_phosphorus.
+observed_property: bridge_property:soil_phosphate_content  # Soil phosphate content; candidate match, to review
+raw_value: "0.0"
+missing_value_reason: below_detection_limit
+unit: mg/kg
+measurement_method: Bray
+quality_flag: Below_Detection
+source_system: ber_registry:schema-basalt-schema
+source_record_id: 60846_2_BTM_1
+source_field: PO4_P_mg_per_kg

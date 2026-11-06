@@ -1,0 +1,7 @@
+# A phiX174 location part from Dataset-003 with start 0; coordinates are one-based, so start must be at least 1.
+seqid: insdc:NC_001422.1
+start: 0
+end: 5386
+start_status: exact
+end_status: exact
+strand: +

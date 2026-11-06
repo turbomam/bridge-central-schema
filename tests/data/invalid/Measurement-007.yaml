@@ -1,0 +1,6 @@
+# Counter-example: standard_deviation cannot be negative.
+observed_property: bridge_property:cell_length
+numeric_value: 1.87
+statistic: mean
+standard_deviation: -0.568
+unit: um

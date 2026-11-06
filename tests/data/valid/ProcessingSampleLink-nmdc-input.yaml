@@ -1,0 +1,4 @@
+# One NMDC Extraction step with has_input [nmdc:bsm-11-example] becomes this row.
+processing: nmdc:extrp-11-example
+sample: nmdc:bsm-11-example
+role: input

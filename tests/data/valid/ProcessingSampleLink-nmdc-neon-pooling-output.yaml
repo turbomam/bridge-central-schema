@@ -1,0 +1,5 @@
+# From the NMDC public API (https://api.microbiomedata.org), retrieved 2026-11-03.
+# The composite that came out of the pooling step.
+processing: nmdc:poolp-11-cvpxzf40
+sample: nmdc:procsm-11-9gjxns61
+role: output

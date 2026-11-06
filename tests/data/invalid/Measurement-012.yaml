@@ -1,0 +1,4 @@
+# Counter-example: observed_time must be a real month; 13 is out of range.
+observed_property: bridge_property:ph  # pH
+numeric_value: 6.5
+observed_time: "2021-13"

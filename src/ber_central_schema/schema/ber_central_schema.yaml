@@ -3,9 +3,9 @@ id: https://w3id.org/ber-data/bridge-central-schema
 name: ber-central-schema
 title: BRIDGE Central Schema
 description: >-
-  The central BRIDGE schema for harmonized cross-BER data access. Defines
-  shared base elements and composes domain modules (currently:
-  measurements.yaml).
+  The central BRIDGE schema for harmonized cross-BER data access. Composes
+  the shared base elements in core.yaml with domain modules (currently:
+  measurements.yaml and the draft umbrella.yaml).
 license: Apache-2.0
 see_also:
   - https://github.com/ber-data/bridge-central-schema
@@ -15,32 +15,17 @@ prefixes:
   bridge_central_schema: https://w3id.org/ber-data/bridge-central-schema/
   linkml: https://w3id.org/linkml/
   schema: http://schema.org/
+  # Also declared here: the generated Python leaves out prefixes that only an imported module
+  # declares when enum meanings use them (the feature model's ContigCollectionTypeEnum and
+  # ScoreTypeEnum).
+  MIXS: https://w3id.org/mixs/
+  edam: http://edamontology.org/
 default_prefix: bridge_central_schema
 default_range: string
 
 imports:
   - linkml:types
+  - core
   - measurements
-
-classes:
-
-  NamedThing:
-    class_uri: schema:Thing
-    description: Generic base for any identifiable BRIDGE entity.
-    slots:
-      - id
-      - name
-      - description
-
-slots:
-  id:
-    identifier: true
-    slot_uri: schema:identifier
-    range: uriorcurie
-    description: A unique identifier for a thing
-  name:
-    slot_uri: schema:name
-    description: A human-readable name for a thing
-  description:
-    slot_uri: schema:description
-    description: A human-readable description for a thing
+  - umbrella
+  - ber_feature_model

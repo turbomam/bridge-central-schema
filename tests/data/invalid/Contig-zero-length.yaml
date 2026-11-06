@@ -1,0 +1,4 @@
+# The phiX174 contig from Dataset-003 with length_bp 0; length_bp must be at least 1.
+contig_id: insdc:NC_001422.1
+length_bp: 0
+topology: circular

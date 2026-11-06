@@ -1,7 +1,10 @@
-# NMDC Biosample.nitrate projected into the stub Measurement
-observed_property: bervo:BERVO_0000001
-# feature_of_interest: nmdc:bsm-11-abc123   # deferred with the slot (sample TODO)
-result:
-  raw_value: 65 umol/L
-  numeric_value: 65
-  unit: umol/L
+# NMDC Biosample nitrate reported as text, with no number.
+# Source: NMDC hackathon export nmdc_quantity_values_2026-09-30.tsv, line 3260.
+observed_property: bridge_property:nitrate_concentration  # Nitrate
+feature_of_interest: nmdc:bsm-11-2hswww54
+raw_value: below detection
+missing_value_reason: below_detection_limit
+unit: umol/L
+source_system: ber_registry:schema-nmdc-schema
+source_record_id: nmdc:bsm-11-2hswww54
+source_field: nitrate

@@ -1,0 +1,9 @@
+# EMSL MONet microbial biomass carbon flagged as an outlier but kept.
+# Source: monet_processed_data.parquet, Sample_Name 60880_2_BTM_3.
+observed_property: bridge_property:microbial_biomass_carbon
+numeric_value: 539.8
+unit: mg/kg
+quality_flag: Outlier
+source_system: ber_registry:schema-basalt-schema
+source_record_id: 60880_2_BTM_3
+source_field: MBC_mg_per_kg

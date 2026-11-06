@@ -1,0 +1,11 @@
+# Configuration for `just lint` (linkml-lint reads this file from the repository root).
+extends: recommended
+rules:
+  standard_naming:
+    # StrandEnum in ber_feature_model.yaml uses the GFF3 column 7 symbols as its values, so a
+    # strand written in a GFF3 file reads back unchanged.
+    exclude:
+      - "+"
+      - "-"
+      - "."
+      - "?"

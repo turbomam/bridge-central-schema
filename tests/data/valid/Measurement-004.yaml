@@ -1,0 +1,11 @@
+# GOLD organism salinity reported as a molar range; the solute is not stated.
+# Source: issue 4 table and gold_dsi_organism_measurements.csv, Go0370391.
+observed_property: bridge_property:salinity  # Salinity
+feature_of_interest: gold:Go0370391
+raw_value: 0.16-0.22 M
+minimum_numeric_value: 0.16
+maximum_numeric_value: 0.22
+unit: mol/L
+source_system: ber_registry:schema-jgi-gold
+source_record_id: Go0370391
+source_field: organism_salinity_concentration

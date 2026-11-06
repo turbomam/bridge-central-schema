@@ -1,12 +1,12 @@
-# BASIN-3D observation for USGS parameter 00010 ("Temperature, water") at
-# monitoring feature USGS-09110000, projected into the stub Measurement as a
-# single (daily mean) value; timeseries results return when TimeSeriesValue
-# is restored to the module. observed_property uses a BERVO-form CURIE per
-# the example pattern constraint on Measurement (placeholder until a water
-# temperature Variable is minted in BERVO).
-observed_property: bervo:BERVO_0000123
-# feature_of_interest: bridge:usgs.09110000   # deferred with the slot (sample TODO)
-result:
-  raw_value: "4.2 Cel"
-  numeric_value: 4.2
-  unit: Cel
+# NMDC sample storage temperature: a condition someone set, not a measured
+# property of the sample. The source misspells Celsius; raw_value keeps it.
+# Source: nmdc_quantity_values_2026-09-30.tsv, line 145.
+observed_property: bridge_property:sample_storage_temperature  # mapped to MIXS:0000110
+feature_of_interest: nmdc:bsm-11-03dy0348
+raw_value: -80 Celcius
+numeric_value: -80
+unit: Cel
+value_role: setting
+source_system: ber_registry:schema-nmdc-schema
+source_record_id: nmdc:bsm-11-03dy0348
+source_field: samp_store_temp

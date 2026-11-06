@@ -1,0 +1,5 @@
+# From the NMDC public API (https://api.microbiomedata.org), retrieved 2026-11-03.
+# One of the three cores that went into the pooling step (the others are nmdc:bsm-11-xg1ynk89 and nmdc:bsm-11-ma2z0x81).
+processing: nmdc:poolp-11-cvpxzf40
+sample: nmdc:bsm-11-4gcjpr38
+role: input

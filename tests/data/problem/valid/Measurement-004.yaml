@@ -1,0 +1,10 @@
+# KNOWN GAP: an inverted range. Nothing requires maximum_numeric_value to be
+# at least minimum_numeric_value: equals_expression can state it, but
+# linkml-validate 1.11.1 does not check it. This validates. NMDC's export has
+# 196 such ranges (docs/measurements-hackathon-2026-09-30.md, known gaps).
+# Tracked in https://github.com/doe-bridge/bridge-central-schema/issues/24
+observed_property: bridge_property:depth  # Depth
+raw_value: 0.2 to 0.1 m
+minimum_numeric_value: 0.2
+maximum_numeric_value: 0.1
+unit: m

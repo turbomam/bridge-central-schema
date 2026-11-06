@@ -1,0 +1,9 @@
+# GOLD salinity that was not determined. raw_value keeps the leading space.
+# Source: gold_dsi_organism_measurements.csv, line 207530, Go0110604.
+observed_property: bridge_property:salinity  # Salinity
+feature_of_interest: gold:Go0110604
+raw_value: " not determined"
+missing_value_reason: not_determined
+source_system: ber_registry:schema-jgi-gold
+source_record_id: Go0110604
+source_field: organism_salinity_concentration

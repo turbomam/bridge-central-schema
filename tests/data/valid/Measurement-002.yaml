@@ -1,9 +1,11 @@
-# BASALT/MONet ElementalAnalysisProduct.total_carbon_id projected into the
-# stub Measurement: the wide product row becomes one Measurement per analyte
-# column; the column name identifies the observed property.
-observed_property: bervo:BERVO_0000915
-# feature_of_interest: bridge:basalt.procsample-7   # deferred with the slot (sample TODO)
-result:
-  raw_value: "2.41 %"
-  numeric_value: 2.41
-  unit: "%"
+# NMDC Biosample depth stored as a range.
+# Source: nmdc_quantity_values_2026-09-30.tsv, line 178.
+observed_property: bridge_property:depth  # Depth; mapped to MIXS:0000018
+feature_of_interest: nmdc:bsm-11-042nd237
+raw_value: .02 -.10
+minimum_numeric_value: 0.02
+maximum_numeric_value: 0.1
+unit: m
+source_system: ber_registry:schema-nmdc-schema
+source_record_id: nmdc:bsm-11-042nd237
+source_field: depth

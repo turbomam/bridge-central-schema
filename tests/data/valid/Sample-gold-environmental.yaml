@@ -1,0 +1,7 @@
+# A real GOLD biosample, one of the examples GOLD's public Excel export names,
+# retrieved from the GOLD public API (https://gold-ws.jgi.doe.gov/) on 2026-11-03.
+# GOLD links a biosample to its study only through sequencing projects, so
+# associated_studies is not filled here.
+id: gold:Gb0239762
+name: "Saline water microbial communities from a lake in Antarctica - Club Lake #6"
+sample_category: environmental

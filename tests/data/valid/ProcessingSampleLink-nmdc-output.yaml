@@ -1,0 +1,4 @@
+# The same step's has_output [nmdc:procsm-11-example] becomes this row.
+processing: nmdc:extrp-11-example
+sample: nmdc:procsm-11-example
+role: output

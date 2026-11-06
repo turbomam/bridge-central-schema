@@ -1,0 +1,3 @@
+# Counter-example: numeric_value must be a number, not text with a unit.
+observed_property: bridge_property:cell_length
+numeric_value: 0.5 um

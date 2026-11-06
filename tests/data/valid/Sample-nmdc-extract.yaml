@@ -1,0 +1,6 @@
+# An NMDC processed sample (an extract) from an organism sample.
+id: nmdc:procsm-11-example
+name: Example extract
+associated_studies:
+  - nmdc:sty-11-example
+organism: nmdc:orgn-11-example

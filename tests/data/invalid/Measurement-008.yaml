@@ -1,0 +1,5 @@
+# Counter-example: a measurement must name its property, with either
+# observed_property or property_label.
+raw_value: 2075 micromole per kilogram
+numeric_value: 2075
+unit: umol/kg

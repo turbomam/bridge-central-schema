@@ -1,0 +1,5 @@
+# Illustrative, not from a source record: a raw value containing a colon.
+# YAML needs the quotes here; any YAML writer adds them, so the schema needs
+# no special handling.
+property_label: soil to water extraction ratio
+raw_value: "1:5"

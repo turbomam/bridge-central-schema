@@ -1,0 +1,5 @@
+# Illustrative, not from a source record: the source cell reads "unknown".
+# An empty cell with no reason would be not_reported instead.
+observed_property: bridge_property:ph  # pH
+raw_value: unknown
+missing_value_reason: unknown

@@ -1,0 +1,8 @@
+# A real flux tower site, from https://ameriflux.lbl.gov/sites/siteinfo/US-Ha1
+# (retrieved 2026-11-03; the page lists the site under the AmeriFlux CC-BY-4.0
+# data policy). AmeriFlux site IDs have no Bioregistry prefix, so the
+# ameriflux prefix is declared in core.yaml and expands to the site page URL.
+# A flux tower collects no samples, which the Site
+# description ("A place where samples are collected") does not yet allow for.
+id: ameriflux:US-Ha1
+name: Harvard Forest EMS Tower (HFR1)

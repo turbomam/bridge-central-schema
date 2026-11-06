@@ -1,0 +1,801 @@
+id: https://w3id.org/ber-data/bridge-central-schema/feature-model
+name: ber-feature-model
+title: BER unified feature model (draft)
+version: 0.1.0-bridge.2
+description: >-
+  Draft LinkML model for genome and metagenome sequence features across BER data sources
+  (NMDC, JGI IMG, KBase).
+notes:
+  - Copied from the feature-table-corpus v0.1.0 release
+    (https://github.com/turbomam/feature-table-corpus/releases/tag/v0.1.0). The evidence and
+    decision history behind each element, and the source-specific conversion tooling, stay in
+    that repository and are not part of this module.
+  - Derived from v0.1.0, not identical to it. The first bridge copy, 0.1.0-bridge.1, differed
+    from v0.1.0 in the following ways, all kept here. Dataset is not tree_root; the name slot is display_name with alias name, because the central schema
+    defines its own name; the Feature class is SequenceFeature
+    (https://github.com/doe-bridge/bridge-central-schema/pull/5#issuecomment-6081798384); the EDAM.DATA prefix is edam, with data_ in the local part; and note, dbxref, ontology_term and
+    taxonomic_lineage are ordered, with the '.' strand described as not stranded
+    (https://github.com/turbomam/feature-table-corpus/pull/172, after v0.1.0).
+  - 0.1.0-bridge.2 adds SequenceFeature.method and MethodEnum, from
+    https://github.com/turbomam/feature-table-corpus/pull/169.
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  bridge_central_schema: https://w3id.org/ber-data/bridge-central-schema/
+  kb_cdm: http://kbase.github.io/cdm-schema/linkml/
+  MIXS: https://w3id.org/mixs/
+  edam: http://edamontology.org/
+  # Data id prefixes, with Bioregistry's spelling and expansion; nmdc matches nmdc-schema.
+  refseq: https://www.ncbi.nlm.nih.gov/protein/
+  insdc: https://www.ebi.ac.uk/ena/data/view/
+  nmdc: https://w3id.org/nmdc/
+  biolink: https://w3id.org/biolink/vocab/
+  # The IRI Biolink itself uses for GFF3 columns and tags (biolink-model 4.4.4).
+  gff3: https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md#
+  faldo: http://biohackathon.org/resource/faldo#
+  SO: http://purl.obolibrary.org/obo/SO_
+
+default_prefix: bridge_central_schema
+default_range: string
+
+imports:
+  - linkml:types
+  - attributes
+
+classes:
+  Dataset:
+    class_uri: bridge_central_schema:Dataset
+    title: Feature dataset
+    description: A document holding every Contig and SequenceFeature harmonized from one or more workflow executions.
+    slots:
+      - contig_collections
+      - contigs
+      - features
+
+  Contig:
+    class_uri: bridge_central_schema:Contig
+    title: Contig
+    description: A reference sequence, chromosome, scaffold, or contig that features are located on.
+    slots:
+      - contig_id
+      - member_of
+      - length_bp
+      - topology
+      - translation_table
+      - taxonomic_lineage
+      - lineage_confidence
+      - generated_by
+      - source_files
+
+  ContigCollection:
+    class_uri: bridge_central_schema:ContigCollection
+    title: Contig collection
+    description: A set of contigs that belong together, such as one isolate genome, one metagenome-assembled genome (MAG) bin, or one whole assembly.
+    exact_mappings:
+      - kb_cdm:ContigCollection
+    notes:
+      - Only isolate, mag, sag and virus collections stand for one organism. A metagenome or
+        metatranscriptome collection is a whole community, so a same-organism query filters on
+        collection_type.
+      - Assembly and bin statistics (N50, CheckM completeness and contamination) are left to
+        CDM and source catalogues; this model only records membership.
+      - Maps to the KBase CDM class of the same name (https://github.com/kbase/cdm-schema,
+        src/linkml/cdm_bioentity.yaml). CDM records the same membership in its
+        Contig_x_ContigCollection table.
+    slots:
+      - collection_id
+      - collection_type
+      - display_name
+      - taxonomic_lineage
+      - generated_by
+      - source_files
+    slot_usage:
+      collection_id:
+        identifier: true
+
+  SequenceFeature:
+    class_uri: bridge_central_schema:SequenceFeature
+    title: SequenceFeature
+    description: An annotated sequence interval.
+    notes:
+      - Holds gene- and CDS-level calls and the per-database evidence hits (Pfam, COG, KO, EC and
+        others) that a functional annotation pipeline reports about a gene, linked to the gene
+        through parent rather than through a second class.
+    close_mappings:
+      # SO:0000110 is "any extent of continuous biological sequence"; a SequenceFeature can also be a
+      # joined location or a protein-coordinate hit, so the match is close, not exact.
+      - SO:0000110
+    slots:
+      - feature_id
+      - stable_identifiers
+      - seqid
+      - source
+      - type
+      - method
+      - start
+      - end
+      - coordinate_system
+      - score
+      - score_type
+      - strand
+      - phase
+      - parent
+      - attributes
+      - generated_by
+      - source_files
+      - is_selected
+      - is_representative
+      - product
+      - product_source
+      - display_name
+      - note
+      - dbxref
+      - ontology_term
+      - translated_sequence
+      - location
+      - target
+    slot_usage:
+      feature_id:
+        identifier: true
+      display_name:
+        # On SequenceFeature, name is the GFF3 Name; on ContigCollection it is not, so the mappings live here.
+        exact_mappings:
+          - gff3:Name
+          - biolink:name
+    rules:
+      - description: A score_type qualifies a score, so it needs one (issue 46).
+        preconditions:
+          slot_conditions:
+            score_type:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            score:
+              value_presence: PRESENT
+
+  AlignmentTarget:
+    class_uri: bridge_central_schema:AlignmentTarget
+    description: >-
+      Where a hit aligns on the thing it matched, such as a Pfam model or a reference protein, in
+      that thing's own positions. GFF3 writes this as the Target and Gap tags.
+    notes:
+      - A hit's own start, end and seqid say where it lies on the query; this says where it lies on
+        the target.
+    slots:
+      - target_id
+      - target_start
+      - target_end
+      - target_strand
+      - gap
+
+  FeatureLocation:
+    class_uri: bridge_central_schema:FeatureLocation
+    description: Ordered component intervals; authoritative when present, with scalar feature bounds serving only as an indexing envelope.
+    slots:
+      - location_operator
+      - parts
+      - crosses_origin
+
+  LocationPart:
+    class_uri: bridge_central_schema:LocationPart
+    description: One oriented, reference-qualified interval with explicit endpoint status.
+    slots:
+      - seqid
+      - start
+      - end
+      - strand
+      - start_status
+      - end_status
+    slot_usage:
+      seqid:
+        range: Contig
+        description: The contig this part lies on; a part is always in contig coordinates.
+      strand:
+        required: true
+
+slots:
+  topology:
+    slot_uri: bridge_central_schema:topology
+    description: Declared reference topology; circular locations also require length_bp.
+    range: TopologyEnum
+  translation_table:
+    slot_uri: bridge_central_schema:translation_table
+    title: Translation table
+    range: integer
+    minimum_value: 1
+    maximum_value: 33
+    description: NCBI genetic code used to translate coding features on this contig, such as 11 for bacteria and archaea or 4 for Mycoplasma.
+    notes:
+      - The upper bound is the highest NCBI genetic code identifier in use, 33
+        (https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi). Codes 7, 8 and 17 to 20 are
+        unassigned.
+  target:
+    slot_uri: bridge_central_schema:target
+    title: Alignment target
+    description: Where this hit aligns on the thing it matched; absent for features that are not alignments.
+    range: AlignmentTarget
+    inlined: true
+    close_mappings:
+      # Close: GFF3's Target holds id, start, end and strand; this keeps Gap alongside.
+      - gff3:Target
+  target_id:
+    slot_uri: bridge_central_schema:target_id
+    title: Target ID
+    required: true
+    description: What the hit aligned to, as the source names it, such as a Pfam accession or a reference gene ID.
+  target_start:
+    slot_uri: bridge_central_schema:target_start
+    title: Target start
+    range: integer
+    minimum_value: 1
+    required: true
+    description: First aligned position on the target, one-based and inclusive.
+  target_end:
+    slot_uri: bridge_central_schema:target_end
+    title: Target end
+    range: integer
+    minimum_value: 1
+    required: true
+    description: Last aligned position on the target, one-based and inclusive.
+  target_strand:
+    slot_uri: bridge_central_schema:target_strand
+    title: Target strand
+    range: StrandEnum
+    description: Strand of the alignment on the target, when the target is a nucleotide sequence.
+  gap:
+    slot_uri: bridge_central_schema:gap
+    title: Gap
+    description: The alignment in GFF3 Gap form, a CIGAR-like string of operations and lengths.
+    exact_mappings:
+      - gff3:Gap
+  location:
+    slot_uri: bridge_central_schema:location
+    description: Explicit location parts; parent links and BED drawing blocks are separate concepts.
+    range: FeatureLocation
+    inlined: true
+  location_operator:
+    slot_uri: bridge_central_schema:location_operator
+    description: Whether the parts describe one interval, a joined sequence, or ordered intervals without a join assertion.
+    range: LocationOperatorEnum
+    required: true
+  parts:
+    slot_uri: bridge_central_schema:parts
+    description: Parts in biological traversal order, including strand orientation.
+    range: LocationPart
+    multivalued: true
+    inlined_as_list: true
+    list_elements_ordered: true
+    required: true
+    minimum_cardinality: 1
+  crosses_origin:
+    slot_uri: bridge_central_schema:crosses_origin
+    description: True only when traversal crosses the origin of a known-length circular reference.
+    range: boolean
+    required: true
+  start_status:
+    slot_uri: bridge_central_schema:start_status
+    description: Exact lower endpoint or a bound before or after the reported coordinate.
+    range: EndpointStatusEnum
+    required: true
+  end_status:
+    slot_uri: bridge_central_schema:end_status
+    description: Exact upper endpoint or a bound before or after the reported coordinate.
+    range: EndpointStatusEnum
+    required: true
+  contig_collections:
+    slot_uri: bridge_central_schema:contig_collections
+    title: Contig collections
+    multivalued: true
+    inlined_as_list: true
+    range: ContigCollection
+    description: Every ContigCollection that this dataset's Contigs name in member_of.
+  contigs:
+    slot_uri: bridge_central_schema:contigs
+    title: Contigs
+    multivalued: true
+    inlined_as_list: true
+    range: Contig
+    description: Every Contig referenced by this dataset's Features.
+  features:
+    slot_uri: bridge_central_schema:features
+    title: Features
+    multivalued: true
+    inlined_as_list: true
+    range: SequenceFeature
+    description: Every SequenceFeature in this dataset.
+
+  contig_id:
+    slot_uri: bridge_central_schema:contig_id
+    title: Contig ID
+    identifier: true
+    description: Native NMDC or source-system identifier for the contig or scaffold.
+  member_of:
+    slot_uri: bridge_central_schema:member_of
+    title: Member of
+    multivalued: true
+    range: ContigCollection
+    description: Contig collections this contig belongs to, for example its isolate genome, or both its assembly and its MAG bin.
+    notes:
+      - Multivalued because one metagenome contig belongs to its assembly and can also be binned
+        into a MAG. Membership in a bin is a statement by the binning workflow, so the bin's
+        own generated_by names that workflow rather than the assembly.
+  collection_id:
+    slot_uri: bridge_central_schema:collection_id
+    title: Collection ID
+    description: Identifier of the genome, bin or assembly, from the system that defined it.
+    notes:
+      - Examples are an NMDC assembly workflow execution (nmdc:wfmgas-...), an NMDC MAG bin name,
+        or a JGI IMG taxon or Data Portal record. Use a CURIE when the identifier has one.
+  collection_type:
+    slot_uri: bridge_central_schema:collection_type
+    title: Collection type
+    range: ContigCollectionTypeEnum
+    description: What kind of contig collection this is.
+  display_name:
+    slot_uri: bridge_central_schema:display_name
+    # Renamed from name in this copy: the root schema defines a name slot, and LinkML refuses two
+    # imported slots with one name. alias keeps the data key as name. Open question in the PR.
+    alias: name
+    title: Name
+    description: >-
+      Human-readable name, not an identifier and not unique: for a contig collection an organism
+      and strain or a bin label; for a feature the GFF3 Name, its display name.
+  note:
+    slot_uri: bridge_central_schema:note
+    exact_mappings:
+      - gff3:Note
+    title: Note
+    multivalued: true
+    list_elements_ordered: true
+    description: GFF3 Note values, free-text remarks about the feature, in source order.
+  dbxref:
+    slot_uri: bridge_central_schema:dbxref
+    exact_mappings:
+      - gff3:Dbxref
+    broad_mappings:
+      - biolink:xref
+    title: Database cross-reference
+    multivalued: true
+    list_elements_ordered: true
+    description: >-
+      GFF3 Dbxref values, db:id references to records in other databases, in source order. Unlike
+      stable_identifiers, a cross-reference can point at a related record rather than at this
+      feature itself, such as a GeneID on a CDS.
+  ontology_term:
+    slot_uri: bridge_central_schema:ontology_term
+    exact_mappings:
+      - gff3:Ontology_term
+    title: Ontology term
+    multivalued: true
+    list_elements_ordered: true
+    description: GFF3 Ontology_term values, ontology term CURIEs such as GO:0003677, in source order.
+  length_bp:
+    slot_uri: bridge_central_schema:length_bp
+    title: Length (bp)
+    range: integer
+    minimum_value: 1
+    description: Contig length in base pairs.
+    notes:
+      - Compute directly from the contig's own FASTA record where there is one, not from a
+        summary statistics file, so it is exact rather than an average.
+  taxonomic_lineage:
+    slot_uri: bridge_central_schema:taxonomic_lineage
+    title: Taxonomic lineage
+    multivalued: true
+    list_elements_ordered: true
+    description: Ranked lineage path, domain to strain, one string per rank.
+    notes:
+      - Left as a list rather than named rank slots (domain, phylum, class, ...), because
+        forcing a fixed depth breaks on any lineage reported at a different resolution.
+        Confirmed 2026-09-18 on one real run, per-contig lineage (Scaffold Lineage tsv) and
+        per-gene lineage (Gene Phylogeny tsv) for the same organism were reported at
+        different depths, 2 ranks versus 8.
+  lineage_confidence:
+    slot_uri: bridge_central_schema:lineage_confidence
+    title: Lineage confidence
+    range: float
+    description: Confidence value reported alongside the lineage call.
+    notes:
+      - Meaning unverified against any pipeline's own documentation; treat the name as
+        descriptive, not confirmed.
+
+  feature_id:
+    slot_uri: bridge_central_schema:feature_id
+    close_mappings:
+      - gff3:ID
+    title: SequenceFeature ID
+    description: Identifier unique within its Dataset.
+    notes:
+      - Uniqueness is a rule for the Dataset, not a property of sources; some sources repeat an ID
+        within one file.
+      - feature_id is a file-local key, not a globally unique persistent identifier. GFF3 IDs are
+        not stable identifiers; use stable_identifiers for those.
+  stable_identifiers:
+    slot_uri: bridge_central_schema:stable_identifiers
+    title: Stable identifiers
+    multivalued: true
+    description: Identifiers an authority assigns to this feature and keeps across releases, as opposed to feature_id, which only needs to be unique within this Dataset.
+    notes:
+      - NMDC annotation files carry no such identifier for their own genes. The IMG gene oid in
+        the KO and EC files (column 2 of Annotation KEGG Orthology, subject_gene_ids in KO_EC
+        Annotation GFF) identifies the reference gene the query was aligned to, not the
+        annotated gene, so it does not belong here. Checked 2026-09-25 on
+        nmdc:wfmgan-11-grwgtd27.2, where both files give 2776147680 for the hit of
+        nmdc:wfmgan-11-grwgtd27.2_0016_3_1208.
+      - Use a CURIE when a prefix exists, such as an NCBI GeneID. A locus tag has no registered
+        prefix and is written as it appears; list both current and legacy locus tags.
+  seqid:
+    slot_uri: bridge_central_schema:seqid
+    exact_mappings:
+      - gff3:seqid
+    title: Sequence ID
+    any_of:
+      - range: Contig
+      - range: SequenceFeature
+    required: true
+    description: >-
+      The reference sequence that start and end are measured along, such as GFF3 column 1 or BED
+      chrom; interpreted within its assembly context. A contig for contig coordinates; for
+      protein coordinates, the CDS whose translation they count residues of.
+    notes:
+      - A protein-coordinate feature's parent is the same CDS. LocationPart.seqid stays a Contig.
+      - For a hit reported in protein coordinates, seqid names the protein, because GFF3 column 1 is
+        the landmark that establishes the coordinate system.
+  source:
+    slot_uri: bridge_central_schema:source
+    exact_mappings:
+      - gff3:source
+    title: Source
+    description: GFF3 column 2, the producing tool and version, e.g. "Prodigal v2.6.3_patched".
+    notes:
+      - Measured 2026-09-11 across 14 real NMDC GFF file types, blank in 3 of them (SMART,
+        TIGRFAM, COG). A blank value is expected, not an error.
+      - Confirmed 2026-09-18 on a real run, a workflow's own Annotation Info File sidecar
+        names the exact database versions (e.g. "TIGRFAM v15.0", "SMART 01_06_2016") even
+        where the individual GFF's own source column is empty; use `generated_by` plus that
+        sidecar for full provenance when this is blank.
+  type:
+    slot_uri: bridge_central_schema:type
+    exact_mappings:
+      - gff3:type
+    title: Type
+    description: GFF3 column 3, nominally a Sequence Ontology term or accession.
+    notes:
+      - Range left as a plain string rather than SO-constrained. Measured 2026-09-11, 7 of 14
+        real NMDC GFF file types put a bare database accession here instead (Pfam, COG,
+        TIGRFAM, SMART, and others); an SO-constrained range would reject real production
+        data. Unresolved from the 2026-09-11 kickoff, whether CURIEs should be required going
+        forward even though today's data does not comply.
+      - Confirmed 2026-09-18, the inconsistency runs both directions. A real RFAM/INFERNAL
+        ncRNA hit used the generic term "misc_feature" here and put its actual identity (an
+        Rfam covariance model accession) in a lowercase `model`/`accession` attribute pair
+        instead, an accession where an SO term is expected in one case, a generic placeholder
+        where an accession would be more specific in another.
+  method:
+    slot_uri: bridge_central_schema:method
+    title: Method
+    range: MethodEnum
+    description: >-
+      The annotation method or reference database whose search produced this feature, such as
+      Pfam or KEGG Orthology.
+    notes:
+      - Distinct from source, which is the tool and version (GFF3 column 2), and from
+        generated_by, which is the run. Set it on evidence hits; leave it unset on gene and RNA
+        calls, where source already names the caller.
+      - feature_id has no required format, which is why method is a separate slot to filter on.
+        The IMG per-method converter forms a hit's feature_id as <source ID>|<method>|<type>, and
+        when method is set on such a hit it equals that middle part, except for TMHMM and SignalP
+        hits, whose feature_id carries the IMG file suffixes tmh and cleavage_sites while method
+        is tmhmm or signalp. Other data, such as tests/data/valid/Dataset-002.yaml, ends hit IDs
+        in source-specific suffixes such as _pfam and _cath, which are not always MethodEnum
+        values (_cath is cath_funfam), so a method taken from a feature_id needs mapping.
+      - Added so one table can hold every method's hits and still be filtered or partitioned by
+        method. Before it, the method was only inside feature_id, and two converters spelled
+        SUPERFAMILY hits differently (supfam and superfamily).
+  start:
+    slot_uri: bridge_central_schema:start
+    exact_mappings:
+      - gff3:start
+      - biolink:start_coordinate
+    close_mappings:
+      - faldo:begin
+    title: Start
+    range: integer
+    required: true
+    minimum_value: 1
+    description: 1-based inclusive start; when location is present this is only the minimum reported part coordinate, not a claim that gaps are occupied.
+  end:
+    slot_uri: bridge_central_schema:end
+    exact_mappings:
+      - gff3:end
+      - biolink:end_coordinate
+    close_mappings:
+      - faldo:end
+    title: End
+    range: integer
+    required: true
+    minimum_value: 1
+    description: 1-based inclusive end, always >= start; when location is present this is only the maximum reported part coordinate.
+  coordinate_system:
+    slot_uri: bridge_central_schema:coordinate_system
+    title: Coordinate system
+    range: CoordinateSystemEnum
+    required: true
+    description: Which coordinate space `start`/`end` are measured in.
+    notes:
+      - Added 2026-09-18 after measuring a real functional-annotation hit against its own
+        parent's translated protein length, a Pfam hit on a 159-residue protein reported
+        start=61, end=136, alignment_length=76 (matching end-start+1 exactly in amino acids,
+        not nucleotides), so the hit's coordinates are protein-relative while its parent
+        CDS's own start/end are contig-relative. A table mixing both kinds of row without
+        this field would silently let one be misread as the other.
+  score:
+    slot_uri: bridge_central_schema:score
+    exact_mappings:
+      - gff3:score
+    title: Score
+    range: float
+    description: GFF3 column 6.
+    notes:
+      - The GFF3 specification itself says the semantics of the score are ill-defined.
+        Meaning is tool-specific (an HMMER bit score, a Prodigal confidence value, and so
+        on); do not compare scores across different `source` values.
+  score_type:
+    slot_uri: bridge_central_schema:score_type
+    title: Score type
+    range: ScoreTypeEnum
+    description: What kind of number score is.
+    notes:
+      - Leave it unset when no source states what the score means. Unset says the meaning is
+        not recorded, not that the score is generic.
+  strand:
+    slot_uri: bridge_central_schema:strand
+    exact_mappings:
+      - gff3:strand
+      - biolink:strand
+    title: Strand
+    range: StrandEnum
+    description: GFF3 column 7.
+  phase:
+    slot_uri: bridge_central_schema:phase
+    exact_mappings:
+      - gff3:phase
+      - biolink:phase
+    title: Phase
+    range: integer
+    minimum_value: 0
+    maximum_value: 2
+    description: GFF3 column 8. One of 0, 1, 2; only meaningful when type is CDS.
+    notes:
+      - Measured 2026-09-11, 366 of 368 real values are 0, so a handler that mishandles 1
+        and 2 will still pass almost all real-data testing.
+  parent:
+    slot_uri: bridge_central_schema:parent
+    exact_mappings:
+      - gff3:Parent
+    title: Parent
+    multivalued: true
+    range: SequenceFeature
+    description: GFF3 column-9 Parent tag(s).
+    notes:
+      - Multivalued because one feature can belong to several parents, such as an exon
+        shared by multiple transcripts. This differs from a discontinuous feature,
+        which repeats the same ID across multiple GFF3 lines.
+      - The 2026-09-17 BRIDGE discussion confirmed that this relationship does not
+        have to be flattened into a join table.
+  attributes:
+    slot_uri: bridge_central_schema:attributes
+    title: Attributes
+    # Close, not exact: column 9 is one text field, and this is its ordered key/value pairs.
+    close_mappings:
+      - gff3:attributes
+    multivalued: true
+    inlined_as_list: true
+    list_elements_ordered: true
+    range: Attribute
+    description: Additional source annotations, metadata, and evidence, including GFF tags not given their own slots.
+    notes:
+      - See the Attribute class description for why this stays generic rather than typed.
+  generated_by:
+    slot_uri: bridge_central_schema:generated_by
+    title: Generated by
+    description: The workflow execution (or tool run) that produced this ContigCollection, Contig or SequenceFeature.
+    notes:
+      - Confirmed 2026-09-18 against a real biosample's full sequencing, a Contig and the
+        Features on it typically come from two DIFFERENT workflow executions, not one. A
+        metagenome assembly workflow (e.g. nmdc:wfmgas-11-19jh9v28.1) produces the Contig; a
+        separate annotation workflow run against that assembly (e.g.
+        nmdc:wfmgan-11-5xxrm214.2) produces the SequenceFeature rows on it. Do not assume one
+        workflow execution id covers both.
+  source_files:
+    slot_uri: bridge_central_schema:source_files
+    title: Source files
+    range: uri
+    multivalued: true
+    description: Source artifact URLs supporting this record, including any annotation sidecars used.
+    notes:
+      - A sidecar may come from a different workflow than generated_by, for example annotation
+        lineage on an assembled Contig. Preserve each artifact's workflow in its URL or manifest.
+  is_selected:
+    slot_uri: bridge_central_schema:is_selected
+    title: Is selected
+    range: boolean
+    description: Whether the annotation pipeline chose this call as canonical for its locus.
+    notes:
+      - "Open question, found 2026-09-18 in that same worked case: is_selected=false does not
+        always mean \"a competing caller won\". One real Prodigal call there
+        (nmdc:wfmgas-11-19jh9v28.1_scf_1_c1_3_65) had no GeneMark call at all for the same
+        locus, and still did not appear in the roll-up, most plausibly filtered for length or
+        confidence. This schema does not yet distinguish \"lost to a competitor\" from
+        \"filtered despite no competitor\"; a future revision may need a second field, or an
+        enum instead of a boolean."
+  is_representative:
+    slot_uri: bridge_central_schema:is_representative
+    title: Is representative
+    range: boolean
+    description: >-
+      Whether the source names this transcript as its gene's representative isoform, the one to
+      use when a query wants a single transcript per gene.
+    notes:
+      - Unset means the source does not say; set false only where the source says so. A marked
+        feature needs a parent (its gene), and a gene has at most one representative.
+      - Different from is_selected, which records which competing call an annotation pipeline kept
+        for a locus, not which of a gene's isoforms stands for it.
+  product:
+    slot_uri: bridge_central_schema:product
+    title: Product
+    description: Human-readable functional product name for a gene, e.g. "transposase".
+    notes:
+      - Populated once, on the gene-level feature; not repeated per functional-evidence hit.
+  product_source:
+    slot_uri: bridge_central_schema:product_source
+    title: Product source
+    description: What justified the product call, e.g. a COG accession or "Hypo-rule applied".
+    notes:
+      - Measured 2026-09-18, identical byte for byte to the parallel Product Names sidecar
+        file for every protein-coding gene checked so far. Use this slot or that file, never
+        both, so the same product assignment is never recorded twice under two different
+        provenance stories.
+  translated_sequence:
+    slot_uri: bridge_central_schema:translated_sequence
+    title: Translated sequence
+    description: Amino-acid translation of a CDS feature, from the workflow's protein FASTA output.
+    notes:
+      - Not available anywhere else in structured form; GFF files reference a CDS by
+        coordinate but never carry its sequence.
+      - Confirmed 2026-09-18, this can legitimately be absent even for a real gene call. One
+        short, partial Prodigal call had no entry at all in Annotation Amino Acid FASTA,
+        apparently filtered before translation; treat a missing value as informative, not as
+        a data gap to fill in.
+
+enums:
+  ContigCollectionTypeEnum:
+    title: Contig collection type
+    description: Kind of contig collection, using the values and descriptions of KBase CDM ContigCollectionType.
+    notes:
+      - Values copied from kbase/cdm-schema src/linkml/cdm_bioentity.yaml at commit c1a59b9 (read
+        2026-09-25), which takes them from Genomics Standards Consortium checklists.
+      - Each meaning is a MIxS checklist (MIXS:0010011 is MIMAG, the checklist for a MAG
+        submission), as CDM has it, not a term for the kind of genome itself.
+    permissible_values:
+      isolate:
+        description: Sequences assembled from DNA of isolated organism.
+      mag:
+        title: Metagenome-Assembled Genome
+        description: Sequences assembled from DNA of mixed community and binned.
+        meaning: MIXS:0010011
+      metagenome:
+        description: Sequences assembled from DNA of mixed community.
+        meaning: MIXS:0010007
+      metatranscriptome:
+        description: Sequences assembled from RNA of mixed community.
+      sag:
+        title: Single Amplified Genome
+        description: Sequences assembled from DNA of single cell.
+        meaning: MIXS:0010010
+      virus:
+        description: Sequences assembled from uncultivated virus genome (DNA/RNA).
+        meaning: MIXS:0010012
+      marker:
+        description: Sequences from targeted region of DNA.
+  ScoreTypeEnum:
+    title: Score type
+    description: Kind of number in a feature's score column.
+    notes:
+      - EDAM terms checked in OLS on 2026-09-25; none is obsolete.
+    permissible_values:
+      bit_score:
+        description: A score normalised so that scores from different searches compare, in bits.
+        meaning: edam:data_2335
+      e_value:
+        description: Expected number of hits at least this good by chance.
+        meaning: edam:data_1667
+      p_value:
+        description: Probability of a result at least this extreme by chance.
+        meaning: edam:data_1669
+      score:
+        description: A tool-specific score of no more specific kind.
+        meaning: edam:data_1772
+  MethodEnum:
+    title: Method
+    description: Annotation method or reference database that produced an evidence hit.
+    permissible_values:
+      pfam:
+        description: Pfam protein families, https://www.ebi.ac.uk/interpro/entry/pfam/
+      cog:
+        description: Clusters of Orthologous Genes, https://www.ncbi.nlm.nih.gov/research/cog/
+      tigrfam:
+        description: TIGRFAMs protein families, https://www.ncbi.nlm.nih.gov/genome/annotation_prok/tigrfams/
+      smart:
+        description: SMART protein domains, https://smart.embl.de/
+      supfam:
+        description: SUPERFAMILY structural domain assignments, https://supfam.org/
+      cath_funfam:
+        description: CATH functional families (FunFams), https://www.cathdb.info/
+      ko_ec:
+        description: KEGG Orthology assignments and the EC numbers that come with them, https://www.genome.jp/kegg/ko.html
+      tmhmm:
+        description: TMHMM transmembrane helix predictions.
+      signalp:
+        description: SignalP signal peptide predictions.
+  TopologyEnum:
+    description: Reference topology used by location validation and distance queries.
+    permissible_values:
+      linear:
+        description: Linear reference with no origin wrap.
+      circular:
+        description: Circular reference whose final base is adjacent to base one.
+  LocationOperatorEnum:
+    description: Relationship between ordered location parts.
+    permissible_values:
+      single:
+        description: One interval.
+      join:
+        description: Parts are joined end to end.
+      order:
+        description: Parts have known order without asserting a joined sequence.
+  EndpointStatusEnum:
+    description: Relationship of the true endpoint to the reported position.
+    permissible_values:
+      exact:
+        description: Exact coordinate.
+      before:
+        description: Endpoint is before the reported coordinate, possibly outside the presented sequence.
+      after:
+        description: Endpoint is after the reported coordinate, possibly outside the presented sequence.
+  StrandEnum:
+    title: Strand
+    description: GFF3 column-7 strand values.
+    notes:
+      - "Permissible value names are the literal GFF3 symbols (+, -, ., ?), not word forms
+        (Plus, Minus, ...), so a value here round-trips to a real GFF3 file unchanged.
+        linkml-lint's standard_naming and permissible_values_format checks both flag these
+        four as non-conforming (not uppersnake-case); that is a deliberate exception, not an
+        oversight, since a word form would be less faithful to the source format this schema
+        exists to represent."
+      - "Consequence, confirmed 2026-09-18 by running gen-pydantic against this schema: the
+        generated Python Enum member for the minus strand is named `_`
+        (StrandEnum('-') is StrandEnum._), Python's conventional throwaway name, because
+        pydantic generation can't turn a bare '-' into a valid identifier. Anyone writing code
+        against a generated model will hit this; it's a consequence of the choice above, not a
+        new problem, but worth knowing before it surprises someone."
+    permissible_values:
+      "+":
+        description: Plus/forward strand.
+      "-":
+        description: Minus/reverse strand.
+      ".":
+        description: Not stranded (GFF3 default).
+      "?":
+        description: Strand is relevant but unknown (GFF3 allowance).
+  CoordinateSystemEnum:
+    title: Coordinate system
+    description: Which coordinate space a SequenceFeature's start/end are measured in.
+    permissible_values:
+      contig:
+        description: start/end are nucleotide positions on the referenced Contig.
+      protein:
+        description: >-
+          start/end are amino-acid positions within the parent feature's translated
+          sequence, not nucleotide positions on any contig.

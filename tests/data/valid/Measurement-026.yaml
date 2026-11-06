@@ -1,0 +1,5 @@
+# Illustrative, not from a source record: a value known only to the year,
+# so observed_time has year resolution. Quoted so YAML keeps it as text.
+observed_property: bridge_property:ph  # pH
+numeric_value: 6.8
+observed_time: "2021"

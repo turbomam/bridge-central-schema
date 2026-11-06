@@ -1,0 +1,6 @@
+# Counter-example: unit must be a printable-ASCII UCUM code (um, not µm).
+# The source spelling belongs in raw_value.
+observed_property: bridge_property:cell_length
+raw_value: 0.5 µm
+numeric_value: 0.5
+unit: µm

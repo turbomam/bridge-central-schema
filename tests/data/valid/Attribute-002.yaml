@@ -1,0 +1,6 @@
+# A numeric attribute from the same Pfam hit, with the optional CURIE (edam:data_1667, E-value), as in the attribute_cv_id description,
+# and value read as a number. value keeps the source text.
+key: e-value
+value: '3.4e-28'
+attribute_cv_id: edam:data_1667
+numeric_value: 3.4e-28

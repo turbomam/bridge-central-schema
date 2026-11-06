@@ -1,7 +1,4 @@
-# Counter-example: observed_property is not a BERVO CURIE, violating the
-# example pattern constraint on Measurement.
-observed_property: bridge:WT
-# feature_of_interest: bridge:usgs.09110000   # deferred with the slot (sample TODO)
-result:
-  numeric_value: 4.2
-  unit: Cel
+# Counter-example: a measurement must name its property (here neither observed_property nor property_label is given).
+raw_value: 0.5 um
+numeric_value: 0.5
+unit: um

@@ -1,0 +1,298 @@
+# Draft BRIDGE umbrella classes, 2026-10-14. A starting point for discussion, not agreed.
+# Built from the nmdc-schema and BASALT comparison:
+# https://docs.google.com/document/d/1ZF5mnfnauqJag8zM-YEZVq5BPa-jUyoKOOHChi5xtd4/edit
+# Sources read 2026-10-14: nmdc-schema main 03ba5a2, BASALT-Schema f41b7f4.
+id: https://w3id.org/ber-data/bridge-central-schema/umbrella
+name: umbrella
+title: BRIDGE umbrella classes (draft)
+description: >-
+  Shared classes for samples, organisms, studies and sample processing that
+  source schemas map to. Each class carries mappings to the nmdc-schema and
+  BASALT classes it stands for. Source-specific detail (MIxS fields, protocol
+  parameters) stays in the source schemas.
+license: Apache-2.0
+
+prefixes:
+  bridge_central_schema: https://w3id.org/ber-data/bridge-central-schema/
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+  basalt_schema: https://emsl-computing.github.io/BASALT-Schema/elements/
+  COB: http://purl.obolibrary.org/obo/COB_
+  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
+  MIXS: https://w3id.org/mixs/
+  schema: http://schema.org/
+default_prefix: bridge_central_schema
+default_range: string
+
+imports:
+  - linkml:types
+  - core
+
+# NamedThing and its slots are defined in core.yaml.
+classes:
+
+  Study:
+    is_a: NamedThing
+    description: >-
+      A research initiative, proposal or project under which samples are
+      collected and processed.
+    close_mappings:
+      # nmdc:Study aliases include "project" and "proposal".
+      - nmdc:Study
+      # BASALT Study holds an EMSL user project (project_id, proposal abstract).
+      - basalt_schema:Study
+
+  Site:
+    is_a: NamedThing
+    description: A place where samples are collected.
+    close_mappings:
+      - nmdc:FieldResearchSite
+      - basalt_schema:Site
+
+  Organism:
+    is_a: NamedThing
+    description: >-
+      The biological identity of what is in a sample (a strain, isolate or
+      engineered construct), not a physical sample. Several samples can share
+      one organism.
+    slots:
+      - taxon
+    close_mappings:
+      # Both define biological identity, not a sample; both dropped a separate Strain class.
+      - nmdc:Organism
+      - basalt_schema:organism
+
+  Sample:
+    is_a: NamedThing
+    description: >-
+      A material entity taken from a larger body, or derived from another
+      sample, so that measurements or observations on it can be read as
+      claims about that body.
+    slots:
+      - associated_studies
+      - collected_at
+      - organism
+      - sample_category
+    exact_mappings:
+      - nmdc:Sample
+      - basalt_schema:Sample
+    narrow_mappings:
+      - nmdc:ProcessedSample
+      - basalt_schema:ProcessedSample
+    comments:
+      - >-
+        Concrete sample types stay in the source schemas: nmdc:Biosample and
+        nmdc:OrganismSample, and the 18 direct BASALT Sample subclasses
+        (SoilSample, WaterSample, ...).
+      - >-
+        Samples chain. A DNA extract is a sample of the soil core it was
+        extracted from, and an incubated subsample (for example a
+        stable-isotope-labeled incubation) is a sample of the material it
+        started from. The MaterialProcessing step that produced it points at
+        it with has_output, so following the steps back reaches the body that
+        was sampled.
+      - >-
+        A sample meets three conditions, each with a source: it is material
+        (nmdc:MaterialEntity), it is representative of the body it was taken
+        from (OBI:0000744 material sampling process, sosa:isSampleOf), and it
+        was collected as an input to measurement (OBI:0100051 specimen). The
+        reasoning is in drafts/umbrella/what-is-a-sample.md.
+      - >-
+        These are not samples: a subject observed in its own right, such as a
+        phenotyped plant or a patient; an observation, such as a plant at a
+        time point under a treatment; a station or site; and an information
+        artifact, such as a MAG bin or a construct design. Material drawn from
+        a subject, such as a leaf disc, is a sample.
+      - >-
+        BASALT records collection on a separate SamplingActivity class; NMDC
+        records it on the sample. This draft leaves the sampling event out.
+        Representativeness is a property of that event, so the event, or at
+        least the source, needs a home before this class is agreed.
+      - >-
+        There is no separate class for processed samples. A sample produced by
+        a processing step is a Sample, and that step's has_output points at
+        it. sample_category says where the material came from, not whether it
+        was processed, so a soil DNA extract is still environmental.
+
+  PlannedProcess:
+    is_a: NamedThing
+    abstract: true
+    description: >-
+      A process carried out according to a plan, such as a laboratory step or a
+      computational workflow.
+    slots:
+      - has_input
+      - has_output
+      - protocol
+    exact_mappings:
+      - nmdc:PlannedProcess
+    close_mappings:
+      # OBI made OBI:0000011 (planned process), the class_uri of
+      # nmdc:PlannedProcess, obsolete in favor of this term. COB:0000110
+      # (material processing) is a subclass of it.
+      - COB:0000035
+    comments:
+      - >-
+        MaterialProcessing (sample to sample) is the only subclass in this
+        draft. Subclasses for sample-to-data processes (nmdc:DataGeneration)
+        and data-to-data processes (nmdc:WorkflowExecution) are future work;
+        the umbrella has no data object class for them to range on yet.
+
+  MaterialProcessing:
+    is_a: PlannedProcess
+    abstract: true
+    description: >-
+      One laboratory step that takes one or more samples as input and produces
+      one or more samples.
+    slot_usage:
+      has_input:
+        range: Sample
+      has_output:
+        range: Sample
+    exact_mappings:
+      - nmdc:MaterialProcessing
+      - basalt_schema:SampleProcessing
+    close_mappings:
+      # Replaces OBI:0000094, which OBI made obsolete in favor of this term.
+      - COB:0000110
+    comments:
+      - >-
+        Inputs and outputs are lists here, as in nmdc-schema. BASALT stores the
+        same links only in ProcessingSampleLink rows; see that class.
+
+  ProcessingSampleLink:
+    description: >-
+      One row of the flat table form of has_input and has_output: one sample,
+      one processing step, and whether the sample went in or came out. This is
+      the shape a flattened lakehouse table would take. It is derived from
+      has_input and has_output, not recorded separately.
+    slots:
+      - processing
+      - sample
+      - role
+    exact_mappings:
+      - basalt_schema:ProcessingSampleLink
+    related_mappings:
+      # nmdc-lakehouse writes these as two tables, one per direction:
+      # material_processing_set_has_input and material_processing_set_has_output.
+      - nmdc:has_input
+      - nmdc:has_output
+    comments:
+      - >-
+        BASALT's link also has step_number and in_run, which order steps within
+        a run. Whether those belong in the umbrella is an open question.
+
+slots:
+  taxon:
+    description: Taxonomic classification, as an NCBITaxon CURIE.
+    range: uriorcurie
+    # Same pattern as the id of nmdc:NcbiTaxon in nmdc-schema.
+    pattern: '^NCBITaxon:\d+$'
+    close_mappings:
+      - nmdc:classified_as
+      - basalt_schema:taxonomy_id
+  associated_studies:
+    description: The studies the sample was collected or processed under.
+    range: Study
+    multivalued: true
+    close_mappings:
+      - nmdc:associated_studies
+      # BASALT's `project` is an integer, not a reference.
+      - basalt_schema:project
+  collected_at:
+    description: The site the sample was collected from.
+    range: Site
+    close_mappings:
+      - nmdc:collected_from
+      # On BASALT SamplingActivity, not on Sample.
+      - basalt_schema:sampled_at_site
+  organism:
+    description: The organism the sample is expected to contain, when it is one organism.
+    range: Organism
+    close_mappings:
+      - nmdc:expected_organism
+      - basalt_schema:organism_ref
+  sample_category:
+    description: >-
+      Where the sample's material came from, such as a pure culture, an
+      engineered strain or the environment. Programs and protocols (MONet,
+      Terraform, AMP2) stay with the study and the source schema.
+    range: SampleCategoryEnum
+    related_mappings:
+      # BASALT expresses this as Sample subclasses; nmdc-schema has no single
+      # slot for it (env_package, sample_type and samp_type are all candidates).
+      - nmdc:sample_type
+  has_input:
+    description: The things a process takes in, such as samples or data.
+    range: NamedThing
+    multivalued: true
+    exact_mappings:
+      - nmdc:has_input
+  has_output:
+    description: The things a process produces, such as samples or data.
+    range: NamedThing
+    multivalued: true
+    exact_mappings:
+      - nmdc:has_output
+  protocol:
+    description: A link to the protocol the step followed.
+    range: uriorcurie
+    close_mappings:
+      - nmdc:protocol_link
+      - basalt_schema:in_protocol
+  processing:
+    description: The processing step this link row belongs to.
+    range: MaterialProcessing
+    required: true
+    close_mappings:
+      - basalt_schema:processing_id
+  sample:
+    description: The sample this link row connects to the processing step.
+    range: Sample
+    required: true
+    close_mappings:
+      - basalt_schema:sample_id
+  role:
+    description: Whether the sample went into or came out of the processing step.
+    range: ProcessingRoleEnum
+    required: true
+    exact_mappings:
+      - basalt_schema:role
+
+enums:
+  SampleCategoryEnum:
+    description: >-
+      Where a sample's material came from. Each value lists the BASALT Sample
+      subclasses it corresponds to. Ontology meanings are not assigned yet.
+    permissible_values:
+      environmental:
+        description: Material collected from the environment.
+        narrow_mappings:
+          - basalt_schema:SoilSample
+          - basalt_schema:MonetSoilSample
+          - basalt_schema:SedimentSample
+          - basalt_schema:WaterSample
+          - basalt_schema:AerosolSample
+          - basalt_schema:AerosolArmSample
+      plant:
+        exact_mappings: [basalt_schema:PlantSample]
+      pure_culture:
+        exact_mappings: [basalt_schema:PureCultureSample]
+      mixed_culture:
+        exact_mappings: [basalt_schema:MixedCultureSample]
+        related_mappings: [basalt_schema:CultureEnvironmentalSample]
+      engineered_strain:
+        exact_mappings: [basalt_schema:EngineeredStrainSample]
+      synthesized_material:
+        exact_mappings: [basalt_schema:SynthesizedMaterialSample]
+      commercial_material:
+        exact_mappings: [basalt_schema:CommerciallyPurchasedSample]
+      other:
+        exact_mappings: [basalt_schema:OtherUndescribedSample]
+  ProcessingRoleEnum:
+    description: Whether a sample is an input to or an output of a processing step.
+    permissible_values:
+      input:
+        description: The sample was consumed by the processing step.
+      output:
+        description: The sample was produced by the processing step.

@@ -1,0 +1,5 @@
+# An environmental sample: sample_category says where the material came from.
+# Ids are made up.
+id: nmdc:bsm-11-example
+name: Example soil sample
+sample_category: environmental

@@ -1,0 +1,918 @@
+# Real NCBI RefSeq data: Enterobacteria phage phiX174, NC_001422.1, converted with the
+# insdc-locations/1.0.0 profile from https://github.com/turbomam/feature-table-corpus/blob/v0.1.0/corpus/sources/ncbi-refseq/NC_001422.1_2026-09-21.gb .
+# Joined locations, some crossing the origin of the circular genome.
+contigs:
+- contig_id: refseq:NC_001422.1
+  length_bp: 5386
+  topology: circular
+features:
+- feature_id: insdc:NC_001422.1:feature-1
+  seqid: refseq:NC_001422.1
+  type: source
+  coordinate_system: contig
+  start: 1
+  end: 5386
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 1
+      end: 5386
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: organism
+    value: Escherichia phage phiX174
+  - key: mol_type
+    value: genomic DNA
+  - key: db_xref
+    value: taxon:2886930
+- feature_id: insdc:NC_001422.1:feature-2
+  seqid: refseq:NC_001422.1
+  type: gene
+  coordinate_system: contig
+  start: 1
+  end: 5386
+  strand: +
+  location:
+    location_operator: join
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 3981
+      end: 5386
+      start_status: exact
+      end_status: exact
+      strand: +
+    - seqid: refseq:NC_001422.1
+      start: 1
+      end: 136
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: true
+  attributes:
+  - key: locus_tag
+    value: phiX174p01
+  - key: db_xref
+    value: GeneID:2546398
+- feature_id: insdc:NC_001422.1:feature-3
+  seqid: refseq:NC_001422.1
+  type: CDS
+  coordinate_system: contig
+  start: 1
+  end: 5386
+  strand: +
+  location:
+    location_operator: join
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 3981
+      end: 5386
+      start_status: exact
+      end_status: exact
+      strand: +
+    - seqid: refseq:NC_001422.1
+      start: 1
+      end: 136
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: true
+  attributes:
+  - key: locus_tag
+    value: phiX174p01
+  - key: function
+    value: viral strand synthesis
+  - key: note
+    value: rf replication
+  - key: codon_start
+    value: '1'
+  - key: transl_table
+    value: '11'
+  - key: product
+    value: DNA replication initiation
+  - key: protein_id
+    value: NP_040703.1
+  - key: db_xref
+    value: GeneID:2546398
+  - key: translation
+    value: MVRSYYPSECHADYFDFERIEALKPAIEACGISTLSQSPMLGFHKQMDNRIKLLEEILSFRMQGVEFDNGDMYVDGHKAASDVRDEFVSVTEKLMDELAQCYNVLPQLDINNTIDHRPEGDEKWFLENEKTVTQFCRKLAAERPLKDIRDEYNYPKKKGIKDECSRLLEASTMKSRRGFAIQRLMNAMRQAHADGWFIVFDTLTLADDRLEAFYDNPNALRDYFRDIGRMVLAAEGRKANDSHADCYQYFCVPEYGTANGRLHFHAVHFMRTLPTGSVDPNFGRRVRNRRQLNSLQNTWPYGYSMPIAVRYTQDAFSRSGWLWPVDAKGEPLKATSYMAVGFYVAKYVNKKSDMDLAAKGLGAKEWNNSLKTKLSLLPKKLFRIRMSRNFGMKMLTMTNLSTECLIQLTKLGYDATPFNQILKQNAKREMRLRLGKVTVADVLAAQPVTTNLLKFMRASIKMIGVSNLQSFIASMTQKLTLSDISDESKNYLDKAGITTACLRIKSKWTAGGK
+  product: DNA replication initiation
+  translated_sequence: MVRSYYPSECHADYFDFERIEALKPAIEACGISTLSQSPMLGFHKQMDNRIKLLEEILSFRMQGVEFDNGDMYVDGHKAASDVRDEFVSVTEKLMDELAQCYNVLPQLDINNTIDHRPEGDEKWFLENEKTVTQFCRKLAAERPLKDIRDEYNYPKKKGIKDECSRLLEASTMKSRRGFAIQRLMNAMRQAHADGWFIVFDTLTLADDRLEAFYDNPNALRDYFRDIGRMVLAAEGRKANDSHADCYQYFCVPEYGTANGRLHFHAVHFMRTLPTGSVDPNFGRRVRNRRQLNSLQNTWPYGYSMPIAVRYTQDAFSRSGWLWPVDAKGEPLKATSYMAVGFYVAKYVNKKSDMDLAAKGLGAKEWNNSLKTKLSLLPKKLFRIRMSRNFGMKMLTMTNLSTECLIQLTKLGYDATPFNQILKQNAKREMRLRLGKVTVADVLAAQPVTTNLLKFMRASIKMIGVSNLQSFIASMTQKLTLSDISDESKNYLDKAGITTACLRIKSKWTAGGK
+- feature_id: insdc:NC_001422.1:feature-4
+  seqid: refseq:NC_001422.1
+  type: gene
+  coordinate_system: contig
+  start: 1
+  end: 5386
+  strand: +
+  location:
+    location_operator: join
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 4497
+      end: 5386
+      start_status: exact
+      end_status: exact
+      strand: +
+    - seqid: refseq:NC_001422.1
+      start: 1
+      end: 136
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: true
+  attributes:
+  - key: locus_tag
+    value: phiX174p02
+  - key: db_xref
+    value: GeneID:2546406
+- feature_id: insdc:NC_001422.1:feature-5
+  seqid: refseq:NC_001422.1
+  type: CDS
+  coordinate_system: contig
+  start: 1
+  end: 5386
+  strand: +
+  location:
+    location_operator: join
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 4497
+      end: 5386
+      start_status: exact
+      end_status: exact
+      strand: +
+    - seqid: refseq:NC_001422.1
+      start: 1
+      end: 136
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: true
+  attributes:
+  - key: locus_tag
+    value: phiX174p02
+  - key: function
+    value: shut off host DNA synthesis
+  - key: codon_start
+    value: '1'
+  - key: transl_table
+    value: '11'
+  - key: product
+    value: DNA replication initiation
+  - key: protein_id
+    value: NP_040704.1
+  - key: db_xref
+    value: GeneID:2546406
+  - key: translation
+    value: MKSRRGFAIQRLMNAMRQAHADGWFIVFDTLTLADDRLEAFYDNPNALRDYFRDIGRMVLAAEGRKANDSHADCYQYFCVPEYGTANGRLHFHAVHFMRTLPTGSVDPNFGRRVRNRRQLNSLQNTWPYGYSMPIAVRYTQDAFSRSGWLWPVDAKGEPLKATSYMAVGFYVAKYVNKKSDMDLAAKGLGAKEWNNSLKTKLSLLPKKLFRIRMSRNFGMKMLTMTNLSTECLIQLTKLGYDATPFNQILKQNAKREMRLRLGKVTVADVLAAQPVTTNLLKFMRASIKMIGVSNLQSFIASMTQKLTLSDISDESKNYLDKAGITTACLRIKSKWTAGGK
+  product: DNA replication initiation
+  translated_sequence: MKSRRGFAIQRLMNAMRQAHADGWFIVFDTLTLADDRLEAFYDNPNALRDYFRDIGRMVLAAEGRKANDSHADCYQYFCVPEYGTANGRLHFHAVHFMRTLPTGSVDPNFGRRVRNRRQLNSLQNTWPYGYSMPIAVRYTQDAFSRSGWLWPVDAKGEPLKATSYMAVGFYVAKYVNKKSDMDLAAKGLGAKEWNNSLKTKLSLLPKKLFRIRMSRNFGMKMLTMTNLSTECLIQLTKLGYDATPFNQILKQNAKREMRLRLGKVTVADVLAAQPVTTNLLKFMRASIKMIGVSNLQSFIASMTQKLTLSDISDESKNYLDKAGITTACLRIKSKWTAGGK
+- feature_id: insdc:NC_001422.1:feature-6
+  seqid: refseq:NC_001422.1
+  type: gene
+  coordinate_system: contig
+  start: 1
+  end: 5386
+  strand: +
+  location:
+    location_operator: join
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 5075
+      end: 5386
+      start_status: exact
+      end_status: exact
+      strand: +
+    - seqid: refseq:NC_001422.1
+      start: 1
+      end: 51
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: true
+  attributes:
+  - key: locus_tag
+    value: phiX174p03
+  - key: db_xref
+    value: GeneID:2546405
+- feature_id: insdc:NC_001422.1:feature-7
+  seqid: refseq:NC_001422.1
+  type: CDS
+  coordinate_system: contig
+  start: 1
+  end: 5386
+  strand: +
+  location:
+    location_operator: join
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 5075
+      end: 5386
+      start_status: exact
+      end_status: exact
+      strand: +
+    - seqid: refseq:NC_001422.1
+      start: 1
+      end: 51
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: true
+  attributes:
+  - key: locus_tag
+    value: phiX174p03
+  - key: function
+    value: capsid morphogenesis
+  - key: codon_start
+    value: '1'
+  - key: transl_table
+    value: '11'
+  - key: product
+    value: head morphogenesis
+  - key: protein_id
+    value: NP_040705.1
+  - key: db_xref
+    value: GeneID:2546405
+  - key: translation
+    value: MEQLTKNQAVATSQEAVQNQNEPQLRDENAHNDKSVHGVLNPTYQAGLRRDAVQPDIEAERKKRDEIEAGKSYCSRRFGGATCDDKSAQIYARFDKNDWRIQPAEFYRFHDAEVNTFGYF
+  product: head morphogenesis
+  translated_sequence: MEQLTKNQAVATSQEAVQNQNEPQLRDENAHNDKSVHGVLNPTYQAGLRRDAVQPDIEAERKKRDEIEAGKSYCSRRFGGATCDDKSAQIYARFDKNDWRIQPAEFYRFHDAEVNTFGYF
+- feature_id: insdc:NC_001422.1:feature-8
+  seqid: refseq:NC_001422.1
+  type: variation
+  coordinate_system: contig
+  start: 23
+  end: 23
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 23
+      end: 23
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p03
+  - key: note
+    value: in am18 and am35 [14]
+  - key: replace
+    value: t
+- feature_id: insdc:NC_001422.1:feature-9
+  seqid: refseq:NC_001422.1
+  type: variation
+  coordinate_system: contig
+  start: 25
+  end: 25
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 25
+      end: 25
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p03
+  - key: note
+    value: ts116 [14]
+  - key: replace
+    value: c
+- feature_id: insdc:NC_001422.1:feature-10
+  seqid: refseq:NC_001422.1
+  type: gene
+  coordinate_system: contig
+  start: 51
+  end: 221
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 51
+      end: 221
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p04
+  - key: db_xref
+    value: GeneID:2546403
+- feature_id: insdc:NC_001422.1:feature-11
+  seqid: refseq:NC_001422.1
+  type: CDS
+  coordinate_system: contig
+  start: 51
+  end: 221
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 51
+      end: 221
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p04
+  - key: codon_start
+    value: '1'
+  - key: transl_table
+    value: '11'
+  - key: product
+    value: K
+  - key: protein_id
+    value: NP_040706.1
+  - key: db_xref
+    value: GeneID:2546403
+  - key: translation
+    value: MSRKIILIKQELLLLVYELNRSGLLAENEKIRPILAQLEKLLLCDLSPSTNDSVKN
+  product: K
+  translated_sequence: MSRKIILIKQELLLLVYELNRSGLLAENEKIRPILAQLEKLLLCDLSPSTNDSVKN
+- feature_id: insdc:NC_001422.1:feature-12
+  seqid: refseq:NC_001422.1
+  type: variation
+  coordinate_system: contig
+  start: 57
+  end: 57
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 57
+      end: 57
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p04
+  - key: note
+    value: am6 [14]
+  - key: replace
+    value: c
+- feature_id: insdc:NC_001422.1:feature-13
+  seqid: refseq:NC_001422.1
+  type: variation
+  coordinate_system: contig
+  start: 117
+  end: 117
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 117
+      end: 117
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p04
+  - key: note
+    value: am6 [14]
+  - key: replace
+    value: a
+- feature_id: insdc:NC_001422.1:feature-14
+  seqid: refseq:NC_001422.1
+  type: gene
+  coordinate_system: contig
+  start: 133
+  end: 393
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 133
+      end: 393
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p05
+  - key: db_xref
+    value: GeneID:2546402
+- feature_id: insdc:NC_001422.1:feature-15
+  seqid: refseq:NC_001422.1
+  type: CDS
+  coordinate_system: contig
+  start: 133
+  end: 393
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 133
+      end: 393
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p05
+  - key: note
+    value: DNA maturation
+  - key: codon_start
+    value: '1'
+  - key: transl_table
+    value: '11'
+  - key: product
+    value: terminase
+  - key: protein_id
+    value: NP_040707.1
+  - key: db_xref
+    value: GeneID:2546402
+  - key: translation
+    value: MRKFDLSLRSSRSSYFATFRHQLTILSKTDALDEEKWLNMLGTFVKDWFRYESHFVHGRDSLVDILKERGLLSESDAVQPLIGKKS
+  product: terminase
+  translated_sequence: MRKFDLSLRSSRSSYFATFRHQLTILSKTDALDEEKWLNMLGTFVKDWFRYESHFVHGRDSLVDILKERGLLSESDAVQPLIGKKS
+- feature_id: insdc:NC_001422.1:feature-16
+  seqid: refseq:NC_001422.1
+  type: gene
+  coordinate_system: contig
+  start: 358
+  end: 3975
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 358
+      end: 3975
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p06
+  - key: db_xref
+    value: GeneID:2546408
+- feature_id: insdc:NC_001422.1:feature-17
+  seqid: refseq:NC_001422.1
+  type: mRNA
+  coordinate_system: contig
+  start: 358
+  end: 3975
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 358
+      end: 3975
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p06
+  - key: product
+    value: major transcript
+  - key: db_xref
+    value: GeneID:2546408
+  product: major transcript
+- feature_id: insdc:NC_001422.1:feature-18
+  seqid: refseq:NC_001422.1
+  type: gene
+  coordinate_system: contig
+  start: 358
+  end: 991
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 358
+      end: 991
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p07
+  - key: db_xref
+    value: GeneID:2546399
+- feature_id: insdc:NC_001422.1:feature-19
+  seqid: refseq:NC_001422.1
+  type: mRNA
+  coordinate_system: contig
+  start: 358
+  end: 991
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 358
+      end: 991
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p07
+  - key: product
+    value: minor transcript
+  - key: db_xref
+    value: GeneID:2546399
+  product: minor transcript
+- feature_id: insdc:NC_001422.1:feature-20
+  seqid: refseq:NC_001422.1
+  type: CDS
+  coordinate_system: contig
+  start: 390
+  end: 848
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 390
+      end: 848
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p07
+  - key: function
+    value: capsid morphogenesis
+  - key: codon_start
+    value: '1'
+  - key: transl_table
+    value: '11'
+  - key: product
+    value: head morphogenesis
+  - key: protein_id
+    value: NP_040708.1
+  - key: db_xref
+    value: GeneID:2546399
+  - key: translation
+    value: MSQVTEQSVRFQTALASIKLIQASAVLDLTEDDFDFLTSNKVWIATDRSRARRCVEACVYGTLDFVGYPRFPAPVEFIAAVIAYYVHPVNIQTACLIMEGAEFTENIINGVERPVKAAELFAFTLRVRAGNTDVLTDAEENVRQKLRAEGVM
+  product: head morphogenesis
+  translated_sequence: MSQVTEQSVRFQTALASIKLIQASAVLDLTEDDFDFLTSNKVWIATDRSRARRCVEACVYGTLDFVGYPRFPAPVEFIAAVIAYYVHPVNIQTACLIMEGAEFTENIINGVERPVKAAELFAFTLRVRAGNTDVLTDAEENVRQKLRAEGVM
+- feature_id: insdc:NC_001422.1:feature-21
+  seqid: refseq:NC_001422.1
+  type: gene
+  coordinate_system: contig
+  start: 568
+  end: 843
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 568
+      end: 843
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p08
+  - key: db_xref
+    value: GeneID:2546400
+- feature_id: insdc:NC_001422.1:feature-22
+  seqid: refseq:NC_001422.1
+  type: CDS
+  coordinate_system: contig
+  start: 568
+  end: 843
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 568
+      end: 843
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p08
+  - key: function
+    value: cell lysis
+  - key: codon_start
+    value: '1'
+  - key: transl_table
+    value: '11'
+  - key: product
+    value: endolysin
+  - key: protein_id
+    value: NP_040709.1
+  - key: db_xref
+    value: GeneID:2546400
+  - key: translation
+    value: MVRWTLWDTLAFLLLLSLLLPSLLIMFIPSTFKRPVSSWKALNLRKTLLMASSVRLKPLNCSRLPCVYAQETLTFLLTQKKTCVKNYVRKE
+  product: endolysin
+  translated_sequence: MVRWTLWDTLAFLLLLSLLLPSLLIMFIPSTFKRPVSSWKALNLRKTLLMASSVRLKPLNCSRLPCVYAQETLTFLLTQKKTCVKNYVRKE
+- feature_id: insdc:NC_001422.1:feature-23
+  seqid: refseq:NC_001422.1
+  type: gene
+  coordinate_system: contig
+  start: 848
+  end: 964
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 848
+      end: 964
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p09
+  - key: db_xref
+    value: GeneID:2546404
+- feature_id: insdc:NC_001422.1:feature-24
+  seqid: refseq:NC_001422.1
+  type: CDS
+  coordinate_system: contig
+  start: 848
+  end: 964
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 848
+      end: 964
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p09
+  - key: note
+    value: core protein
+  - key: codon_start
+    value: '1'
+  - key: transl_table
+    value: '11'
+  - key: product
+    value: DNA condensation
+  - key: protein_id
+    value: NP_040710.1
+  - key: db_xref
+    value: GeneID:2546404
+  - key: translation
+    value: MSKGKKRSGARPGRPQPLRGTKGKRKGARLWYVGGQQF
+  product: DNA condensation
+  translated_sequence: MSKGKKRSGARPGRPQPLRGTKGKRKGARLWYVGGQQF
+- feature_id: insdc:NC_001422.1:feature-25
+  seqid: refseq:NC_001422.1
+  type: CDS
+  coordinate_system: contig
+  start: 1001
+  end: 2284
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 1001
+      end: 2284
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p06
+  - key: note
+    value: major coat protein
+  - key: codon_start
+    value: '1'
+  - key: transl_table
+    value: '11'
+  - key: product
+    value: major head protein
+  - key: protein_id
+    value: NP_040711.1
+  - key: db_xref
+    value: GeneID:2546408
+  - key: translation
+    value: MSNIQTGAERMPHDLSHLGFLAGQIGRLITISTTPVIAGDSFEMDAVGALRLSPLRRGLAIDSTVDIFTFYVPHRHVYGEQWIKFMKDGVNATPLPTVNTTGYIDHAAFLGTINPDTNKIPKHLFQGYLNIYNNYFKAPWMPDRTEANPNELNQDDARYGFRCCHLKNIWTAPLPPETELSRQMTTSTTSIDIMGLQAAYANLHTDQERDYFMQRYHDVISSFGGKTSYDADNRPLLVMRSNLWASGYDVDGTDQTSLGQFSGRVQQTYKHSVPRFFVPEHGTMFTLALVRFPPTATKEIQYLNAKGALTYTDIAGDPVLYGNLPPREISMKDVFRSGDSSKKFKIAEGQWYRYAPSYVSPAYHLLEGFPFIQEPPSGDLQERVLIRHHDYDQCFQSVQLLQWNSQVKFNVTVYRNLPTTRDSIMTS
+  product: major head protein
+  translated_sequence: MSNIQTGAERMPHDLSHLGFLAGQIGRLITISTTPVIAGDSFEMDAVGALRLSPLRRGLAIDSTVDIFTFYVPHRHVYGEQWIKFMKDGVNATPLPTVNTTGYIDHAAFLGTINPDTNKIPKHLFQGYLNIYNNYFKAPWMPDRTEANPNELNQDDARYGFRCCHLKNIWTAPLPPETELSRQMTTSTTSIDIMGLQAAYANLHTDQERDYFMQRYHDVISSFGGKTSYDADNRPLLVMRSNLWASGYDVDGTDQTSLGQFSGRVQQTYKHSVPRFFVPEHGTMFTLALVRFPPTATKEIQYLNAKGALTYTDIAGDPVLYGNLPPREISMKDVFRSGDSSKKFKIAEGQWYRYAPSYVSPAYHLLEGFPFIQEPPSGDLQERVLIRHHDYDQCFQSVQLLQWNSQVKFNVTVYRNLPTTRDSIMTS
+- feature_id: insdc:NC_001422.1:feature-26
+  seqid: refseq:NC_001422.1
+  type: gene
+  coordinate_system: contig
+  start: 2395
+  end: 2922
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 2395
+      end: 2922
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p10
+  - key: db_xref
+    value: GeneID:2546401
+- feature_id: insdc:NC_001422.1:feature-27
+  seqid: refseq:NC_001422.1
+  type: CDS
+  coordinate_system: contig
+  start: 2395
+  end: 2922
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 2395
+      end: 2922
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p10
+  - key: codon_start
+    value: '1'
+  - key: transl_table
+    value: '11'
+  - key: product
+    value: major spike protein
+  - key: protein_id
+    value: NP_040712.1
+  - key: db_xref
+    value: GeneID:2546401
+  - key: translation
+    value: MFQTFISRHNSNFFSDKLVLTSVTPASSAPVLQTPKATSSTLYFDSLTVNAGNGGFLHCIQMDTSVNAANQVVSVGADIAFDADPKFFACLVRFESSSVPTTLPTAYDVYPLNGRHDGGYYTVKDCVTIDVLPRTPGNNVYVGFMVWSNFTATKCRGLVSLNQVIKEIICLQPLK
+  product: major spike protein
+  translated_sequence: MFQTFISRHNSNFFSDKLVLTSVTPASSAPVLQTPKATSSTLYFDSLTVNAGNGGFLHCIQMDTSVNAANQVVSVGADIAFDADPKFFACLVRFESSSVPTTLPTAYDVYPLNGRHDGGYYTVKDCVTIDVLPRTPGNNVYVGFMVWSNFTATKCRGLVSLNQVIKEIICLQPLK
+- feature_id: insdc:NC_001422.1:feature-28
+  seqid: refseq:NC_001422.1
+  type: gene
+  coordinate_system: contig
+  start: 2931
+  end: 3917
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 2931
+      end: 3917
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p11
+  - key: db_xref
+    value: GeneID:2546407
+- feature_id: insdc:NC_001422.1:feature-29
+  seqid: refseq:NC_001422.1
+  type: CDS
+  coordinate_system: contig
+  start: 2931
+  end: 3917
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 2931
+      end: 3917
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p11
+  - key: function
+    value: adsorption
+  - key: note
+    value: minor spike protein
+  - key: codon_start
+    value: '1'
+  - key: transl_table
+    value: '11'
+  - key: product
+    value: pilot protein for DNA ejection
+  - key: protein_id
+    value: NP_040713.1
+  - key: db_xref
+    value: GeneID:2546407
+  - key: translation
+    value: MFGAIAGGIASALAGGAMSKLFGGGQKAASGGIQGDVLATDNNTVGMGDAGIKSAIQGSNVPNPDEAAPSFVSGAMAKAGKGLLEGTLQAGTSAVSDKLLDLVGLGGKSAADKGKDTRDYLAAAFPELNAWERAGADASSAGMVDAGFENQKELTKMQLDNQKEIAEMQNETQKEIAGIQSATSRQNTKDQVYAQNEMLAYQQKESTARVASIMENTNLSKQQQVSEIMRQMLTQAQTAGQYFTNDQIKEMTRKVSAEVDLVHQQTQNQRYGSSHIGATAKDISNVVTDAASGVVDIFHGIDKAVADTWNNFWKDGKADGIGSNLSRK
+  product: pilot protein for DNA ejection
+  translated_sequence: MFGAIAGGIASALAGGAMSKLFGGGQKAASGGIQGDVLATDNNTVGMGDAGIKSAIQGSNVPNPDEAAPSFVSGAMAKAGKGLLEGTLQAGTSAVSDKLLDLVGLGGKSAADKGKDTRDYLAAAFPELNAWERAGADASSAGMVDAGFENQKELTKMQLDNQKEIAEMQNETQKEIAGIQSATSRQNTKDQVYAQNEMLAYQQKESTARVASIMENTNLSKQQQVSEIMRQMLTQAQTAGQYFTNDQIKEMTRKVSAEVDLVHQQTQNQRYGSSHIGATAKDISNVVTDAASGVVDIFHGIDKAVADTWNNFWKDGKADGIGSNLSRK
+- feature_id: insdc:NC_001422.1:feature-30
+  seqid: refseq:NC_001422.1
+  type: misc_feature
+  coordinate_system: contig
+  start: 3962
+  end: 3962
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 3962
+      end: 3962
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p06
+  - key: note
+    value: transcription start site
+- feature_id: insdc:NC_001422.1:feature-31
+  seqid: refseq:NC_001422.1
+  type: rep_origin
+  coordinate_system: contig
+  start: 4306
+  end: 4306
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 4306
+      end: 4306
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p01
+  - key: note
+    value: origin of viral strand synthesis
+- feature_id: insdc:NC_001422.1:feature-32
+  seqid: refseq:NC_001422.1
+  type: misc_feature
+  coordinate_system: contig
+  start: 4899
+  end: 4899
+  strand: +
+  location:
+    location_operator: single
+    parts:
+    - seqid: refseq:NC_001422.1
+      start: 4899
+      end: 4899
+      start_status: exact
+      end_status: exact
+      strand: +
+    crosses_origin: false
+  attributes:
+  - key: locus_tag
+    value: phiX174p02
+  - key: note
+    value: transcription start site
